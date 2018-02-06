@@ -8,11 +8,11 @@ import io.moka.mokabaselib.util.string2Array
 
 open class SharedPreferenceManager(private val SHARED_PREFERENCE_NAME: String) {
 
-    private fun getEditor(context: Context): SharedPreferences.Editor {
+    fun getEditor(context: Context): SharedPreferences.Editor {
         return getSharedPreferences(context).edit()
     }
 
-    private fun getSharedPreferences(context: Context): SharedPreferences {
+    fun getSharedPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
     }
 
@@ -36,7 +36,7 @@ open class SharedPreferenceManager(private val SHARED_PREFERENCE_NAME: String) {
 
     fun setExtraBoolean(KEY: String, value: Boolean) = getEditor(MokaBase.context!!).putBoolean(KEY, value).commit()
 
-    fun setExtraLongArray(KEY: String, value: ArrayList<Long>) = getEditor(MokaBase.context!!).putString(KEY, value.array2String()).commit()
+    fun <T> setExtraArrayList(KEY: String, value: ArrayList<T>) = getEditor(MokaBase.context!!).putString(KEY, value.array2String()).commit()
 
     /**
 
@@ -54,6 +54,6 @@ open class SharedPreferenceManager(private val SHARED_PREFERENCE_NAME: String) {
 
     fun getExtraBoolean(KEY: String, defaultValue: Boolean): Boolean = getSharedPreferences(MokaBase.context!!).getBoolean(KEY, defaultValue)
 
-    fun getExtraLongArray(KEY: String, defaultValue: ArrayList<Long>) = getSharedPreferences(MokaBase.context!!).getString(KEY, defaultValue.array2String()).string2Array<Long>()
+    inline fun <reified T> getExtraArrayList(KEY: String, defaultValue: ArrayList<T>) = getSharedPreferences(MokaBase.context!!).getString(KEY, defaultValue.array2String()).string2Array<T>()
 
 }
