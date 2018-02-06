@@ -1,14 +1,14 @@
 ext {
 
     /* Build SDK versions */
-    buildToolsVersion = '26.0.2'
+    buildToolsVersion = '27.0.3'
     minSdkVersion = 16
 
     compileSdkVersion = 26
     targetSdkVersion = 26
 
     /* Version */
-    android_support_version     = '26.1.0'
+    android_support_version     = '27.0.2'
     anko_version                = '0.9'
     retrofit_version            = '2.3.0'
     fresco_version              = '0.10.0'
@@ -46,5 +46,8 @@ ext {
 
     /* For MarketVersionChecker */
     jsoup                   = 'org.jsoup:jsoup:1.7.3'
+
+    /* */
+    gson                    = 'com.google.code.gson:gson:2.8.2'
 
 }
