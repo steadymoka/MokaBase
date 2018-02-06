@@ -54,15 +54,7 @@ object MediaUtil {
             RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
         }
         else {
-            val uri = Uri.parse(notificationUri)
-            val exists = File(uri.path).exists()
-
-            if (exists) {
-                uri
-            }
-            else {
-                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-            }
+            Uri.parse(notificationUri)
         }
     }
 
