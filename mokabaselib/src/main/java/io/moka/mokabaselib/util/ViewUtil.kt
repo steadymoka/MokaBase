@@ -2,6 +2,7 @@ package io.moka.mokabaselib.util
 
 import android.animation.ValueAnimator
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -12,6 +13,7 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.widget.EditText
+import io.moka.mokabaselib.MokaBase
 import io.moka.mokabaselib.adapter.BaseAdapter
 import io.moka.mokabaselib.adapter.ItemData
 import io.moka.mokabaselib.adapter.RecyclerItemView
@@ -165,4 +167,20 @@ fun RecyclerView.fitHeight() {
     params.height = layoutManager.height
 
     layoutParams = params
+}
+
+fun View.leftMargin(dp: Int) {
+    (this.layoutParams as? ViewGroup.MarginLayoutParams)?.leftMargin = dp
+}
+
+fun View.rightMargin(dp: Int) {
+    (this.layoutParams as? ViewGroup.MarginLayoutParams)?.rightMargin = dp
+}
+
+fun View.topMargin(dp: Int) {
+    (this.layoutParams as? ViewGroup.MarginLayoutParams)?.topMargin = dp
+}
+
+fun View.bottomMargin(dp: Int) {
+    (this.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin = dp
 }
