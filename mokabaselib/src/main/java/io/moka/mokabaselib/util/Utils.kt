@@ -10,7 +10,7 @@ import android.text.style.RelativeSizeSpan
 import io.moka.mokabaselib.MokaBase
 
 fun color(resId: Int): Int {
-    return ContextCompat.getColor(MokaBase.context, resId)
+    return ContextCompat.getColor(MokaBase.context!!, resId)
 }
 
 /**

@@ -3,6 +3,8 @@ package io.moka.mokabaselib.preference
 import android.content.Context
 import android.content.SharedPreferences
 import io.moka.mokabaselib.MokaBase
+import io.moka.mokabaselib.util.array2String
+import io.moka.mokabaselib.util.string2Array
 
 open class SharedPreferenceManager(private val SHARED_PREFERENCE_NAME: String) {
 
