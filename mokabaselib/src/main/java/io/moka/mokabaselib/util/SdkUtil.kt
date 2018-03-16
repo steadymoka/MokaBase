@@ -11,7 +11,7 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import io.moka.mokabaselib.MokaBase.context
 
-@SuppressLint("MissingPermission")
+@SuppressLint("MissingPermission", "NewApi")
 fun Vibrator.supVibrate(pattern: LongArray, repeat: Int) {
     if (pattern.isEmpty())
         pattern.plus(longArrayOf(0, 1000, 200, 1000, 2400))
@@ -139,6 +139,7 @@ fun supSetStreamMute(streamType: Int, isMute: Boolean) {
      */
 }
 
+@SuppressLint("NewApi")
 fun MediaPlayer.supSetStreamType(streamType: Int) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val audioAttribute =
@@ -155,6 +156,7 @@ fun MediaPlayer.supSetStreamType(streamType: Int) {
     }
 }
 
+@SuppressLint("NewApi")
 fun AudioManager.supRequestAudioFocus() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val audioFocusRequest =
@@ -168,6 +170,7 @@ fun AudioManager.supRequestAudioFocus() {
     }
 }
 
+@SuppressLint("NewApi")
 fun AudioManager.supAnandonAudioFocus() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         val audioFocusRequest =
