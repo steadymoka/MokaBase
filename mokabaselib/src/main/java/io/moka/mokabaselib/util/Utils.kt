@@ -20,7 +20,7 @@ fun color(resId: Int): Int {
  * second : ratio
  * third : first - color, second - alpha
  */
-fun spannableText(vararg triple: Triple<Pair<String, Boolean>, Float, Pair<Int, Float>>): CharSequence {
+fun spannableText(vararg triple: Triple<Pair<String, Boolean>, Float, Pair<Int?, Float>>): CharSequence {
     val spannableStringBuilder = SpannableStringBuilder()
 
     triple.forEach {
@@ -31,16 +31,27 @@ fun spannableText(vararg triple: Triple<Pair<String, Boolean>, Float, Pair<Int, 
         val alpha = it.third.second
 
         val textSpannable = SpannableString(text)
-        textSpannable.setSpan(ForegroundColorSpan(Color.argb((alpha * 255).toInt(), Color.red(color), Color.green(color), Color.blue(color))), 0, textSpannable.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        /* color */
+        if (null != color)
+            textSpannable.setSpan(ForegroundColorSpan(Color.argb((alpha * 255).toInt(), Color.red(color), Color.green(color), Color.blue(color))), 0, textSpannable.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        /* ratio */
         textSpannable.setSpan(RelativeSizeSpan(ratio), 0, textSpannable.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        /* bold */
         if (isBold)
             textSpannable.setSpan(StyleSpan(Typeface.BOLD), 0, textSpannable.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
         spannableStringBuilder.append(textSpannable)
     }
 
     return spannableStringBuilder
 }
 
-fun attr(text: String, ratio: Float = 1f, colorRes: Int, alpha: Float = 1f, isBold: Boolean = false): Triple<Pair<String, Boolean>, Float, Pair<Int, Float>> {
-    return Triple(Pair(text, isBold), ratio, Pair(color(colorRes), alpha))
+fun attr(text: String, ratio: Float = 1f, colorRes: Int? = null, alpha: Float = 1f, isBold: Boolean = false): Triple<Pair<String, Boolean>, Float, Pair<Int?, Float>> {
+    return if (null != colorRes)
+        Triple(Pair(text, isBold), ratio, Pair(color(colorRes), alpha))
+    else
+        Triple(Pair(text, isBold), ratio, Pair(null, alpha))
 }
