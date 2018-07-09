@@ -1,12 +1,20 @@
 package io.moka.lib.adhelper
 
 import android.content.Context
-import com.facebook.ads.AdSize
-import com.facebook.ads.AdView
-import com.facebook.ads.NativeAd
-import com.facebook.ads.NativeAdBase
+import com.facebook.ads.*
+import com.google.android.gms.ads.MobileAds
+import com.tnkfactory.ad.TnkSession
 
 object AdCenter {
+
+    fun initialize(context: Context, admobAppKey: String) {
+        MobileAds.initialize(context, admobAppKey)
+        TnkSession.initInstance(context)
+    }
+
+    fun setAudienceTestDevice(testDeviceCode: String) {
+        AdSettings.addTestDevice(testDeviceCode)
+    }
 
     /**
      * MUST SET BEFORE LOAD
