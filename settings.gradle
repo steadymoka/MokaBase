@@ -1,1 +1,1 @@
-include ':app', ':base', ':permission'
+include ':app', ':base', ':permission', ':adhelper'
