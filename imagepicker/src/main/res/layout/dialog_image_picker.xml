@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/white">
+
+	<TableLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<TextView
+			android:id="@+id/textView_title"
+			android:layout_width="match_parent"
+			android:layout_height="32dp"
+			android:background="#FFF4F4F4"
+			android:gravity="left|bottom"
+			android:paddingBottom="4dp"
+			android:paddingLeft="10dp"
+			android:text="사진 선택"
+			android:textColor="#FF999999"
+			android:textSize="11dp"/>
+
+		<View style="@style/HorizontalDivider"/>
+
+		<TextView
+			android:id="@+id/textView_album"
+			android:layout_width="0dp"
+			android:layout_height="50dp"
+			android:layout_weight="1"
+			android:background="?attr/selectableItemBackground"
+			android:gravity="center_vertical"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp"
+			android:text="앨범"
+			android:textColor="#FF808080"
+			android:textSize="14dp"/>
+
+		<View style="@style/HorizontalDivider"/>
+
+		<TextView
+			android:id="@+id/textView_camera"
+			android:layout_width="0dp"
+			android:layout_height="50dp"
+			android:layout_weight="1"
+			android:background="?attr/selectableItemBackground"
+			android:gravity="center_vertical"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp"
+			android:text="카메라"
+			android:textColor="#FF808080"
+			android:textSize="14dp"/>
+
+		<View style="@style/HorizontalDivider"/>
+
+		<TextView
+			android:id="@+id/textView_delete"
+			android:layout_width="0dp"
+			android:layout_height="50dp"
+			android:layout_weight="1"
+			android:background="?attr/selectableItemBackground"
+			android:gravity="center_vertical"
+			android:paddingLeft="16dp"
+			android:paddingRight="16dp"
+			android:text="삭제"
+			android:textColor="#FF808080"
+			android:textSize="14dp"/>
+
+	</TableLayout>
+
+</ScrollView>

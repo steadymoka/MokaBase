@@ -4,15 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import com.facebook.ads.Ad
 import com.facebook.ads.AdError
-import com.facebook.ads.InterstitialAd
-import com.facebook.ads.InterstitialAdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
-import io.moka.lib.MokaBase
-import io.moka.lib.util.MediaUtil
 import io.moka.lib.util.log.MLog
 
 /**
@@ -154,7 +150,7 @@ class MokaRewardedAd private constructor() {
         }
 
         private fun loadAdmob() {
-            if (AdCenter.ADMOB_TEST_CODE.isEmpty()) {
+            if (MokaAdCenter.ADMOB_TEST_CODE.isEmpty()) {
                 mAd_admob!!.loadAd(admobKey,
                         AdRequest
                                 .Builder()
@@ -165,13 +161,13 @@ class MokaRewardedAd private constructor() {
                 mAd_admob!!.loadAd(admobKey,
                         AdRequest
                                 .Builder()
-                                .addTestDevice(AdCenter.ADMOB_TEST_CODE)
+                                .addTestDevice(MokaAdCenter.ADMOB_TEST_CODE)
                                 .build()
                 )
             }
         }
 
-        fun loadRewardedVideoAd_audience(callback: (isSuccessLoad: Boolean) -> Unit) {
+        private fun loadRewardedVideoAd_audience(callback: (isSuccessLoad: Boolean) -> Unit) {
             mAd_audience!!.setAdListener(object : com.facebook.ads.RewardedVideoAdListener {
                 override fun onError(ad: Ad, error: AdError) {
                     // Rewarded video ad failed to load

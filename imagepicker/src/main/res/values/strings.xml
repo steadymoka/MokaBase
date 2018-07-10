@@ -1,0 +1,5 @@
+<resources>
+	<string name="app_name">ImagePicker</string>
+	<string name="title_albums">Camera Roll</string>
+	<string name="menu_done">Done</string>
+</resources>

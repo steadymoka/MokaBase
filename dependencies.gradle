@@ -9,7 +9,7 @@ ext {
 
     /* Version */
     android_support_version     = '27.0.2'
-    anko_version                = '0.9'
+    anko_version                = '0.10.4'
     retrofit_version            = '2.3.0'
     fresco_version              = '0.10.0'
     okhttp_version              = '3.4.1'
@@ -19,7 +19,7 @@ ext {
     rx_java_math_version        = '0.21.0'
     rx_binding_version          = '0.4.0'
     runtime_permission_version  = '3.3.1'
-    glide_version               = '3.5.2'
+    glide_version               = '4.7.1'
     play_services               = '9.8.0'
     firebase_version            = '11.0.4'
     constraint_version          = '2.0.0-alpha1'
@@ -40,9 +40,18 @@ ext {
     nineoldandroids         = 'com.nineoldandroids:library:2.4.0'
     multidex                = 'com.android.support:multidex:1.0.1'
 
+    anko_coroutines         = "org.jetbrains.anko:anko-coroutines:$anko_version"
+
     /* Runtime Permission */
     permissionsdispatcher   = "com.github.hotchemi:permissionsdispatcher:$rootProject.ext.runtime_permission_version"
     permissions_kapt        = "com.github.hotchemi:permissionsdispatcher-processor:$rootProject.ext.runtime_permission_version"
+
+    photoview               = 'com.github.chrisbanes:PhotoView:2.0.0' /* photoView */
+    cropper                 = 'com.theartofdev.edmodo:android-image-cropper:2.5.1'
+    picasso                 = 'com.squareup.picasso:picasso:2.3.4'
+    glide                   = "com.github.bumptech.glide:glide:$glide_version"
+    glide_kapt              = "com.github.bumptech.glide:compiler:$glide_version"
+    transformations         = "jp.wasabeef:glide-transformations:3.3.0"
 
     /* For MarketVersionChecker */
     jsoup                   = 'org.jsoup:jsoup:1.7.3'

@@ -4,10 +4,11 @@ import android.content.Context
 import com.facebook.ads.*
 import com.google.android.gms.ads.MobileAds
 import com.tnkfactory.ad.TnkSession
+import io.moka.lib.MokaBase
 
 data class AdItem(val position: Int, val key: String)
 
-object AdCenter {
+object MokaAdCenter {
 
     var ADMOB_TEST_CODE: String = ""
 
@@ -21,6 +22,12 @@ object AdCenter {
         MobileAds.initialize(context, admobAppKey)
         TnkSession.initInstance(context)
     }
+
+    var debuggable: Boolean
+        get() = MokaBase.debuggable
+        set(value) {
+            MokaBase.debuggable = value
+        }
 
     /**
      * MUST SET BEFORE LOAD

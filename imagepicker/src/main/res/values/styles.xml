@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="PickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+	</style>
+
+	<style name="PickerTheme.TransStatus" parent="PickerTheme">
+		<item name="android:windowTranslucentStatus">true</item>
+	</style>
+
+	<style name="HorizontalDivider">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">1px</item>
+		<item name="android:background">#FFE6E6E6</item>
+	</style>
+
+</resources>

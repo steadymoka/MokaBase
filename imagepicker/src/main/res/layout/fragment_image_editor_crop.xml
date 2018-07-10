@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/black"
+	android:gravity="center"
+	android:orientation="vertical"
+	android:paddingBottom="16dp"
+	android:paddingTop="16dp">
+
+	<ImageView
+		android:id="@+id/imageView_home"
+		android:layout_width="52dp"
+		android:layout_height="60dp"
+		android:background="?android:attr/selectableItemBackground"
+		android:padding="16dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/vc_x_gray"/>
+
+	<TextView
+		android:id="@+id/textView_toolbarTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="?attr/actionBarSize"
+		android:gravity="center"
+		android:textColor="@color/white"
+		android:textSize="15dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"/>
+
+	<ImageView
+		android:id="@+id/imageView_menu"
+		android:layout_width="?attr/actionBarSize"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?android:attr/selectableItemBackground"
+		android:padding="14dp"
+		android:visibility="gone"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<TextView
+		android:id="@+id/textView_menu"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"
+		android:background="?android:attr/selectableItemBackground"
+		android:gravity="center"
+		android:paddingLeft="20dp"
+		android:paddingRight="20dp"
+		android:text="완료"
+		android:textColor="@color/white"
+		android:textSize="13dp"
+		android:textStyle="bold"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<com.theartofdev.edmodo.cropper.CropImageView
+		android:id="@+id/cropImageView_image"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_gravity="center"
+		android:layout_marginBottom="60dp"
+		android:layout_weight="9"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView_toolbarTitle"/>
+
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_weight="2"
+		android:gravity="center"
+		android:orientation="horizontal"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/cropImageView_image">
+
+		<TextView
+			android:id="@+id/textView_crop"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="크기조절"/>
+
+	</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

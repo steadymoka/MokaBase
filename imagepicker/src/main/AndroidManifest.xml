@@ -1,0 +1,19 @@
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.datable.imagepicker">
+
+	<application>
+
+		<activity
+			android:name=".image.gallery.AlbumActivity"
+			android:theme="@style/PickerTheme"/>
+		<activity
+			android:name=".image.editor.ImageEditorActivity"
+			android:theme="@style/PickerTheme.TransStatus"/>
+		<activity
+			android:name=".image.viewer.ImageViewerActivity"
+			android:theme="@style/PickerTheme"/>
+
+	</application>
+
+</manifest>

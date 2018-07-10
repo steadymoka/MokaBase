@@ -164,9 +164,9 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
     }
 
     fun onDestroy(position: Int) {
-        AdCenter.audienceNativeAdHash[position]?.destroy()
-        AdCenter.audienceNativeAdHash[position]?.unregisterView()
-        AdCenter.audienceBannerAdHash[position]?.destroy()
+        MokaAdCenter.audienceNativeAdHash[position]?.destroy()
+        MokaAdCenter.audienceNativeAdHash[position]?.unregisterView()
+        MokaAdCenter.audienceBannerAdHash[position]?.destroy()
         admobNativeAdView?.destroy()
         admobBannerAdView?.destroy()
     }
@@ -201,7 +201,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
      */
 
     private fun load_facebook_nativeAd(fail: () -> Unit) {
-        val facebookNativeAd = AdCenter.audienceNativeAdHash[position]
+        val facebookNativeAd = MokaAdCenter.audienceNativeAdHash[position]
         if (null == facebookNativeAd) {
             fail()
             return
@@ -283,7 +283,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
     }
 
     private fun load_facebook_bannerAd(fail: () -> Unit) {
-        val facebookBannerAd = AdCenter.audienceBannerAdHash[position]
+        val facebookBannerAd = MokaAdCenter.audienceBannerAdHash[position]
         if (null == facebookBannerAd) {
             fail()
             return
@@ -329,7 +329,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
     var adHeight: Int = 250
 
     private fun load_admob_nativeAd(fail: () -> Unit) {
-        val admobBannerAdView = AdCenter.admobAdHash[position]
+        val admobBannerAdView = MokaAdCenter.admobAdHash[position]
         if (null == admobBannerAdView) {
             fail()
             return
@@ -360,13 +360,13 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
         admobBannerAdView.loadAd(
                 AdRequest
                         .Builder()
-                        .apply { if (MokaBase.debuggable) addTestDevice(AdCenter.ADMOB_TEST_CODE) }
+                        .apply { if (MokaBase.debuggable) addTestDevice(MokaAdCenter.ADMOB_TEST_CODE) }
                         .build()
         )
     }
 
     private fun load_admob_bannerAd(fail: () -> Unit) {
-        val admobBannerAdView = AdCenter.admobAdHash[position]
+        val admobBannerAdView = MokaAdCenter.admobAdHash[position]
         if (null == admobBannerAdView) {
             fail()
             return
@@ -394,7 +394,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
         admobBannerAdView.loadAd(
                 AdRequest
                         .Builder()
-                        .apply { if (MokaBase.debuggable) addTestDevice(AdCenter.ADMOB_TEST_CODE) }
+                        .apply { if (MokaBase.debuggable) addTestDevice(MokaAdCenter.ADMOB_TEST_CODE) }
                         .build()
         )
     }
