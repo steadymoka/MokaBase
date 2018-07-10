@@ -5,6 +5,8 @@ import com.facebook.ads.*
 import com.google.android.gms.ads.MobileAds
 import com.tnkfactory.ad.TnkSession
 
+data class AdItem(val position: Int, val key: String)
+
 object AdCenter {
 
     fun initialize(context: Context, admobAppKey: String) {
@@ -31,17 +33,17 @@ object AdCenter {
     Facebook audience
      */
 
-    fun loadFbAudienceNativeAd(context: Context, position: Int, key: String) {
-        if (null == audienceNativeAdHash[position]) {
-            audienceNativeAdHash[position] = NativeAd(context, key)
+    fun loadFbAudienceNativeAd(context: Context, adItem: AdItem) {
+        if (null == audienceNativeAdHash[adItem.position]) {
+            audienceNativeAdHash[adItem.position] = NativeAd(context, adItem.key)
         }
 
-        audienceNativeAdHash[position]!!.loadAd(NativeAdBase.MediaCacheFlag.ALL)
+        audienceNativeAdHash[adItem.position]!!.loadAd(NativeAdBase.MediaCacheFlag.ALL)
     }
 
-    fun makeFbAudienceBannerAd(context: Context, position: Int, key: String) {
-        if (null == audienceBannerAdHash[position]) {
-            audienceBannerAdHash[position] = AdView(context, key, AdSize.BANNER_HEIGHT_50)
+    fun makeFbAudienceBannerAd(context: Context, adItem: AdItem) {
+        if (null == audienceBannerAdHash[adItem.position]) {
+            audienceBannerAdHash[adItem.position] = AdView(context, adItem.key, AdSize.BANNER_HEIGHT_50)
         }
     }
 
@@ -49,11 +51,11 @@ object AdCenter {
     Google admob
      */
 
-    fun makeAdmobAd(context: Context, position: Int, key: String) {
-        if (null == admobAdHash[position]) {
-            admobAdHash[position] = com.google.android.gms.ads.AdView(context).apply {
+    fun makeAdmobAd(context: Context, adItem: AdItem) {
+        if (null == admobAdHash[adItem.position]) {
+            admobAdHash[adItem.position] = com.google.android.gms.ads.AdView(context).apply {
                 adSize = com.google.android.gms.ads.AdSize.SMART_BANNER
-                adUnitId = key
+                adUnitId = adItem.key
             }
         }
     }

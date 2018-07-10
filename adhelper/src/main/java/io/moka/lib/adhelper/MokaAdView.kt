@@ -200,7 +200,11 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
      */
 
     private fun load_facebook_nativeAd(fail: () -> Unit) {
-        val facebookNativeAd = AdCenter.audienceNativeAdHash[position] ?: return
+        val facebookNativeAd = AdCenter.audienceNativeAdHash[position]
+        if (null == facebookNativeAd) {
+            fail()
+            return
+        }
 
         if (facebookNativeAd.isAdLoaded) {
             inflateNativeAdViews(facebookNativeAd)
@@ -279,7 +283,11 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
     }
 
     private fun load_facebook_bannerAd(fail: () -> Unit) {
-        val facebookBannerAd = AdCenter.audienceBannerAdHash[position] ?: return
+        val facebookBannerAd = AdCenter.audienceBannerAdHash[position]
+        if (null == facebookBannerAd) {
+            fail()
+            return
+        }
 
         banner_container.addView(facebookBannerAd)
 
@@ -320,7 +328,11 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
     var adHeight: Int = 250
 
     private fun load_admob_nativeAd(fail: () -> Unit) {
-        val admobBannerAdView = AdCenter.admobAdHash[position] ?: return
+        val admobBannerAdView = AdCenter.admobAdHash[position]
+        if (null == admobBannerAdView) {
+            fail()
+            return
+        }
 
         admobBannerAdView.adListener = object : com.google.android.gms.ads.AdListener() {
 
@@ -353,7 +365,11 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
     }
 
     private fun load_admob_bannerAd(fail: () -> Unit) {
-        val admobBannerAdView = AdCenter.admobAdHash[position] ?: return
+        val admobBannerAdView = AdCenter.admobAdHash[position]
+        if (null == admobBannerAdView) {
+            fail()
+            return
+        }
 
         admobBannerAdView.adListener = object : com.google.android.gms.ads.AdListener() {
 
