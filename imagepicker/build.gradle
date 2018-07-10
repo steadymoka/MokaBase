@@ -5,6 +5,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+group = 'com.github.moka-a'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -47,6 +49,10 @@ dependencies {
     implementation rootProject.ext.photoview
 
     /* glide */
-    implementation rootProject.ext.glide
+    api rootProject.ext.glide
     kapt rootProject.ext.glide_kapt
+
+    configurations.all {
+        exclude group: 'com.android.support', module: 'support-v13'
+    }
 }

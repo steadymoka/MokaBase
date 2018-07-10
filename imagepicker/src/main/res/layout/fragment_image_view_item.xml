@@ -4,7 +4,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<com.datable.imagepicker.util.ObservablePhotoView
+	<io.moka.lib.imagepicker.util.ObservablePhotoView
 		android:id="@+id/photoView_imageItem"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>
