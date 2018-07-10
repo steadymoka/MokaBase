@@ -38,7 +38,10 @@ object AdCenter {
             audienceNativeAdHash[adItem.position] = NativeAd(context, adItem.key)
         }
 
-        audienceNativeAdHash[adItem.position]!!.loadAd(NativeAdBase.MediaCacheFlag.ALL)
+        val audienceNative = audienceNativeAdHash[adItem.position]!!
+
+        if (!audienceNative.isAdLoaded)
+            audienceNative.loadAd(NativeAdBase.MediaCacheFlag.ALL)
     }
 
     fun makeFbAudienceBannerAd(context: Context, adItem: AdItem) {
