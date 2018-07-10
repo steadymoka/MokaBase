@@ -40,8 +40,12 @@ object AdCenter {
 
         val audienceNative = audienceNativeAdHash[adItem.position]!!
 
-        if (!audienceNative.isAdLoaded)
-            audienceNative.loadAd(NativeAdBase.MediaCacheFlag.ALL)
+        if (!audienceNative.isAdLoaded) {
+            try {
+                audienceNative.loadAd(NativeAdBase.MediaCacheFlag.ALL)
+            } catch (ignore: IllegalStateException) {
+            }
+        }
     }
 
     fun reloadFbAudienceNativeAd(context: Context, adItem: AdItem) {
