@@ -44,6 +44,13 @@ object AdCenter {
             audienceNative.loadAd(NativeAdBase.MediaCacheFlag.ALL)
     }
 
+    fun reloadFbAudienceNativeAd(context: Context, adItem: AdItem) {
+        val nativeAd = NativeAd(context, adItem.key)
+        audienceNativeAdHash[adItem.position] = nativeAd
+
+        nativeAd.loadAd(NativeAdBase.MediaCacheFlag.ALL)
+    }
+
     fun makeFbAudienceBannerAd(context: Context, adItem: AdItem) {
         if (null == audienceBannerAdHash[adItem.position]) {
             audienceBannerAdHash[adItem.position] = AdView(context, adItem.key, AdSize.BANNER_HEIGHT_50)
