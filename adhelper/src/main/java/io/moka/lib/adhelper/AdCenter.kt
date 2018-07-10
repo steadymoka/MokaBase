@@ -56,9 +56,7 @@ object AdCenter {
     }
 
     fun makeFbAudienceBannerAd(context: Context, adItem: AdItem) {
-        if (null == audienceBannerAdHash[adItem.position]) {
-            audienceBannerAdHash[adItem.position] = AdView(context, adItem.key, AdSize.BANNER_HEIGHT_50)
-        }
+        audienceBannerAdHash[adItem.position] = AdView(context, adItem.key, AdSize.BANNER_HEIGHT_50)
     }
 
     /*
@@ -66,11 +64,9 @@ object AdCenter {
      */
 
     fun makeAdmobAd(context: Context, adItem: AdItem) {
-        if (null == admobAdHash[adItem.position]) {
-            admobAdHash[adItem.position] = com.google.android.gms.ads.AdView(context).apply {
-                adSize = com.google.android.gms.ads.AdSize.SMART_BANNER
-                adUnitId = adItem.key
-            }
+        admobAdHash[adItem.position] = com.google.android.gms.ads.AdView(context).apply {
+            adSize = com.google.android.gms.ads.AdSize.SMART_BANNER
+            adUnitId = adItem.key
         }
     }
 
