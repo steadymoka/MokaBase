@@ -360,7 +360,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
         admobBannerAdView.loadAd(
                 AdRequest
                         .Builder()
-                        .apply { if (MokaBase.debuggable) addTestDevice(Contract.textDeviceCode) }
+                        .apply { if (MokaBase.debuggable) addTestDevice(AdCenter.ADMOB_TEST_CODE) }
                         .build()
         )
     }
@@ -394,7 +394,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
         admobBannerAdView.loadAd(
                 AdRequest
                         .Builder()
-                        .apply { if (MokaBase.debuggable) addTestDevice(Contract.textDeviceCode) }
+                        .apply { if (MokaBase.debuggable) addTestDevice(AdCenter.ADMOB_TEST_CODE) }
                         .build()
         )
     }

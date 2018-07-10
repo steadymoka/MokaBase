@@ -9,6 +9,8 @@ data class AdItem(val position: Int, val key: String)
 
 object AdCenter {
 
+    var ADMOB_TEST_CODE: String = ""
+
     fun initialize(context: Context, admobAppKey: String) {
         MobileAds.initialize(context, admobAppKey)
         TnkSession.initInstance(context)
@@ -16,6 +18,10 @@ object AdCenter {
 
     fun setAudienceTestDevice(testDeviceCode: String) {
         AdSettings.addTestDevice(testDeviceCode)
+    }
+
+    fun setAdmobTestDevice(testDeviceCode: String) {
+        ADMOB_TEST_CODE = testDeviceCode
     }
 
     /**

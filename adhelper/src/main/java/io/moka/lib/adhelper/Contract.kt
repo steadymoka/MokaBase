@@ -4,8 +4,6 @@ import io.moka.lib.MokaBase
 
 object Contract {
 
-    var textDeviceCode: String = ""
-
     var debuggable: Boolean
         get() = MokaBase.debuggable
         set(value) {
