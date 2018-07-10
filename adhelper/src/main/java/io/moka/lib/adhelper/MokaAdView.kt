@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.facebook.ads.*
 import com.google.android.gms.ads.AdRequest
@@ -288,6 +289,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
             return
         }
 
+        (facebookBannerAd.parent as? LinearLayout)?.removeAllViews()
         banner_container.addView(facebookBannerAd)
 
         facebookBannerAd.setAdListener(object : AdListener {
@@ -370,6 +372,9 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
             return
         }
 
+        (admobBannerAdView.parent as? LinearLayout)?.removeAllViews()
+        banner_container.addView(admobBannerAdView)
+
         admobBannerAdView.adListener = object : com.google.android.gms.ads.AdListener() {
 
             override fun onAdLoaded() {
@@ -386,8 +391,6 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
                 fail()
             }
         }
-        banner_container.addView(admobBannerAdView)
-
         admobBannerAdView.loadAd(
                 AdRequest
                         .Builder()
