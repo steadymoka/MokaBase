@@ -11,17 +11,15 @@ object AdCenter {
 
     var ADMOB_TEST_CODE: String = ""
 
+    var AUDIENCE_TEST_CODE: String = ""
+        set(value) {
+            field = value
+            AdSettings.addTestDevice(value)
+        }
+
     fun initialize(context: Context, admobAppKey: String) {
         MobileAds.initialize(context, admobAppKey)
         TnkSession.initInstance(context)
-    }
-
-    fun setAudienceTestDevice(testDeviceCode: String) {
-        AdSettings.addTestDevice(testDeviceCode)
-    }
-
-    fun setAdmobTestDevice(testDeviceCode: String) {
-        ADMOB_TEST_CODE = testDeviceCode
     }
 
     /**
