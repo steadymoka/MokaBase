@@ -240,7 +240,6 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
                 }
 
             })
-            facebookNativeAd.loadAd(NativeAdBase.MediaCacheFlag.ALL)
         }
     }
 
