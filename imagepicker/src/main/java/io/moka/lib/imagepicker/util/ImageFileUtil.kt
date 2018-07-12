@@ -21,23 +21,20 @@ class ImageFileUtil private constructor(context: Context) {
     val innerParentPath: String
     val externalParentPath: String
     val externalParentPath_image: String
-    val externalParentPath_secondary_image: String
     val innerBackUpPath: String
 
     init {
         innerParentPath = context.filesDir.path + IMAGE_DIRECTORY
         innerBackUpPath = context.filesDir.path + "/backup/"
-        externalParentPath = Environment.getExternalStorageDirectory().path + "/podfreeca/"
-        externalParentPath_image = Environment.getExternalStorageDirectory().path + "/podfreeca/podfreeca_image/"
-        externalParentPath_secondary_image = Environment.getExternalStorageDirectory().path + "/podfreeca_image/"
+        externalParentPath = Environment.getExternalStorageDirectory().path + "/$APP_NAME/"
+        externalParentPath_image = Environment.getExternalStorageDirectory().path + "/$APP_NAME/images/"
     }
 
     fun getParentPathToSaveImage(imageLocation: ImageLocation): String {
-        when (imageLocation) {
-
-            ImageLocation.INNER -> return innerParentPath
-            ImageLocation.EXTERNAL -> return externalParentPath_image
-            else -> return externalParentPath
+        return when (imageLocation) {
+            ImageLocation.INNER -> innerParentPath
+            ImageLocation.EXTERNAL -> externalParentPath_image
+            else -> externalParentPath
         }
     }
 
@@ -54,10 +51,10 @@ class ImageFileUtil private constructor(context: Context) {
      */
 
     fun getFileOfInner(fileName: String?): File {
-        if (null != fileName)
-            return File(directoryOfInner, fileName)
+        return if (null != fileName)
+            File(directoryOfInner, fileName)
         else
-            return File(directoryOfInner, "")
+            File(directoryOfInner, "")
     }
 
     fun getUriOfInner(fileName: String): Uri {
@@ -65,10 +62,10 @@ class ImageFileUtil private constructor(context: Context) {
     }
 
     fun getInnerFilePath(fileName: String?): String? {
-        if (!fileName.isNullOrEmpty())
-            return innerParentPath + fileName
+        return if (!fileName.isNullOrEmpty())
+            innerParentPath + fileName
         else
-            return null
+            null
     }
 
     val directoryOfInner: File
@@ -129,14 +126,15 @@ class ImageFileUtil private constructor(context: Context) {
 
     companion object {
 
-        val TEST = "test "
-
-        private val IMAGE_DIRECTORY = "/images/"
-        private val FILE_FORMAT_JPG = "jpg"
+        private const val IMAGE_DIRECTORY = "/images/"
+        private const val FILE_FORMAT_JPG = "jpg"
+        private var APP_NAME = ""
 
         private var instance: ImageFileUtil? = null
 
-        fun from(context: Context): ImageFileUtil {
+        fun from(context: Context, appName: String = "image_v"): ImageFileUtil {
+            APP_NAME = appName
+
             if (null == instance)
                 instance = ImageFileUtil(context)
 
@@ -151,7 +149,7 @@ class ImageFileUtil private constructor(context: Context) {
         fun generateFileNameToShow(): String {
             val dateFormat = SimpleDateFormat("yyyyMMdd_HHmmssSSS", Locale.getDefault())
             val str = dateFormat.format(Date())
-            return "podfreeca_$str.jpg"
+            return "${APP_NAME}_$str.jpg"
         }
 
         fun generateFileName(): String {

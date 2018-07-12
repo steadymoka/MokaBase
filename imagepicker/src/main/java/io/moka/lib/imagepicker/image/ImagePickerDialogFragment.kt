@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.provider.MediaStore
 import android.support.v4.app.DialogFragment
@@ -30,6 +31,8 @@ import kotlin.properties.Delegates
 class ImagePickerDialogFragment : AppCompatDialogFragment() {
 
     companion object {
+
+        var APP_NAME = "dayday"
 
         const val REQUEST_CODE_PICK_ONE_IMAGE = 0x0101
         const val REQUEST_CODE_PICK_MANY_IMAGE = 0x0102
@@ -94,8 +97,13 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
         }
 
         textView_camera.setOnClickListener {
-            needPermission?.invoke {
+            if (null == needPermission) {
                 pickImageFromCamera()
+            }
+            else {
+                needPermission?.invoke {
+                    pickImageFromCamera()
+                }
             }
         }
 
@@ -159,17 +167,17 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
     }
 
     private fun getOutputFileUri_forCamera(): Uri? {
-        val directoryDCIM = ImageFileUtil.from(activity!!).externalParentPath_image
-        val directory = File(directoryDCIM)
+        val directoryDCIM = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
 
-        if (!directory.exists())
-            directory.mkdirs()
+        if (!directoryDCIM.exists())
+            directoryDCIM.mkdirs()
 
         val dateFormat = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
         val str = dateFormat.format(Date())
-        val file = File(directory, "podfreeca_$str.jpg")
+        val file = File(directoryDCIM, "${APP_NAME}_$str.jpg")
 
         filePath = "file:" + file.absolutePath
+
         return FileProvider.getUriForFile(activity!!, activity!!.applicationContext.packageName + ".fileprovider", file)
     }
 
@@ -270,6 +278,11 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
     /**
      * setter method
      */
+
+    fun setAppName(appName: String): ImagePickerDialogFragment {
+        APP_NAME = appName
+        return this
+    }
 
     fun setTitle(title: String): ImagePickerDialogFragment {
         viewModel.title = title
