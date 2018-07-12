@@ -1,106 +1,119 @@
 package io.moka.lib.imagepicker.image
 
+import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.AlertDialog
-import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.provider.MediaStore
+import android.support.v4.app.DialogFragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatDialogFragment
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
+import android.view.ViewGroup
 import android.widget.Toast
 import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.image.editor.ImageEditorActivity
 import io.moka.lib.imagepicker.image.gallery.AlbumActivity
 import io.moka.lib.imagepicker.util.ImageFileUtil
 import io.moka.lib.imagepicker.util.ImageLocation
+import kotlinx.android.synthetic.main.dialog_image_picker.*
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.properties.Delegates
 
-class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListener {
+class ImagePickerDialogFragment : AppCompatDialogFragment() {
 
-    var title: String? = null
-    var existImage = false
-    var maxImageCount = DEFAULT_MAX_IMAGE_COUNT
-    var cropEnable = false
-    var aspectX = -1f
-    var aspectY = -1f
-    var flagOfDirectAlbum = false
-    var imageLocation = ImageLocation.EXTERNAL
-    var isFromAlbumApp = true
-    var deleteText = ""
+    companion object {
+
+        const val REQUEST_CODE_PICK_ONE_IMAGE = 0x0101
+        const val REQUEST_CODE_PICK_MANY_IMAGE = 0x0102
+        const val REQUEST_CODE_CAMERA = 0x0103
+        const val REQUEST_CODE_EDIT_IMAGE = 0x0104
+
+        private const val DEFAULT_MAX_IMAGE_COUNT = 10
+    }
+
+    private val viewModel by lazy { ViewModel() }
+
+    private var onImageSelected: ((imagePathList: ArrayList<String>) -> Unit)? = null
+    private var onImageDeleted: (() -> Unit)? = null
+    private var needPermission: ((callback: () -> Unit) -> Unit)? = null
 
     private var filePath: String = ""
 
-    private var rootView: View? = null
-    private var textView_title: TextView? = null
-    private var textView_album: TextView? = null
-    private var textView_camera: TextView? = null
-    private var textView_delete: TextView? = null
+    /**
+     * LifeCycle Functions
+     */
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        if (flagOfDirectAlbum) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setStyle(DialogFragment.STYLE_NO_TITLE, 0)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return if (viewModel.flagOfDirectAlbum) {
             Handler().postDelayed({ pickImageFromAlbum() }, 600)
-            rootView = LayoutInflater.from(activity).inflate(R.layout.dialog_empty, null)
-            return getDialog(rootView!!)
+            inflater.inflate(R.layout.dialog_empty, null)
         }
         else {
-            rootView = LayoutInflater.from(activity).inflate(R.layout.dialog_image_picker, null)
-            bindViews()
-            initTitle(title ?: "")
-            initDeleteText(deleteText)
-            initExistImage(existImage)
-            return getDialog(rootView!!)
+            inflater.inflate(R.layout.dialog_image_picker, null)
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initViews()
+        bindViews()
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onResume() {
+        super.onResume()
+        dialog.window!!.setLayout((280 * context!!.resources.displayMetrics.densityDpi / 160.0).toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    /**
+     */
+
+    private fun initViews() {
+        viewModel.existImage = viewModel.existImage
+        viewModel.title = viewModel.title
+        viewModel.deleteText = viewModel.deleteText
     }
 
     private fun bindViews() {
-        textView_title = rootView!!.findViewById(R.id.textView_title)
+        textView_album.setOnClickListener {
+            pickImageFromAlbum()
+        }
 
-        textView_album = rootView!!.findViewById(R.id.textView_album)
-        textView_album!!.setOnClickListener(this)
-
-        textView_camera = rootView!!.findViewById(R.id.textView_camera)
-        textView_camera!!.setOnClickListener(this)
-
-        textView_delete = rootView!!.findViewById(R.id.textView_delete)
-        textView_delete!!.setOnClickListener(this)
-    }
-
-    override fun onClick(view: View) {
-        if (!isAdded)
-            return
-
-        when (view.id) {
-
-            R.id.textView_album ->
-                pickImageFromAlbum()
-
-            R.id.textView_camera ->
+        textView_camera.setOnClickListener {
+            needPermission?.invoke {
                 pickImageFromCamera()
-
-            R.id.textView_delete -> {
-                onImageDoneListener?.onDeleteImage()
-                if (isAdded)
-                    dismiss()
             }
+        }
+
+        textView_delete.setOnClickListener {
+            onImageDeleted?.invoke()
+            if (isAdded)
+                dismiss()
         }
     }
 
+    /**
+     */
+
     private fun pickImageFromAlbum() {
-        if (1 == maxImageCount && isFromAlbumApp)
+        if (1 == viewModel.maxImageCount && viewModel.otherAppToPickOne)
             pickOneImageFromAlbum()
         else
-            pickManyImageFromAlbum(maxImageCount)
+            pickManyImageFromAlbum(viewModel.maxImageCount)
     }
 
     private fun pickOneImageFromAlbum() {
@@ -117,12 +130,12 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
             intent.putExtra(AlbumActivity.KEY_MAX_IMAGE_COUNT, 1)
             startActivityForResult(intent, REQUEST_CODE_PICK_MANY_IMAGE)
         }
-
     }
 
     private fun pickManyImageFromAlbum(maxImageCount: Int) {
         if (!isAdded)
             return
+
         val intent = Intent(activity, AlbumActivity::class.java)
         intent.putExtra(AlbumActivity.KEY_MAX_IMAGE_COUNT, maxImageCount)
         startActivityForResult(intent, REQUEST_CODE_PICK_MANY_IMAGE)
@@ -134,59 +147,30 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
         try {
 
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri_forCamera)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, getOutputFileUri_forCamera())
 
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
             startActivityForResult(intent, REQUEST_CODE_CAMERA)
         } catch (e: ActivityNotFoundException) {
-
             e.printStackTrace()
             Toast.makeText(activity, "카메라가 없습니다", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private var outputFileUri_forCamera: Uri? = null
-        get() {
-            if (null == field) {
-                val directoryDCIM = ImageFileUtil.from(activity!!).externalParentPath_image
-                val directory = File(directoryDCIM)
+    private fun getOutputFileUri_forCamera(): Uri? {
+        val directoryDCIM = ImageFileUtil.from(activity!!).externalParentPath_image
+        val directory = File(directoryDCIM)
 
-                if (!directory.exists())
-                    directory.mkdirs()
+        if (!directory.exists())
+            directory.mkdirs()
 
-                val dateFormat = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
-                val str = dateFormat.format(Date())
-                val file = File(directory, "podfreeca_$str.jpg")
+        val dateFormat = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault())
+        val str = dateFormat.format(Date())
+        val file = File(directory, "podfreeca_$str.jpg")
 
-                filePath = "file:" + file.absolutePath
-                field = FileProvider.getUriForFile(activity!!, activity!!.applicationContext.packageName + ".fileprovider", file)
-            }
-            return field
-        }
-
-    private fun initTitle(title: String) {
-        if (!TextUtils.isEmpty(title))
-            textView_title!!.text = title
-    }
-
-    private fun initDeleteText(deleteText: String) {
-        if (!deleteText.isNullOrEmpty())
-            textView_delete!!.text = deleteText
-    }
-
-    private fun initExistImage(existImage: Boolean) {
-        if (existImage)
-            textView_delete!!.visibility = View.VISIBLE
-        else
-            textView_delete!!.visibility = View.GONE
-    }
-
-    private fun getDialog(view: View): Dialog {
-        val builder = AlertDialog.Builder(activity)
-        builder.setView(view)
-
-        return builder.create()
+        filePath = "file:" + file.absolutePath
+        return FileProvider.getUriForFile(activity!!, activity!!.applicationContext.packageName + ".fileprovider", file)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -195,8 +179,8 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
             REQUEST_CODE_PICK_ONE_IMAGE ->
 
                 if (Activity.RESULT_OK == resultCode) {
-
                     val selectedImagePath = getOriginalImagePath(data?.data)
+
                     if (null != selectedImagePath)
                         startImageEditorActivityOrFinish(selectedImagePath)
                 }
@@ -204,8 +188,8 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
             REQUEST_CODE_PICK_MANY_IMAGE ->
 
                 if (Activity.RESULT_OK == resultCode) {
-
                     val selectedImagePaths = data?.getStringArrayListExtra(AlbumActivity.KEY_SELECTED_IMAGES)
+
                     if (null != selectedImagePaths)
                         startImageEditorActivityOrFinish(selectedImagePaths)
                 }
@@ -215,9 +199,9 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
             REQUEST_CODE_CAMERA ->
 
                 if (Activity.RESULT_OK == resultCode) {
-
                     val selectedImagePath = Uri.parse(filePath).path
                     activity?.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(filePath)))
+
                     if (null != selectedImagePath)
                         startImageEditorActivityOrFinish(selectedImagePath)
                 }
@@ -225,11 +209,11 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
             REQUEST_CODE_EDIT_IMAGE ->
 
                 if (Activity.RESULT_OK == resultCode) {
-
                     val imageNames = data?.extras?.getStringArrayList(ImageEditorActivity.SAVED_IMAGE_NAMES)
+
                     if (null != imageNames) {
                         val imagePaths = imageNames.map { ImageFileUtil.from(activity!!).getInnerFilePath(it) }
-                        onImageDoneListener?.onImagePicked(imagePaths as ArrayList<String>)
+                        onImageSelected?.invoke(imagePaths as ArrayList<String>)
                     }
                     dismiss()
                 }
@@ -248,12 +232,12 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
                 selectedImagePath = cursor.getString(cursor.getColumnIndex(filePathColumn[0]))
             }
             else {
-                val throwable = RuntimeException(if (null != thumbnailImageUri) thumbnailImageUri.path else "thumbnailImageUri is null")
+                RuntimeException(if (null != thumbnailImageUri) thumbnailImageUri.path else "thumbnailImageUri is null")
             }
             cursor.close()
         }
         else {
-            val throwable = RuntimeException(if (null != thumbnailImageUri) thumbnailImageUri.path else "thumbnailImageUri is null")
+            RuntimeException(if (null != thumbnailImageUri) thumbnailImageUri.path else "thumbnailImageUri is null")
         }
 
         return selectedImagePath
@@ -266,19 +250,18 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
     }
 
     private fun startImageEditorActivityOrFinish(selectedImagePaths: ArrayList<String>?) {
-        if (cropEnable) {
+        if (viewModel.cropEnable) {
 
             val intent = Intent(activity, ImageEditorActivity::class.java)
             intent.putExtra(ImageEditorActivity.IMAGE_PATHES, selectedImagePaths)
-            intent.putExtra(ImageEditorActivity.ASPECT_X, aspectX)
-            intent.putExtra(ImageEditorActivity.IMAGE_LOCATION, imageLocation.index)
-            intent.putExtra(ImageEditorActivity.ASPECT_Y, aspectY)
+            intent.putExtra(ImageEditorActivity.ASPECT_X, viewModel.aspectX)
+            intent.putExtra(ImageEditorActivity.IMAGE_LOCATION, viewModel.saveLocationType.index)
+            intent.putExtra(ImageEditorActivity.ASPECT_Y, viewModel.aspectY)
             startActivityForResult(intent, REQUEST_CODE_EDIT_IMAGE)
         }
         else {
 
-            if (null != selectedImagePaths)
-                onImageDoneListener?.onImagePicked(selectedImagePaths)
+            onImageSelected?.invoke(selectedImagePaths ?: arrayListOf())
             dismiss()
         }
     }
@@ -289,79 +272,110 @@ class ImagePickerDialogFragment : AppCompatDialogFragment(), View.OnClickListene
      */
 
     fun setTitle(title: String): ImagePickerDialogFragment {
-        this.title = title
+        viewModel.title = title
         return this
     }
 
     fun setExistImage(existImage: Boolean): ImagePickerDialogFragment {
-        this.existImage = existImage
+        viewModel.existImage = existImage
         return this
     }
 
     fun setDirectAlbum(flagOfDirectAlbum: Boolean): ImagePickerDialogFragment {
-        this.flagOfDirectAlbum = flagOfDirectAlbum
+        viewModel.flagOfDirectAlbum = flagOfDirectAlbum
         return this
     }
 
     fun setMaxImageCount(maxImageCount: Int): ImagePickerDialogFragment {
         if (0 < maxImageCount)
-            this.maxImageCount = maxImageCount
+            viewModel.maxImageCount = maxImageCount
 
         return this
     }
 
     fun setAspect(aspectX: Float, aspectY: Float): ImagePickerDialogFragment {
         if (0f < aspectX && 0f < aspectY) {
-            this.aspectX = aspectX
-            this.aspectY = aspectY
+            viewModel.aspectX = aspectX
+            viewModel.aspectY = aspectY
         }
         return this
     }
 
     fun setOtherAppToPickOne(otherAppToPickOne: Boolean): ImagePickerDialogFragment {
-        this.isFromAlbumApp = otherAppToPickOne
+        viewModel.otherAppToPickOne = otherAppToPickOne
         return this
     }
 
     fun setImageLocation(imageLocation: ImageLocation): ImagePickerDialogFragment {
-        this.imageLocation = imageLocation
+        viewModel.saveLocationType = imageLocation
         return this
     }
 
     fun setCropable(cropEnable: Boolean): ImagePickerDialogFragment {
-        this.cropEnable = cropEnable
+        viewModel.cropEnable = cropEnable
         return this
     }
 
     /**
      */
 
-    fun showDialog(fragmentManager: FragmentManager, onImageDoneListener: OnImageDoneListener) {
-        ImagePickerDialogFragment.onImageDoneListener = onImageDoneListener
+    fun setOnNeedCameraPermission(needPermission: ((callback: () -> Unit) -> Unit)): ImagePickerDialogFragment {
+        this.needPermission = needPermission
+        return this
+    }
+
+    fun setOnDeleted(onDeleted: () -> Unit): ImagePickerDialogFragment {
+        this.onImageDeleted = onDeleted
+        return this
+    }
+
+    fun showDialog(fragmentManager: FragmentManager, onImageSelected: ((imagePathList: ArrayList<String>) -> Unit)?) {
+        this.onImageSelected = onImageSelected
         show(fragmentManager, "ImagePickerDialogFragment")
     }
 
     /**
      */
 
-    interface OnImageDoneListener {
+    inner class ViewModel {
 
-        fun onImagePicked(imagePathList: ArrayList<String>)
+        var existImage by Delegates.observable(false) { _, _, value ->
+            if (!isAdded)
+                return@observable
 
-        fun onDeleteImage()
+            if (value)
+                textView_delete.visibility = View.VISIBLE
+            else
+                textView_delete.visibility = View.GONE
+        }
 
-    }
+        var title by Delegates.observable("선택") { _, _, value ->
+            if (!isAdded)
+                return@observable
 
-    companion object {
+            textView_title.text = value
+        }
 
-        const val REQUEST_CODE_PICK_ONE_IMAGE = 0x0101
-        const val REQUEST_CODE_PICK_MANY_IMAGE = 0x0102
-        const val REQUEST_CODE_CAMERA = 0x0103
-        const val REQUEST_CODE_EDIT_IMAGE = 0x0104
+        var deleteText by Delegates.observable("삭제하기") { _, _, value ->
+            if (!isAdded)
+                return@observable
 
-        private const val DEFAULT_MAX_IMAGE_COUNT = 10
+            textView_delete.text = value
+        }
 
-        private var onImageDoneListener: OnImageDoneListener? = null
+        var maxImageCount = DEFAULT_MAX_IMAGE_COUNT
+
+        var cropEnable: Boolean = false
+
+        var aspectX = -1f
+
+        var aspectY = -1f
+
+        var flagOfDirectAlbum = false
+
+        var saveLocationType = ImageLocation.EXTERNAL
+
+        var otherAppToPickOne = true
 
     }
 

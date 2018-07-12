@@ -6,7 +6,6 @@ import io.moka.lib.MokaBase
 import io.moka.lib.imagepicker.image.ImagePickerDialogFragment
 import io.moka.lib.permission.MokaPermission
 import io.moka.lib.util.log.MLog
-import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,23 +20,20 @@ class MainActivity : AppCompatActivity() {
                     MLog.deb("READ_EXTERNAL_STORAGE isGranted : ${isGranted}")
 
                     ImagePickerDialogFragment()
-                            .showDialog(supportFragmentManager, object : ImagePickerDialogFragment.OnImageDoneListener {
-                                override fun onImagePicked(imagePathList: ArrayList<String>) {
-                                }
+                            .setExistImage(false)
+                            .setOnNeedCameraPermission {
 
-                                override fun onDeleteImage() {
-                                }
+                                MokaPermission
+                                        .with(this)
+                                        .check(android.Manifest.permission.CAMERA) { isGranted -> if (isGranted) it() }
+                            }
+                            .setOnDeleted {
 
-                            })
+                            }
+                            .showDialog(supportFragmentManager) {
+
+                            }
                 }
-
-        MokaPermission
-                .with(this)
-                .check(android.Manifest.permission.CAMERA) { isGranted ->
-                    MLog.deb("CAMERA isGranted : ${isGranted}")
-                }
-
-
     }
 
 }
