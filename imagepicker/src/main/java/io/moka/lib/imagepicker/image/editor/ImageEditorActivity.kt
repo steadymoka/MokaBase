@@ -13,22 +13,24 @@ class ImageEditorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R
-                .layout.activity_image_editor)
+        setContentView(R.layout.activity_image_editor)
 
         if (null == imageCropFragment)
             imageCropFragment = ImageCropFragment()
 
-        supportFragmentManager.beginTransaction().replace(R.id.frameLayout_container, imageCropFragment).commit()
+        supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.frameLayout_container, imageCropFragment)
+                .commit()
     }
 
     companion object {
 
-        val SAVED_IMAGE_NAMES = "ImageEditorActivity.SAVED_IMAGE_NAMES"
-        val IMAGE_PATHES = "ImageEditorActivity.IMAGE_PATHES"
-        val ASPECT_X = "aspectX"
-        val ASPECT_Y = "aspectY"
-        val IMAGE_LOCATION = "image_location"
+        const val SAVED_IMAGE_PATHS = "ImageEditorActivity.SAVED_IMAGE_PATHS"
+        const val IMAGE_PATHES = "ImageEditorActivity.IMAGE_PATHES"
+        const val ASPECT_X = "aspectX"
+        const val ASPECT_Y = "aspectY"
+        const val IMAGE_LOCATION = "image_location"
     }
 
 }

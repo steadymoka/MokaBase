@@ -10,7 +10,7 @@ import kotlinx.coroutines.experimental.launch
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import java.util.ArrayList
+import java.util.*
 
 
 class SaveImageUtil : Thread {
@@ -22,9 +22,9 @@ class SaveImageUtil : Thread {
     private var onSaveImageListener: ((ArrayList<String>) -> Unit)? = null
 
     private var flag: Boolean = false
-    private var imageLocation: ImageLocation = ImageLocation.EXTERNAL
+    private var locationType: LocationType = LocationType.EXTERNAL
 
-    private val imageNames = ArrayList<String>()
+    private val imagePaths = ArrayList<String>()
 
     private constructor(selectedImagePaths: ArrayList<String>? = ArrayList(), context: Context) {
         this.selectedImagePaths = selectedImagePaths
@@ -45,11 +45,12 @@ class SaveImageUtil : Thread {
 
     fun performSync(): ArrayList<String> {
         run()
-        return imageNames
+        return imagePaths
     }
 
     override fun run() {
         super.run()
+        checkNoMediaFlagFile()
 
         if (flag) {
 
@@ -58,37 +59,52 @@ class SaveImageUtil : Thread {
                 val option = BitmapFactory.Options()
                 val imageBitmap = BitmapFactory.decodeFile(selectedImagePaths!![i], option)
 
-                val filePath = ImageFileUtil.from(context!!).getParentPathToSaveImage(imageLocation)
-                val imageName: String = if (imageLocation == ImageLocation.EXTERNAL)
+                val directoryPath = ImageFileUtil.getImagePath(locationType)
+
+                val imageName: String = if (locationType == LocationType.EXTERNAL)
                     ImageFileUtil.generateFileNameToShow()
                 else
-                    ImageFileUtil.generateFileName()
+                    ImageFileUtil.generateUUID()
 
-                val selectedImageFile = storeEditedImage(imageBitmap, filePath, imageName)
-                imageNames.add(selectedImageFile.name)
+                val savedFile = storeEditedImage(imageBitmap, directoryPath, imageName)
+                imagePaths.add(savedFile.path)
 
-                val uri = Uri.fromFile(selectedImageFile)
+                /* */
+                val uri = Uri.fromFile(savedFile)
                 context?.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
             }
 
-            launch(UI) { onSaveImageListener?.invoke(imageNames) }
+            launch(UI) { onSaveImageListener?.invoke(imagePaths) }
         }
         else {
 
-            val filePath = ImageFileUtil.from(context!!).getParentPathToSaveImage(imageLocation)
-            val imageName: String = if (imageLocation == ImageLocation.EXTERNAL)
+            val directoryPath = ImageFileUtil.getImagePath(locationType)
+
+            val imageName: String = if (locationType == LocationType.EXTERNAL)
                 ImageFileUtil.generateFileNameToShow()
             else
-                ImageFileUtil.generateFileName()
+                ImageFileUtil.generateUUID()
 
-            val fileToSave = storeEditedImage(imageBitmap!!, filePath, imageName)
-            imageNames.add(fileToSave.name)
+            val savedFile = storeEditedImage(imageBitmap!!, directoryPath, imageName)
+            imagePaths.add(savedFile.path)
 
-            val uri = Uri.fromFile(fileToSave)
+            /* */
+            val uri = Uri.fromFile(savedFile)
             context?.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
 
-            launch(UI) { onSaveImageListener?.invoke(imageNames) }
+            launch(UI) { onSaveImageListener?.invoke(imagePaths) }
         }
+    }
+
+    private fun checkNoMediaFlagFile() {
+        val directoryPath = ImageFileUtil.getImagePath(locationType)
+
+        val directory = File(directoryPath)
+        if (!directory.exists())
+            directory.mkdirs()
+
+        val noMediaFile = File(directory, ".nomedia")
+        noMediaFile.createNewFile()
     }
 
     private fun storeEditedImage(bitmap: Bitmap, filePath: String, fileName: String): File {
@@ -101,7 +117,6 @@ class SaveImageUtil : Thread {
         val out: BufferedOutputStream
 
         try {
-
             directory.createNewFile()
             out = BufferedOutputStream(FileOutputStream(file))
 
@@ -116,8 +131,8 @@ class SaveImageUtil : Thread {
         return file
     }
 
-    fun setImageLocation(imageLocation: ImageLocation = ImageLocation.INNER): SaveImageUtil {
-        this.imageLocation = imageLocation
+    fun setImageLocation(locationType: LocationType = LocationType.INNER): SaveImageUtil {
+        this.locationType = locationType
         return this
     }
 

@@ -1,7 +1,7 @@
 package io.moka.lib.imagepicker.image.gallery.adapter;
 
 
-import io.moka.lib.imagepicker.image.base.ItemData;
+import io.moka.lib.base.adapter.ItemData;
 
 public class AlbumItemData implements ItemData {
 

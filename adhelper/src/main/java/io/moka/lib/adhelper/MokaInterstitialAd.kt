@@ -6,9 +6,9 @@ import com.facebook.ads.AdError
 import com.facebook.ads.InterstitialAd
 import com.facebook.ads.InterstitialAdListener
 import com.google.android.gms.ads.AdRequest
-import io.moka.lib.MokaBase
-import io.moka.lib.util.MediaUtil
-import io.moka.lib.util.log.MLog
+import io.moka.lib.base.MokaBase
+import io.moka.lib.base.util.MediaUtil
+import io.moka.lib.base.util.log.MLog
 
 /**
  *

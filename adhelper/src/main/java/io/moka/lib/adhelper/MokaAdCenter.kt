@@ -4,7 +4,7 @@ import android.content.Context
 import com.facebook.ads.*
 import com.google.android.gms.ads.MobileAds
 import com.tnkfactory.ad.TnkSession
-import io.moka.lib.MokaBase
+import io.moka.lib.base.MokaBase
 
 data class AdItem(val position: Int, val key: String)
 

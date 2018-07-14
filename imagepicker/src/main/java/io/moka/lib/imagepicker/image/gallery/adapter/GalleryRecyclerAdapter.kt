@@ -9,11 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import io.moka.lib.base.adapter.BaseAdapter
+import io.moka.lib.base.adapter.ItemData
+import io.moka.lib.base.adapter.RecyclerItemView
+import io.moka.lib.base.util.deviceWidthPixel
 import io.moka.lib.imagepicker.R
-import io.moka.lib.imagepicker.image.base.BaseAdapter
-import io.moka.lib.imagepicker.image.base.ItemData
-import io.moka.lib.imagepicker.image.base.RecyclerItemView
-import io.moka.lib.imagepicker.util.getWidthPixels
 import kotlinx.android.synthetic.main.view_gallery_item.view.*
 import java.io.File
 
@@ -42,13 +42,13 @@ class GalleryRecyclerAdapter constructor(private val context: Context) : BaseAda
         private var size: Int = 0
 
         init {
-            recyclerItemView.frameLayout_galleryItemView.setOnClickListener { toggleCheckedState() }
+            itemView.frameLayout_galleryItemView.setOnClickListener { toggleCheckedState() }
 
-            size = getWidthPixels(context) / 3
+            size = deviceWidthPixel / 3
             val layoutParams = itemView.layoutParams
             layoutParams.width = size
             layoutParams.height = size
-            recyclerItemView.layoutParams = layoutParams
+            itemView.layoutParams = layoutParams
         }
 
         private fun toggleCheckedState() {
@@ -84,16 +84,16 @@ class GalleryRecyclerAdapter constructor(private val context: Context) : BaseAda
                             .centerCropTransform()
                             .placeholder(R.drawable.loading_img)
                             .override(size, size))
-                    .into(recyclerItemView.imageView_image)
+                    .into(itemView.imageView_image)
 
             setImageCheck(data.isChecked)
         }
 
         private fun setImageCheck(check: Boolean) {
             if (check)
-                recyclerItemView.imageView_checkImage.visibility = View.VISIBLE
+                itemView.imageView_checkImage.visibility = View.VISIBLE
             else
-                recyclerItemView.imageView_checkImage.visibility = View.GONE
+                itemView.imageView_checkImage.visibility = View.GONE
         }
 
     }

@@ -14,10 +14,10 @@ import com.google.android.gms.ads.NativeExpressAdView
 import com.tnkfactory.ad.NativeAdItem
 import com.tnkfactory.ad.NativeAdListener
 import com.tnkfactory.ad.TnkSession
-import io.moka.lib.MokaBase
-import io.moka.lib.util.FontSizeUtil
-import io.moka.lib.util.dp2px
-import io.moka.lib.util.log.MLog
+import io.moka.lib.base.MokaBase
+import io.moka.lib.base.util.FontSizeUtil
+import io.moka.lib.base.util.dp2px
+import io.moka.lib.base.util.log.MLog
 import kotlinx.android.synthetic.main.view_moka_ad_banner.view.*
 import kotlinx.android.synthetic.main.view_moka_ad_native.view.*
 

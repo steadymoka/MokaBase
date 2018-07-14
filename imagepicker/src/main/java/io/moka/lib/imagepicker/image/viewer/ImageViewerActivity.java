@@ -40,8 +40,10 @@ public class ImageViewerActivity extends AppCompatActivity {
 
         imageViewerFragment.setImageItemDatas(imageItemDatas);
 
-        getSupportFragmentManager().beginTransaction().replace(
-                R.id.frameLayout_container, imageViewerFragment).commitAllowingStateLoss();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout_container, imageViewerFragment)
+                .commitAllowingStateLoss();
     }
 
 }

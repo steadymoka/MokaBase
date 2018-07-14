@@ -3,7 +3,7 @@ package io.moka.lib.imagepicker.image.viewer.adapter;
 
 import android.graphics.Bitmap;
 
-import io.moka.lib.imagepicker.image.base.ItemData;
+import io.moka.lib.base.adapter.ItemData;
 
 
 public class ImageItemData implements ItemData {

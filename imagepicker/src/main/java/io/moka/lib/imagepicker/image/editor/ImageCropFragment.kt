@@ -14,7 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.theartofdev.edmodo.cropper.CropImageView
 import io.moka.lib.imagepicker.R
-import io.moka.lib.imagepicker.util.ImageLocation
+import io.moka.lib.imagepicker.util.LocationType
 import io.moka.lib.imagepicker.util.SaveImageUtil
 import kotlinx.android.synthetic.main.fragment_image_editor_crop.*
 import java.io.File
@@ -27,7 +27,7 @@ class ImageCropFragment : Fragment() {
 
     private var aspectX: Float = 0.toFloat()
     private var aspectY: Float = 0.toFloat()
-    private lateinit var imageLocation: ImageLocation
+    private lateinit var locationType: LocationType
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_image_editor_crop, container, false)
@@ -50,7 +50,7 @@ class ImageCropFragment : Fragment() {
         aspectX = activity!!.intent.extras.getFloat(ImageEditorActivity.ASPECT_X)
         aspectY = activity!!.intent.extras.getFloat(ImageEditorActivity.ASPECT_Y)
 
-        imageLocation = ImageLocation.get(activity!!.intent.extras.getInt(ImageEditorActivity.IMAGE_LOCATION))
+        locationType = LocationType.get(activity!!.intent.extras.getInt(ImageEditorActivity.IMAGE_LOCATION))
 
         setImage(selectedImagePaths, aspectX, aspectY)
     }
@@ -108,16 +108,17 @@ class ImageCropFragment : Fragment() {
 
             val resizedBitmap = Bitmap.createScaledBitmap(cropImageView_image.croppedImage, aspectX.toInt(), aspectY.toInt(), true)
 
-            SaveImageUtil.from(resizedBitmap, activity!!)
-                    .setImageLocation(imageLocation)
-                    .start { imageNames ->
+            SaveImageUtil
+                    .from(resizedBitmap, activity!!)
+                    .setImageLocation(locationType)
+                    .start { imagePaths ->
 
                         val intent = Intent()
                         val imagesArray = ArrayList<String>()
 
-                        imagesArray.add(imageNames[0])
+                        imagesArray.add(imagePaths[0])
 
-                        intent.putStringArrayListExtra(ImageEditorActivity.SAVED_IMAGE_NAMES, imagesArray)
+                        intent.putStringArrayListExtra(ImageEditorActivity.SAVED_IMAGE_PATHS, imagesArray)
 
                         activity?.setResult(Activity.RESULT_OK, intent)
                         activity?.finish()

@@ -16,12 +16,11 @@ import android.view.ViewGroup
 import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.image.gallery.adapter.AlbumAdapter
 import io.moka.lib.imagepicker.image.gallery.adapter.AlbumItemData
-import io.moka.lib.imagepicker.image.gallery.adapter.AlbumItemView
 import kotlinx.android.synthetic.main.fragment_albums.*
 import java.util.*
 
 
-class AlbumsFragment : Fragment(), View.OnTouchListener, AlbumItemView.OnItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
+class AlbumsFragment : Fragment(), View.OnTouchListener, AlbumAdapter.OnItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
 
     var onClickAlbum: ((AlbumItemData) -> Unit)? = null
     private var albumAdapter: AlbumAdapter? = null
@@ -72,7 +71,7 @@ class AlbumsFragment : Fragment(), View.OnTouchListener, AlbumItemView.OnItemCli
 
             if (null == albumAdapter) {
 
-                albumAdapter = AlbumAdapter(activity)
+                albumAdapter = AlbumAdapter(activity!!)
                 albumAdapter!!.setOnItemClickListener(this)
             }
             return albumAdapter!!

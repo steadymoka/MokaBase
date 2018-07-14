@@ -21,7 +21,7 @@ import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.image.editor.ImageEditorActivity
 import io.moka.lib.imagepicker.image.gallery.AlbumActivity
 import io.moka.lib.imagepicker.util.ImageFileUtil
-import io.moka.lib.imagepicker.util.ImageLocation
+import io.moka.lib.imagepicker.util.LocationType
 import kotlinx.android.synthetic.main.dialog_image_picker.*
 import java.io.File
 import java.text.SimpleDateFormat
@@ -217,12 +217,9 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
             REQUEST_CODE_EDIT_IMAGE ->
 
                 if (Activity.RESULT_OK == resultCode) {
-                    val imageNames = data?.extras?.getStringArrayList(ImageEditorActivity.SAVED_IMAGE_NAMES)
+                    val imagePaths = data?.extras?.getStringArrayList(ImageEditorActivity.SAVED_IMAGE_PATHS)
 
-                    if (null != imageNames) {
-                        val imagePaths = imageNames.map { ImageFileUtil.from(activity!!).getInnerFilePath(it) }
-                        onImageSelected?.invoke(imagePaths as ArrayList<String>)
-                    }
+                    onImageSelected?.invoke(imagePaths as ArrayList<String>)
                     dismiss()
                 }
         }
@@ -319,8 +316,8 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
         return this
     }
 
-    fun setImageLocation(imageLocation: ImageLocation): ImagePickerDialogFragment {
-        viewModel.saveLocationType = imageLocation
+    fun setImageLocation(locationType: LocationType): ImagePickerDialogFragment {
+        viewModel.saveLocationType = locationType
         return this
     }
 
@@ -386,7 +383,7 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
 
         var flagOfDirectAlbum = false
 
-        var saveLocationType = ImageLocation.EXTERNAL
+        var saveLocationType = LocationType.INNER
 
         var otherAppToPickOne = true
 

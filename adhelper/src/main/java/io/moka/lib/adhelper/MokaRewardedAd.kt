@@ -9,7 +9,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
-import io.moka.lib.util.log.MLog
+import io.moka.lib.base.util.log.MLog
 
 /**
  *

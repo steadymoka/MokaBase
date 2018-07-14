@@ -14,10 +14,10 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
+import io.moka.lib.base.util.deviceHeightPixel
+import io.moka.lib.base.util.deviceWidthPixel
 import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.util.ObservablePhotoView
-import io.moka.lib.imagepicker.util.getHeightPixels
-import io.moka.lib.imagepicker.util.getWidthPixels
 import kotlinx.android.synthetic.main.fragment_image_view_item.*
 
 
@@ -67,8 +67,8 @@ class ImageViewerItemFragment : Fragment(), ObservablePhotoView.Listener {
     private fun setImage(imageUrl: String?) {
         spinner.visibility = View.VISIBLE
 
-        val targetWidth = getWidthPixels(activity!!)
-        val targetHeight = getHeightPixels(activity!!)
+        val targetWidth = deviceWidthPixel
+        val targetHeight = deviceHeightPixel
 
         if (null != imageUrl) {
 
