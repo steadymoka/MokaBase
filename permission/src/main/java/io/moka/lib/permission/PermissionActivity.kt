@@ -28,8 +28,14 @@ class PermissionActivity : AppCompatActivity() {
         val permission = intent.getStringExtra(KEY_PERMISSION)
 
         when (permission) {
-            Manifest.permission.READ_EXTERNAL_STORAGE -> checkExternalStorageWithPermissionCheck()
-            Manifest.permission.CAMERA -> checkCameraWithPermissionCheck()
+            Manifest.permission.READ_EXTERNAL_STORAGE ->
+                checkReadExternalStorageWithPermissionCheck()
+
+            Manifest.permission.WRITE_EXTERNAL_STORAGE ->
+                checkWriteExternalStorageWithPermissionCheck()
+
+            Manifest.permission.CAMERA ->
+                checkCameraWithPermissionCheck()
         }
     }
 
@@ -52,50 +58,93 @@ class PermissionActivity : AppCompatActivity() {
     /**
      */
 
-    @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    fun checkExternalStorage() {
+    @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+    fun checkReadExternalStorage() {
         MokaPermission.callback?.invoke(true)
-        onBackPressed()
+
+        finish()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
+
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    fun checkWriteExternalStorage() {
+        MokaPermission.callback?.invoke(true)
+
+        finish()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     @NeedsPermission(Manifest.permission.CAMERA)
     fun checkCamera() {
         MokaPermission.callback?.invoke(true)
-        onBackPressed()
+
+        finish()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     /**
      */
 
-    @OnPermissionDenied(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA)
-    fun showDenied() {
-        Toast.makeText(this, "권한이 없어요", Toast.LENGTH_SHORT).show()
-
-        onBackPressed()
-        MokaPermission.callback?.invoke(false)
+    @OnPermissionDenied(Manifest.permission.READ_EXTERNAL_STORAGE)
+    fun deniedReadExternalStorage() {
+        showDenied()
     }
 
-    @OnNeverAskAgain(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA)
-    fun onNeverAskAgain() {
+    @OnPermissionDenied(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    fun deniedWriteExternalStorage() {
+        showDenied()
+    }
+
+    @OnPermissionDenied(Manifest.permission.CAMERA)
+    fun deniedCamera() {
+        showDenied()
+    }
+
+    private fun showDenied() {
+        Toast.makeText(this, "권한이 없어요", Toast.LENGTH_SHORT).show()
+
+        MokaPermission.callback?.invoke(false)
+
+        finish()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
+
+    /**
+     */
+
+    @OnNeverAskAgain(Manifest.permission.READ_EXTERNAL_STORAGE)
+    fun onNeverAskReadExternalStorage() {
+        onNeverAskAgain()
+    }
+
+    @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    fun onNeverAskWriteExternalStorage() {
+        onNeverAskAgain()
+    }
+
+    @OnNeverAskAgain(Manifest.permission.CAMERA)
+    fun onNeverAskCamera() {
+        onNeverAskAgain()
+    }
+
+    private fun onNeverAskAgain() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("권한이 없습니다")
                 .setMessage("[설정]>[권한]에서 권한 설정을 확인해주세요")
                 .setCancelable(false)
                 .setNegativeButton("취소") { _, _ ->
-                    onBackPressed()
                     MokaPermission.callback?.invoke(false)
+
+                    finish()
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                 }
                 .setPositiveButton("세팅으로") { _, _ ->
                     goAppSetting()
 
-                    onBackPressed()
                     MokaPermission.callback?.invoke(false)
+
+                    finish()
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                 }
         builder.create().show()
     }

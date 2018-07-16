@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
                             .setCropable(true)
                             .setImageLocation(LocationType.EXTERNAL)
                             .setAspect(100F, 100F)
+                            .setOnNeedCameraPermission {
+                                MokaPermission.with(this).check(android.Manifest.permission.CAMERA) { if (it) it() }
+                            }
                             .setOnDeleted {
 
                             }

@@ -5,6 +5,8 @@
 
 	<!-- Activity Transparent -->
 	<style name="Theme.Moka.NoActionBar.Transparent" parent="MokaTheme">
+		<item name="android:windowTranslucentStatus">true</item>
+
 		<!-- 투명정도를 나타내는 색-->
 		<item name="android:windowIsTranslucent">true</item>
 		<item name="android:windowBackground">@color/transparent</item>
