@@ -97,14 +97,16 @@ class SaveImageUtil : Thread {
     }
 
     private fun checkNoMediaFlagFile() {
-        val directoryPath = ImageFileUtil.getImagePath(locationType)
+        if (locationType == LocationType.EXTERNAL_NO_MEDIA) {
+            val directoryPath = ImageFileUtil.getImagePath(locationType)
 
-        val directory = File(directoryPath)
-        if (!directory.exists())
-            directory.mkdirs()
+            val directory = File(directoryPath)
+            if (!directory.exists())
+                directory.mkdirs()
 
-        val noMediaFile = File(directory, ".nomedia")
-        noMediaFile.createNewFile()
+            val noMediaFile = File(directory, ".nomedia")
+            noMediaFile.createNewFile()
+        }
     }
 
     private fun storeEditedImage(bitmap: Bitmap, filePath: String, fileName: String): File {

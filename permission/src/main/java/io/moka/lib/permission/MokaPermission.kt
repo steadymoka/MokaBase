@@ -1,5 +1,6 @@
 package io.moka.lib.permission
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
@@ -10,7 +11,7 @@ import android.support.v4.content.ContextCompat
 @SuppressLint("StaticFieldLeak")
 object MokaPermission {
 
-    lateinit var activity: Activity
+    internal lateinit var activity: Activity
     internal var callback: ((isGranted: Boolean) -> Unit)? = null
 
     fun with(activity: Activity): MokaPermission {
@@ -37,6 +38,16 @@ object MokaPermission {
 
     private fun isGranted(permission: String): Boolean {
         return ContextCompat.checkSelfPermission(activity, permission) == PackageManager.PERMISSION_GRANTED
+    }
+
+    /**
+     */
+
+    private fun checkWriteExternal(activity: Activity, callback: ((isGranted: Boolean) -> Unit)? = null) {
+        with(activity)
+                .check(Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+                    callback?.invoke(it)
+                }
     }
 
 }

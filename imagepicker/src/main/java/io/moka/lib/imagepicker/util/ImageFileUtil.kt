@@ -20,7 +20,9 @@ object ImageFileUtil {
     private var APP_NAME = "dayday"
     private lateinit var context: Context
 
+    private const val TEMP_DIRECTORY = "/temps/"
     private const val IMAGE_DIRECTORY = "/images/"
+
     private const val FILE_FORMAT_JPG = "jpg"
 
     private lateinit var innerParentPath: String
@@ -49,6 +51,7 @@ object ImageFileUtil {
         return when (locationType) {
             LocationType.INNER -> "$innerParentPath$IMAGE_DIRECTORY"
             LocationType.EXTERNAL -> "$externalParentPath$IMAGE_DIRECTORY"
+            LocationType.EXTERNAL_NO_MEDIA -> "$externalParentPath$TEMP_DIRECTORY"
             else -> "$externalParentPath$IMAGE_DIRECTORY"
         }
     }
@@ -70,9 +73,16 @@ object ImageFileUtil {
 
     fun getExternalPath(directory: String? = null, fileName: String): String {
         return if (null != directory)
-            "$externalParentPath/$directory/$fileName"
+            "$externalParentPath$directory/$fileName"
         else
-            "$externalParentPath/$fileName"
+            "$externalParentPath$fileName"
+    }
+
+    fun getExternalNoMediaPath(directory: String? = null, fileName: String): String {
+        return if (null != directory)
+            "$externalParentPath$TEMP_DIRECTORY$directory/$fileName"
+        else
+            "$externalParentPath$TEMP_DIRECTORY$fileName"
     }
 
     /**

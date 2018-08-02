@@ -3,7 +3,7 @@ package io.moka.lib.imagepicker.util;
 
 public enum LocationType {
 
-    INNER(0), EXTERNAL(1), ETC(2);
+    INNER(0), EXTERNAL(1), ETC(2), EXTERNAL_NO_MEDIA(3);
 
     private final int index;
 
