@@ -43,7 +43,8 @@ object ImageFileUtil {
         return when (locationType) {
             LocationType.INNER -> innerParentPath
             LocationType.EXTERNAL -> externalParentPath
-            else -> externalParentPath
+            LocationType.EXTERNAL_NO_MEDIA -> "$externalParentPath$TEMP_DIRECTORY"
+            LocationType.ETC -> externalParentPath
         }
     }
 
@@ -52,7 +53,7 @@ object ImageFileUtil {
             LocationType.INNER -> "$innerParentPath$IMAGE_DIRECTORY"
             LocationType.EXTERNAL -> "$externalParentPath$IMAGE_DIRECTORY"
             LocationType.EXTERNAL_NO_MEDIA -> "$externalParentPath$TEMP_DIRECTORY"
-            else -> "$externalParentPath$IMAGE_DIRECTORY"
+            LocationType.ETC -> "$externalParentPath$IMAGE_DIRECTORY"
         }
     }
 
