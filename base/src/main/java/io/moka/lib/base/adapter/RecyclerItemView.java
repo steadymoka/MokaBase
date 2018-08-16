@@ -2,9 +2,10 @@ package io.moka.lib.base.adapter;
 
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public abstract class RecyclerItemView<DATA extends ItemData> extends RecyclerView.ViewHolder {

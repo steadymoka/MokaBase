@@ -2,9 +2,6 @@ package io.moka.lib.base.util
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
@@ -12,12 +9,14 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.moka.lib.base.adapter.BaseAdapter
 import io.moka.lib.base.adapter.ItemData
 import io.moka.lib.base.adapter.RecyclerItemView
 
 fun <T : ItemData, V : RecyclerItemView<T>> RecyclerView.init(context: Context, adapter: BaseAdapter<T, V>) {
-    this.layoutManager = LinearLayoutManager(context, GridLayoutManager.VERTICAL, false)
+    this.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     this.adapter = adapter
 }
 
@@ -162,7 +161,7 @@ fun EditText.toCursorLast() {
 
 fun RecyclerView.fitHeight() {
     val params = layoutParams
-    params.height = layoutManager.height
+    params.height = layoutManager!!.height
 
     layoutParams = params
 }

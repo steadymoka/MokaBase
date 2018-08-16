@@ -1,9 +1,9 @@
 package io.moka.lib.base.adapter
 
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 
@@ -168,8 +168,8 @@ abstract class BaseAdapter<DATA : ItemData, in VIEW : RecyclerItemView<DATA>> : 
         notifyContentItemChanged(index)
     }
 
-    private class Header(itemView: View?) : RecyclerView.ViewHolder(itemView)
+    private class Header(itemView: View?) : RecyclerView.ViewHolder(itemView!!)
 
-    private class StickyView(itemView: View?) : RecyclerView.ViewHolder(itemView)
+    private class StickyView(itemView: View?) : RecyclerView.ViewHolder(itemView!!)
 
 }

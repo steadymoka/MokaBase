@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -30,14 +30,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation rootProject.ext.android_support
+
+    implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
 
     implementation project(':base')
     implementation project(':permission')
     implementation project(':adhelper')
     implementation project(':imagepicker')
-
-    configurations.all {
-        exclude group: 'com.android.support', module: 'support-v13'
-    }
 }

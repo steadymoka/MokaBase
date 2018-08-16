@@ -6,15 +6,16 @@ import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.MediaStore
-import android.support.v4.app.Fragment
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.CursorLoader
-import android.support.v4.content.Loader
-import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.image.gallery.adapter.AlbumItemData
 import io.moka.lib.imagepicker.image.gallery.adapter.GalleryRecyclerAdapter
@@ -81,7 +82,7 @@ class OneAlbumFragment : Fragment(), GalleryRecyclerAdapter.OnImageItemSelectedL
         selectedGalleryItemDatas = ArrayList()
         galleryItemDatas = ArrayList()
 
-        val layoutManager = GridLayoutManager(activity, 3, GridLayoutManager.VERTICAL, false)
+        val layoutManager = GridLayoutManager(activity, 3, RecyclerView.VERTICAL, false)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = galleryAdapter
         galleryAdapter.setOnImageItemSelectedListener(this)

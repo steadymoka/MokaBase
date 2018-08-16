@@ -2,9 +2,9 @@ package io.moka.lib.base.util
 
 import android.app.Activity
 import android.content.Context
-import android.support.v4.app.FragmentActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.FragmentActivity
 import io.moka.lib.base.MokaBase.context
 
 fun hideSoftKey(activity: Activity) {

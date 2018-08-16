@@ -2,11 +2,11 @@ package io.moka.lib.imagepicker.image.viewer
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.image.viewer.adapter.ImageItemData
 import io.moka.lib.imagepicker.image.viewer.adapter.ImageViewerAdapter

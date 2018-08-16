@@ -9,18 +9,18 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
 import android.provider.MediaStore
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.content.FileProvider
-import android.support.v7.app.AppCompatDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.core.content.FileProvider
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
+import io.moka.lib.base.util.visibleOrGone
 import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.image.editor.ImageEditorActivity
 import io.moka.lib.imagepicker.image.gallery.AlbumActivity
-import io.moka.lib.imagepicker.util.ImageFileUtil
 import io.moka.lib.imagepicker.util.LocationType
 import kotlinx.android.synthetic.main.dialog_image_picker.*
 import java.io.File
@@ -89,6 +89,7 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
         viewModel.existImage = viewModel.existImage
         viewModel.title = viewModel.title
         viewModel.deleteText = viewModel.deleteText
+        viewModel.useCamera = viewModel.useCamera
     }
 
     private fun bindViews() {
@@ -326,6 +327,11 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
         return this
     }
 
+    fun setUseCamera(useCamera: Boolean): ImagePickerDialogFragment {
+        viewModel.useCamera = useCamera
+        return this
+    }
+
     /**
      */
 
@@ -371,6 +377,13 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
                 return@observable
 
             textView_delete.text = value
+        }
+
+        var useCamera by Delegates.observable(false) { _, _, value ->
+            if (!isAdded)
+                return@observable
+
+            textView_camera.visibleOrGone(value)
         }
 
         var maxImageCount = DEFAULT_MAX_IMAGE_COUNT

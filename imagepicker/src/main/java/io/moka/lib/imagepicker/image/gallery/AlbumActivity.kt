@@ -2,8 +2,8 @@ package io.moka.lib.imagepicker.image.gallery
 
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import io.moka.lib.imagepicker.R
 import io.moka.lib.imagepicker.image.gallery.adapter.AlbumItemData
 import kotlinx.android.synthetic.main.activity_album.*
@@ -82,7 +82,7 @@ class AlbumActivity : AppCompatActivity() {
         supportFragmentManager
                 .beginTransaction()
                 .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_right, R.anim.slide_in_right, R.anim.slide_out_right)
-                .add(R.id.frameLayout_container, oneAlbumFragment)
+                .add(R.id.frameLayout_container, oneAlbumFragment!!)
                 .addToBackStack(oneAlbumFragment.toString())
                 .commitAllowingStateLoss()
     }

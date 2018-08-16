@@ -1,15 +1,13 @@
 package io.moka.mokabase
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import androidx.appcompat.app.AppCompatActivity
 import io.moka.lib.base.MokaBase
 import io.moka.lib.base.util.log.MLog
 import io.moka.lib.imagepicker.image.ImagePickerDialogFragment
 import io.moka.lib.imagepicker.util.ImageFileUtil
 import io.moka.lib.imagepicker.util.LocationType
 import io.moka.lib.permission.MokaPermission
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,10 +35,7 @@ class MainActivity : AppCompatActivity() {
 
                             }
                             .showDialog(supportFragmentManager) {
-                                Glide
-                                        .with(this)
-                                        .load(it[0])
-                                        .into(imageView)
+                                it
                             }
                 }
     }

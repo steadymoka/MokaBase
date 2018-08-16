@@ -2,7 +2,7 @@ package io.moka.lib.imagepicker.image.editor
 
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import io.moka.lib.imagepicker.R
 
 
@@ -20,7 +20,7 @@ class ImageEditorActivity : AppCompatActivity() {
 
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.frameLayout_container, imageCropFragment)
+                .replace(R.id.frameLayout_container, imageCropFragment!!)
                 .commit()
     }
 

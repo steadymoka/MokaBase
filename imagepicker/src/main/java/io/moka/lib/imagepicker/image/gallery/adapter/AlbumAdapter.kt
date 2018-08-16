@@ -2,9 +2,9 @@ package io.moka.lib.imagepicker.image.gallery.adapter
 
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import io.moka.lib.base.adapter.BaseAdapter

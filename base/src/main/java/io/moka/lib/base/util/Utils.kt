@@ -2,13 +2,13 @@ package io.moka.lib.base.util
 
 import android.graphics.Color
 import android.graphics.Typeface
-import android.support.v4.content.ContextCompat
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
+import androidx.core.content.ContextCompat
 import io.moka.lib.base.MokaBase
 
 fun color(resId: Int): Int {

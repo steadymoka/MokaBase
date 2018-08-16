@@ -2,10 +2,10 @@ package io.moka.lib.imagepicker.image.viewer;
 
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AppCompatActivity;
 import io.moka.lib.imagepicker.R;
 import io.moka.lib.imagepicker.image.viewer.adapter.ImageItemData;
 
