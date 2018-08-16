@@ -10,4 +10,16 @@
 		android:layout_width="100dp"
 		android:layout_height="100dp"/>
 
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:text="alkdjfklajfldjflake"/>
+
+	<TextView
+		android:id="@+id/showPicker"
+		android:layout_width="100dp"
+		android:layout_height="100dp"
+		android:text="피커 보기"/>
+
 </LinearLayout>

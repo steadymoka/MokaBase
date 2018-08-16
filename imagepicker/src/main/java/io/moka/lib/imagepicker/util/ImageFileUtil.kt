@@ -8,7 +8,6 @@ import android.graphics.Matrix
 import android.media.ExifInterface
 import android.os.Environment
 import android.util.Log
-import io.moka.lib.base.MokaBase
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -79,11 +78,8 @@ object ImageFileUtil {
             "$externalParentPath$fileName"
     }
 
-    fun getExternalNoMediaPath(directory: String? = null, fileName: String): String {
-        return if (null != directory)
-            "$externalParentPath$TEMP_DIRECTORY$directory/$fileName"
-        else
-            "$externalParentPath$TEMP_DIRECTORY$fileName"
+    fun getExternalNoMediaPath(fileName: String): String {
+        return "$externalParentPath$TEMP_DIRECTORY$fileName"
     }
 
     /**

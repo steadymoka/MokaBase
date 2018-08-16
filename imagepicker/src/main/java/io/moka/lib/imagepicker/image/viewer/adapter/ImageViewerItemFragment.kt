@@ -8,15 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import io.moka.lib.base.util.deviceHeightPixel
 import io.moka.lib.base.util.deviceWidthPixel
 import io.moka.lib.imagepicker.R
+import io.moka.lib.imagepicker.util.GlideApp
 import io.moka.lib.imagepicker.util.ObservablePhotoView
 import kotlinx.android.synthetic.main.fragment_image_view_item.*
 
@@ -72,24 +71,22 @@ class ImageViewerItemFragment : Fragment(), ObservablePhotoView.Listener {
 
         if (null != imageUrl) {
 
-            Glide
-                    .with(activity!!)
+            GlideApp.with(activity!!)
                     .load(imageUrl)
-                    .apply(RequestOptions().override(targetWidth, targetHeight))
+                    .override(targetWidth, targetHeight)
                     .listener(object : RequestListener<Drawable> {
-                        override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-                            spinner.visibility = View.GONE
-                            if (0 != position)
-                                photoView_imageItem.scaleType = ImageView.ScaleType.FIT_CENTER
-
-                            return true
-                        }
-
                         override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
                             spinner.visibility = View.GONE
                             photoView_imageItem.scaleType = ImageView.ScaleType.FIT_CENTER
                             photoView_imageItem.setImageResource(R.drawable.image_on_fail_full)
                             return true
+                        }
+
+                        override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                            spinner.visibility = View.GONE
+                            if (0 != position)
+                                photoView_imageItem.scaleType = ImageView.ScaleType.FIT_CENTER
+                            return false
                         }
                     })
                     .into(photoView_imageItem)
