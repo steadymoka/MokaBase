@@ -24,16 +24,10 @@ class MainActivity : AppCompatActivity() {
                     MLog.deb("READ_EXTERNAL_STORAGE isGranted : ${isGranted}")
 
                     ImagePickerDialogFragment()
+                            .setMaxImageCount(10)
+                            .setDirectAlbum(true)
                             .setExistImage(false)
-                            .setCropable(true)
-                            .setImageLocation(LocationType.EXTERNAL)
-                            .setAspect(100F, 100F)
-                            .setOnNeedCameraPermission {
-                                MokaPermission.with(this).check(android.Manifest.permission.CAMERA) { if (it) it() }
-                            }
-                            .setOnDeleted {
-
-                            }
+                            .setImageLocation(LocationType.EXTERNAL_NO_MEDIA)
                             .showDialog(supportFragmentManager) {
                                 it
                             }

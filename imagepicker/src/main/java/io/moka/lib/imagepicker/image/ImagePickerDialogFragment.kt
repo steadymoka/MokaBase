@@ -72,8 +72,10 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews()
-        bindViews()
+        if (!viewModel.flagOfDirectAlbum) {
+            initViews()
+            bindViews()
+        }
     }
 
     @SuppressLint("MissingSuperCall")
