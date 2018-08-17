@@ -5,8 +5,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
+import android.os.Handler
+import android.os.Looper
 import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileOutputStream
@@ -74,7 +74,7 @@ class SaveImageUtil : Thread {
                 context?.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
             }
 
-            launch(UI) { onSaveImageListener?.invoke(imagePaths) }
+            Handler(Looper.getMainLooper()).post { onSaveImageListener?.invoke(imagePaths) }
         }
         else {
 
@@ -92,7 +92,7 @@ class SaveImageUtil : Thread {
             val uri = Uri.fromFile(savedFile)
             context?.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
 
-            launch(UI) { onSaveImageListener?.invoke(imagePaths) }
+            Handler(Looper.getMainLooper()).post { onSaveImageListener?.invoke(imagePaths) }
         }
     }
 
