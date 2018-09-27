@@ -36,6 +36,10 @@ class PermissionActivity : AppCompatActivity() {
 
             Manifest.permission.CAMERA ->
                 checkCameraWithPermissionCheck()
+
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION ->
+                checkLocationWithPermissionCheck()
         }
     }
 
