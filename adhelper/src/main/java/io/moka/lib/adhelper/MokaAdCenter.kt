@@ -6,7 +6,7 @@ import com.google.android.gms.ads.MobileAds
 import com.tnkfactory.ad.TnkSession
 import io.moka.lib.base.MokaBase
 
-data class AdItem(val position: Int, val key: String)
+class AdItem(val position: Int, val key: String)
 
 object MokaAdCenter {
 

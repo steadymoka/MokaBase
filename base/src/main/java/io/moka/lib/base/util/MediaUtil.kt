@@ -59,7 +59,7 @@ object MediaUtil {
             sourceUri: Uri? = null,
             streamType: Int = AudioManager.STREAM_MUSIC,
             isLoop: Boolean = false,
-            wakeLock: Boolean = false) {
+            wakeLock: Boolean = false): MediaPlayer {
 
         stop()
         release()
@@ -112,6 +112,7 @@ object MediaUtil {
 
         /* play async */
         mediaPlayer.prepareAsync()
+        return MediaUtil.mediaPlayer!!
     }
 
     private fun checkUri(notificationUri: String?): Uri {

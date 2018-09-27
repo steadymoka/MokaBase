@@ -56,6 +56,8 @@ class PermissionActivity : AppCompatActivity() {
     }
 
     /**
+     *
+     * Needs Permission
      */
 
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -82,7 +84,17 @@ class PermissionActivity : AppCompatActivity() {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
+    @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+    fun checkLocation() {
+        MokaPermission.callback?.invoke(true)
+
+        finish()
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
+
     /**
+     *
+     * Denied Permission
      */
 
     @OnPermissionDenied(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -100,6 +112,11 @@ class PermissionActivity : AppCompatActivity() {
         showDenied()
     }
 
+    @OnPermissionDenied(Manifest.permission.ACCESS_FINE_LOCATION)
+    fun deniedLocation() {
+        showDenied()
+    }
+
     private fun showDenied() {
         Toast.makeText(this, "권한이 없어요", Toast.LENGTH_SHORT).show()
 
@@ -110,6 +127,8 @@ class PermissionActivity : AppCompatActivity() {
     }
 
     /**
+     *
+     * Never Ask Permission
      */
 
     @OnNeverAskAgain(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -124,6 +143,11 @@ class PermissionActivity : AppCompatActivity() {
 
     @OnNeverAskAgain(Manifest.permission.CAMERA)
     fun onNeverAskCamera() {
+        onNeverAskAgain()
+    }
+
+    @OnNeverAskAgain(Manifest.permission.ACCESS_FINE_LOCATION)
+    fun onNeverAskLocation() {
         onNeverAskAgain()
     }
 

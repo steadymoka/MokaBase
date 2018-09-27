@@ -109,6 +109,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
         cardView_native.visibility = View.VISIBLE
         frameLayout_loading_native.visibility = View.VISIBLE
 
+        /* todo: 모든 period 구현 해주기 */
         when (period) {
             Period.FACEBOOK_TNK_ADMOB -> {
                 load_facebook_nativeAd {
@@ -133,7 +134,7 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
             }
 
             else -> {
-
+                /* todo: 모든 period 구현 해주기 */
             }
         }
     }
