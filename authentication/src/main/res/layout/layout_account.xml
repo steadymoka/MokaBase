@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/constraintLayout_container"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/bg_gray_02">
+
+	<ImageView
+		android:id="@+id/imageView_background"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	<ImageView
+		android:id="@+id/imageView_backButton"
+		android:layout_width="?attr/actionBarSize"
+		android:layout_height="?attr/actionBarSize"
+		android:background="?attr/selectableItemBackgroundBorderless"
+		android:padding="20dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/vc_left_arrow_bl"/>
+
+	<TextView
+		android:id="@+id/textView_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="42dp"
+		android:layout_marginTop="22dp"
+		android:gravity="center"
+		android:text="하루하루."
+		android:textColor="@color/black_03_text"
+		android:textSize="15dp"
+		android:textStyle="bold"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<View
+		android:id="@+id/center"
+		android:layout_width="1px"
+		android:layout_height="1px"
+		android:visibility="invisible"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<TextView
+		android:id="@+id/textView_signIn"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginRight="18dp"
+		android:paddingTop="10dp"
+		android:paddingBottom="10dp"
+		android:text="로그인"
+		android:textColor="@color/black_02"
+		android:textSize="11dp"
+		android:textStyle="bold"
+		app:layout_constraintRight_toLeftOf="@+id/center"
+		app:layout_constraintTop_toBottomOf="@+id/textView_toolbar"/>
+
+	<View
+		android:id="@+id/indicator_signIn"
+		style="@style/HorizontalDivider"
+		android:layout_width="0dp"
+		android:layout_height="1.1dp"
+		android:layout_marginLeft="-2dp"
+		android:layout_marginTop="-8dp"
+		android:layout_marginRight="-2dp"
+		android:background="@color/black_02"
+		app:layout_constraintLeft_toLeftOf="@+id/textView_signIn"
+		app:layout_constraintRight_toRightOf="@+id/textView_signIn"
+		app:layout_constraintTop_toBottomOf="@+id/textView_signIn"/>
+
+	<TextView
+		android:id="@+id/textView_signUp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="18dp"
+		android:layout_marginTop="10dp"
+		android:paddingTop="10dp"
+		android:paddingBottom="10dp"
+		android:text="회원가입"
+		android:textColor="@color/black_04"
+		android:textSize="11dp"
+		android:textStyle="bold"
+		app:layout_constraintLeft_toRightOf="@+id/center"
+		app:layout_constraintTop_toBottomOf="@+id/textView_toolbar"/>
+
+	<View
+		android:id="@+id/indicator_signUp"
+		style="@style/HorizontalDivider"
+		android:layout_width="0dp"
+		android:layout_height="1.1dp"
+		android:layout_marginLeft="-2dp"
+		android:layout_marginTop="-8dp"
+		android:layout_marginRight="-2dp"
+		android:background="@color/black_04"
+		app:layout_constraintLeft_toLeftOf="@+id/textView_signUp"
+		app:layout_constraintRight_toRightOf="@+id/textView_signUp"
+		app:layout_constraintTop_toBottomOf="@+id/textView_signUp"/>
+
+	<EditText
+		android:id="@+id/editText_email"
+		android:layout_width="280dp"
+		android:layout_height="36dp"
+		android:layout_marginTop="30dp"
+		android:background="@drawable/rc_wh_wh_ro4"
+		android:hint="e-mail"
+		android:inputType="textEmailAddress"
+		android:paddingLeft="13dp"
+		android:paddingRight="13dp"
+		android:textColorHint="@color/gray_02"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView_signUp"/>
+
+	<EditText
+		android:id="@+id/editText_name"
+		android:layout_width="280dp"
+		android:layout_height="36dp"
+		android:layout_marginTop="8dp"
+		android:background="@drawable/rc_wh_wh_ro4"
+		android:hint="nickname"
+		android:inputType="text"
+		android:paddingLeft="13dp"
+		android:paddingRight="13dp"
+		android:textColorHint="@color/gray_02"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/editText_email"/>
+
+	<EditText
+		android:id="@+id/editText_password"
+		android:layout_width="280dp"
+		android:layout_height="36dp"
+		android:layout_marginTop="8dp"
+		android:background="@drawable/rc_wh_wh_ro4"
+		android:hint="password"
+		android:inputType="textPassword"
+		android:paddingLeft="13dp"
+		android:paddingRight="13dp"
+		android:textColorHint="@color/gray_02"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/editText_name"/>
+
+	<!-- -->
+
+	<TextView
+		android:id="@+id/button_signIn"
+		android:layout_width="280dp"
+		android:layout_height="36dp"
+		android:layout_marginTop="10dp"
+		android:layout_weight="1"
+		android:background="@drawable/rc_bl_bl_ro4"
+		android:elevation="2dp"
+		android:foreground="?attr/selectableItemBackground"
+		android:gravity="center"
+		android:onClick="onClickSignIn"
+		android:text="로그인"
+		android:textColor="@color/white"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/editText_password"/>
+
+	<TextView
+		android:id="@+id/button_signUp"
+		android:layout_width="280dp"
+		android:layout_height="36dp"
+		android:layout_marginTop="10dp"
+		android:layout_weight="1"
+		android:background="@drawable/rc_wh_wh_ro4"
+		android:elevation="2dp"
+		android:foreground="?attr/selectableItemBackground"
+		android:gravity="center"
+		android:text="가입하기"
+		android:textColor="@color/black_03_text"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/editText_password"/>
+
+	<!-- -->
+
+	<TextView
+		android:id="@+id/textView_findPassword"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="18dp"
+		android:gravity="center"
+		android:paddingTop="5dp"
+		android:paddingBottom="10dp"
+		android:textColor="@color/black_03_text"
+		android:textSize="12dp"
+		app:layout_constraintTop_toBottomOf="@+id/button_signIn"/>
+
+	<CheckBox
+		android:id="@+id/checkBox_privacy"
+		android:layout_width="280dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="18dp"
+		android:text="개인정보 보호정책에 동의합니다"
+		android:textColor="@color/black_03_text"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/button_signUp"/>
+
+	<TextView
+		android:id="@+id/textView_showPrivacy"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="3dp"
+		android:gravity="center"
+		android:text="전문보기"
+		android:textSize="10dp"
+		app:layout_constraintBottom_toBottomOf="@+id/checkBox_privacy"
+		app:layout_constraintRight_toRightOf="@+id/checkBox_privacy"
+		app:layout_constraintTop_toTopOf="@+id/checkBox_privacy"/>
+
+	<CheckBox
+		android:id="@+id/checkBox_terms"
+		android:layout_width="280dp"
+		android:layout_height="wrap_content"
+		android:text="이용약관에 동의 합니다"
+		android:textColor="@color/black_03_text"
+		android:textSize="12dp"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/checkBox_privacy"/>
+
+	<TextView
+		android:id="@+id/textView_showTerms"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginRight="3dp"
+		android:gravity="center"
+		android:text="전문보기"
+		android:textSize="10dp"
+		app:layout_constraintBottom_toBottomOf="@+id/checkBox_terms"
+		app:layout_constraintRight_toRightOf="@+id/checkBox_terms"
+		app:layout_constraintTop_toTopOf="@+id/checkBox_terms"/>
+
+	<!--
+
+			-->
+
+	<TextView
+		android:id="@+id/textView_thanksTo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="12dp"
+		android:alpha="0.6"
+		android:text="Developed by "
+		android:textColor="@color/gray_01"
+		android:textSize="11dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintHorizontal_chainStyle="packed"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toLeftOf="@+id/textView_thanksToMoka"/>
+
+	<TextView
+		android:id="@+id/textView_thanksToMoka"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_toRightOf="@+id/textView_thanksTo"
+		android:alpha="0.6"
+		android:text="Moka"
+		android:textColor="@color/gray_01"
+		android:textSize="11dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toBottomOf="@+id/textView_thanksTo"
+		app:layout_constraintHorizontal_chainStyle="packed"
+		app:layout_constraintLeft_toRightOf="@+id/textView_thanksTo"
+		app:layout_constraintRight_toRightOf="parent"/>
+
+	<!--
+
+			-->
+
+	<View
+		android:id="@+id/view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import io.moka.lib.base.adapter.BaseAdapter
 import io.moka.lib.base.adapter.ItemData
 import io.moka.lib.base.adapter.RecyclerItemView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.channels.actor
 
 fun <T : ItemData, V : RecyclerItemView<T>> RecyclerView.init(context: Context, adapter: BaseAdapter<T, V>) {
     this.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -181,3 +184,21 @@ fun View.topMargin(dp: Int) {
 fun View.bottomMargin(dp: Int) {
     (this.layoutParams as? ViewGroup.MarginLayoutParams)?.bottomMargin = dp
 }
+
+/**
+ * click
+ *
+ */
+
+fun View.onClick(action: suspend (View) -> Unit) {
+    val event = GlobalScope.actor<View>(Dispatchers.Main) {
+        for (event in channel) {
+            action(event)
+        }
+    }
+
+    setOnClickListener {
+        event.offer(it)
+    }
+}
+

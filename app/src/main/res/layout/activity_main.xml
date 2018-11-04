@@ -22,4 +22,13 @@
 		android:layout_height="100dp"
 		android:text="피커 보기"/>
 
+	<TextView
+		android:id="@+id/textView_signUp"
+		android:layout_width="match_parent"
+		android:layout_height="100dp"
+		android:background="@color/black_03_text"
+		android:gravity="center"
+		android:text="계정 등록"
+		android:textColor="@color/white"/>
+
 </LinearLayout>

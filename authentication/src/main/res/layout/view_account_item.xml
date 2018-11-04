@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/constraintLayout_container"
+	android:layout_width="match_parent"
+	android:layout_height="56dp"
+	android:background="?attr/selectableItemBackground">
+
+	<ImageView
+		android:id="@+id/imageView_profile"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:padding="11dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
+
+	<TextView
+		android:id="@+id/textView_nickname"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="6dp"
+		android:text="모카"
+		android:textColor="@color/black_03_text"
+		android:textSize="13dp"
+		android:textStyle="bold"
+		app:layout_constraintBottom_toTopOf="@+id/textView_email"
+		app:layout_constraintLeft_toRightOf="@+id/imageView_profile"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed"/>
+
+	<TextView
+		android:id="@+id/textView_email"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="6dp"
+		android:text="aud1220a@gmail.com"
+		android:textColor="@color/black_06_sub_text"
+		android:textSize="13dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toRightOf="@+id/imageView_profile"
+		app:layout_constraintTop_toBottomOf="@+id/textView_nickname"
+		app:layout_constraintVertical_chainStyle="packed"/>
+
+	<ImageView
+		android:id="@+id/imageView_check"
+		android:layout_width="56dp"
+		android:layout_height="56dp"
+		android:padding="16dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/vc_check_bl"/>
+
+	<View
+		android:id="@+id/view_divider"
+		style="@style/HorizontalDivider"
+		android:layout_marginLeft="18dp"
+		android:layout_marginRight="18dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

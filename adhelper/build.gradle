@@ -32,11 +32,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     implementation project(":base")
-    implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation rootProject.ext.appcompat
+    implementation rootProject.ext.constraint
 
     /* */
-    implementation "com.google.firebase:firebase-ads:15.0.1"
+    implementation "com.google.firebase:firebase-ads:17.0.0"
     implementation('com.facebook.android:audience-network-sdk:4.99.1') {
         exclude group: "com.google.android.gms"
     }

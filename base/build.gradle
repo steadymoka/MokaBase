@@ -17,6 +17,8 @@ android {
 
         versionCode 1
         versionName "1.0"
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -28,11 +30,22 @@ android {
 
 }
 
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0-rc01'
+    implementation rootProject.ext.coroutine_core
+    implementation rootProject.ext.coroutine_android
+
+    implementation rootProject.ext.appcompat
+    implementation rootProject.ext.constraint
+
+    implementation rootProject.ext.recyclerview
     implementation rootProject.ext.gson
 }

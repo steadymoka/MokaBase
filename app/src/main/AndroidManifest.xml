@@ -1,9 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		  xmlns:tools="http://schemas.android.com/tools"
 		  package="io.moka.mokabase">
 
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.CAMERA"/>
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
 
 	<application
 		android:allowBackup="true"
@@ -11,7 +13,8 @@
 		android:label="@string/app_name"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
-		android:theme="@style/AppTheme">
+		android:theme="@style/MokaTheme"
+		tools:ignore="GoogleAppIndexingWarning">
 
 		<activity
 			android:name=".MainActivity">
@@ -21,6 +24,22 @@
 
 			</intent-filter>
 		</activity>
+
+		<activity
+			android:name="io.moka.authentication.AccountIntroLayout"
+			android:theme="@style/MokaTheme.TransStatus"/>
+
+		<service
+			android:name="io.moka.authentication.AuthenticationService">
+
+			<intent-filter>
+				<action android:name="android.accounts.AccountAuthenticator"/>
+
+			</intent-filter>
+			<meta-data
+				android:name="android.accounts.AccountAuthenticator"
+				android:resource="@xml/authenticator"/>
+		</service>
 
 		<!--++++++++++++++++++++++++++ Provider ++++++++++++++++++++++++++-->
 

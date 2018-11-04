@@ -20,22 +20,22 @@ class MokaInterstitialAd private constructor() {
 
     companion object {
 
-        fun showInterstitialAd_admobFirst(context: Context, admobKey: String, facebookKey: String) {
-            show_admob_InterstitialAd(context, admobKey, {}, {
-                show_facebook_InterstitialAd(context, facebookKey, {}, {})
+        fun showInterstitialAd_admobFirst(context: Context, admobKey: String, facebookKey: String, filter: (() -> Boolean)? = null) {
+            show_admob_InterstitialAd(context, admobKey, filter, {}, {
+                show_facebook_InterstitialAd(context, facebookKey, filter, {}, {})
             })
         }
 
-        fun showInterstitialAd_facebookFirst(context: Context, admobKey: String, facebookKey: String) {
-            show_facebook_InterstitialAd(context, facebookKey, {}, {
-                show_admob_InterstitialAd(context, admobKey, {}, {})
+        fun showInterstitialAd_facebookFirst(context: Context, admobKey: String, facebookKey: String, filter: (() -> Boolean)? = null) {
+            show_facebook_InterstitialAd(context, facebookKey, filter, {}, {
+                show_admob_InterstitialAd(context, admobKey, filter, {}, {})
             })
         }
 
         /*
          */
 
-        private fun show_admob_InterstitialAd(context: Context, key: String, success: () -> Unit, fail: () -> Unit) {
+        private fun show_admob_InterstitialAd(context: Context, key: String, filter: (() -> Boolean)? = null, success: () -> Unit, fail: () -> Unit) {
             val mInterstitialAd = com.google.android.gms.ads.InterstitialAd(context)
             mInterstitialAd.adUnitId = key
             mInterstitialAd.adListener = object : com.google.android.gms.ads.AdListener() {
@@ -52,7 +52,9 @@ class MokaInterstitialAd private constructor() {
                     MLog.deb("show_admob_InterstitialAd success")
                     if (mInterstitialAd.isLoaded) {
                         MediaUtil.muteSound()
-                        mInterstitialAd.show()
+
+                        if (null == filter || filter())
+                            mInterstitialAd.show()
                     }
                     success()
                 }
@@ -72,7 +74,7 @@ class MokaInterstitialAd private constructor() {
                             .build())
         }
 
-        private fun show_facebook_InterstitialAd(context: Context, key: String, success: () -> Unit, fail: () -> Unit) {
+        private fun show_facebook_InterstitialAd(context: Context, key: String, filter: (() -> Boolean)? = null, success: () -> Unit, fail: () -> Unit) {
             val interstitialAd = InterstitialAd(context, key)
             interstitialAd.setAdListener(object : InterstitialAdListener {
                 override fun onInterstitialDisplayed(p0: Ad?) {
@@ -96,7 +98,9 @@ class MokaInterstitialAd private constructor() {
                     try {
                         if (interstitialAd.isAdLoaded) {
                             MediaUtil.muteSound()
-                            interstitialAd.show()
+
+                            if (null == filter || filter())
+                                interstitialAd.show()
                         }
                     } catch (e: Exception) {
                     }

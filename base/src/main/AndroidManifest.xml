@@ -1,2 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-		  package="io.moka.lib.base"/>
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="io.moka.lib.base">
+
+	<application>
+
+		<activity android:name=".webview.WebViewActivity"/>
+
+	</application>
+
+</manifest>

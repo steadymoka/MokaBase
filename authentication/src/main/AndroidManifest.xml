@@ -1,0 +1,36 @@
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="io.moka.authentication">
+
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+	<uses-permission
+		android:name="android.permission.USE_CREDENTIALS"
+		android:maxSdkVersion="22"/>
+
+	<application>
+
+		<!-- Activity-->
+
+		<activity
+			android:name=".AccountAuthenticatorActivity"/>
+
+		<!-- Service -->
+
+		<service
+			android:name=".AuthenticationService">
+
+			<intent-filter>
+				<action android:name="android.accounts.AccountAuthenticator"/>
+
+			</intent-filter>
+			<meta-data
+				android:name="android.accounts.AccountAuthenticator"
+				android:resource="@xml/authenticator"/>
+		</service>
+
+	</application>
+
+</manifest>
