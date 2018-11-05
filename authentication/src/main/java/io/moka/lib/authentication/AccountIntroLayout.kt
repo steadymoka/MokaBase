@@ -18,7 +18,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import org.jetbrains.anko.topPadding
 
 
 class AccountIntroLayout : AccountAuthenticatorActivity() {
@@ -26,15 +25,6 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
     private val accountManager by lazy { AccountManager.get(this) }
     private val adapter by lazy { AccountAdapter(this) }
     private var noVisible = false
-
-    val statusBarSize: Int by lazy {
-        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
-
-        if (resourceId > 0)
-            resources.getDimensionPixelSize(resourceId)
-        else
-            19
-    }
 
     /**
      * LifeCycle functions
@@ -64,7 +54,7 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
      */
 
     private fun initView() {
-        constraintLayout_container.topPadding = statusBarSize
+//        constraintLayout_container.topPadding = statusBarSize
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, true)
         recyclerView.adapter = adapter
     }

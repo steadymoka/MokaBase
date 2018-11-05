@@ -29,22 +29,6 @@
 			</intent-filter>
 		</activity>
 
-		<activity
-			android:name="io.moka.lib.authentication.AccountIntroLayout"
-			android:theme="@style/MokaTheme.TransStatus"/>
-
-		<service
-			android:name="io.moka.lib.authentication.AuthenticationService">
-
-			<intent-filter>
-				<action android:name="android.accounts.AccountAuthenticator"/>
-
-			</intent-filter>
-			<meta-data
-				android:name="android.accounts.AccountAuthenticator"
-				android:resource="@xml/authenticator"/>
-		</service>
-
 		<!--++++++++++++++++++++++++++ Provider ++++++++++++++++++++++++++-->
 
 		<provider
