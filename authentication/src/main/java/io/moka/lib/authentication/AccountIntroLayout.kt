@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.moka.lib.authentication.util.Contract
 import io.moka.lib.base.util.attr
-import io.moka.lib.base.util.log.MLog
 import io.moka.lib.base.util.onClick
 import io.moka.lib.base.util.spannableText
 import io.moka.lib.base.util.visible
@@ -54,7 +53,6 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
      */
 
     private fun initView() {
-//        constraintLayout_container.topPadding = statusBarSize
         recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, true)
         recyclerView.adapter = adapter
     }
@@ -68,8 +66,8 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
     }
 
     private fun initData() {
-        val type = intent.getStringExtra(AccountManager.KEY_AUTH_TOKEN_LABEL)
-        if (type != Contract.JOIN_DAYDAY) {
+        val tokenLabel = intent.getStringExtra(AccountManager.KEY_AUTH_TOKEN_LABEL)
+        if (tokenLabel.isNullOrEmpty()) {
             view_container_wall.visible()
             noVisible = true
 
@@ -77,6 +75,7 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
             return
         }
 
+        /* */
         val accounts = accountManager.getAccountsByType(Contract.ACCOUNT_TYPE)
 
         if (accounts.isEmpty()) {
@@ -119,14 +118,16 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
 
         val future = deferred.await()
         async(Dispatchers.IO) {
-            val bnd = future.result
-            val authToken = bnd.getString(AccountManager.KEY_AUTHTOKEN)
-            MLog.deb("token : ${authToken} / name : ${account.name}")
+            val bundle = future.result
+
+            val authToken = bundle.getString(AccountManager.KEY_AUTHTOKEN)
+            val email = accountManager.getUserData(account, "email")
 
             /* */
             val intent = Intent()
             val data = Bundle()
             data.putString("token", authToken)
+            data.putString("email", email)
             intent.putExtras(data)
 
             setAccountAuthenticatorResult(data)

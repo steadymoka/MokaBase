@@ -4,7 +4,13 @@ object Contract {
 
     const val ACCOUNT_TYPE = "io.moka.dayday"
 
-    const val JOIN_DAYDAY = "JOIN DAYDAY" // 다른 앱들에서 부르는 건지
+    var APP_TYPE: String = ""
+    const val LABEL_ALARM = "Alarm"
+    const val LABEL_DIARY = "Diary"
+    const val LABEL_POMODORO = "Pomodoro"
+    const val LABEL_BOOK = "Book"
+    const val LABEL_HEALTH = "Health"
+    const val LABEL_PROOF = "Proof"
 
     /**
      * init preference
