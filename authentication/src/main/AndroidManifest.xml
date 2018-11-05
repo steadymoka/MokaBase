@@ -12,7 +12,7 @@
 		<!-- Activity-->
 
 		<activity
-			android:name=".AccountAuthenticatorActivity"
+			android:name=".AccountIntroLayout"
 			android:exported="true"/>
 
 		<!-- Service -->
