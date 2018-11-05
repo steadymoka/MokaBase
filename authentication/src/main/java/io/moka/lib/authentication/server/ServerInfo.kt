@@ -1,4 +1,4 @@
-package io.moka.authentication.server
+package io.moka.lib.authentication.server
 
 
 object ServerInfo {

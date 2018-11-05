@@ -1,4 +1,4 @@
-package io.moka.authentication.server.res
+package io.moka.lib.authentication.server.res
 
 
 class SignInUpRes : BaseRes() {

@@ -1,4 +1,4 @@
-package io.moka.authentication.server.req
+package io.moka.lib.authentication.server.req
 
 
 class SignInReq {

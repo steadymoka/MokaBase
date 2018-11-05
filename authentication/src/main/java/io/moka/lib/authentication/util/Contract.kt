@@ -1,4 +1,4 @@
-package io.moka.authentication.util
+package io.moka.lib.authentication.util
 
 object Contract {
 

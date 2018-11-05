@@ -1,8 +1,8 @@
-package io.moka.authentication.util
+package io.moka.lib.authentication.util
 
 import com.google.gson.Gson
-import io.moka.authentication.server.res.BaseRes
-import io.moka.authentication.server.res.ErrorRes
+import io.moka.lib.authentication.server.res.BaseRes
+import io.moka.lib.authentication.server.res.ErrorRes
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

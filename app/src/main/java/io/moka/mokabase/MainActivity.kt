@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import io.moka.authentication.util.Contract
+import io.moka.lib.authentication.util.Contract
 import io.moka.lib.base.MokaBase
 import io.moka.lib.base.util.log.MLog
 import io.moka.lib.base.util.onClick

@@ -1,4 +1,4 @@
-package io.moka.authentication
+package io.moka.lib.authentication
 
 
 import android.os.Bundle
@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import io.moka.authentication.server.api.ApiModule
-import io.moka.authentication.server.req.FindPasswordReq
-import io.moka.authentication.util.on
+import io.moka.lib.authentication.server.api.ApiModule
+import io.moka.lib.authentication.server.req.FindPasswordReq
+import io.moka.lib.authentication.util.on
 import io.moka.lib.base.base.BaseWideDialogFragment
 import kotlinx.android.synthetic.main.dialog_find_password.*
 import org.jetbrains.anko.support.v4.toast

@@ -1,7 +1,7 @@
-package io.moka.authentication.server.api
+package io.moka.lib.authentication.server.api
 
-import io.moka.authentication.BuildConfig
-import io.moka.authentication.server.ServerInfo
+import io.moka.lib.authentication.BuildConfig
+import io.moka.lib.authentication.server.ServerInfo
 import io.moka.lib.base.MokaBase
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -33,7 +33,7 @@ object ApiModule {
                 .client(client
                         .newBuilder()
                         .addInterceptor { chain ->
-                            val userAgent = System.getProperty("http.agent") + " dayday_alarm/${BuildConfig.VERSION_CODE}"
+                            val userAgent = System.getProperty("http.agent") + " dayday/${BuildConfig.VERSION_CODE}"
 
                             chain.proceed(
                                     chain.request()

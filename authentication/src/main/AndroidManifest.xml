@@ -1,6 +1,6 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="io.moka.authentication">
+	package="io.moka.lib.authentication">
 
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
@@ -12,13 +12,14 @@
 		<!-- Activity-->
 
 		<activity
-			android:name=".AccountIntroLayout"
+			android:name="io.moka.lib.authentication.AccountIntroLayout"
 			android:exported="true"/>
 
 		<!-- Service -->
 
 		<service
-			android:name=".AuthenticationService">
+			android:name="io.moka.lib.authentication.AuthenticationService"
+			android:exported="true">
 
 			<intent-filter>
 				<action android:name="android.accounts.AccountAuthenticator"/>

@@ -1,4 +1,4 @@
-package io.moka.authentication
+package io.moka.lib.authentication
 
 import android.accounts.Account
 import android.accounts.AccountManager
@@ -7,9 +7,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import io.moka.authentication.util.Contract
-import io.moka.lib.base.util.*
+import io.moka.lib.authentication.util.Contract
+import io.moka.lib.base.util.attr
 import io.moka.lib.base.util.log.MLog
+import io.moka.lib.base.util.onClick
+import io.moka.lib.base.util.spannableText
+import io.moka.lib.base.util.visible
 import kotlinx.android.synthetic.main.layout_account_intro.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +26,15 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
     private val accountManager by lazy { AccountManager.get(this) }
     private val adapter by lazy { AccountAdapter(this) }
     private var noVisible = false
+
+    val statusBarSize: Int by lazy {
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+
+        if (resourceId > 0)
+            resources.getDimensionPixelSize(resourceId)
+        else
+            19
+    }
 
     /**
      * LifeCycle functions

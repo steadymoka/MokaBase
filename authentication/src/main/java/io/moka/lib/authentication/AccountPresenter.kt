@@ -1,14 +1,14 @@
-package io.moka.authentication
+package io.moka.lib.authentication
 
 import android.accounts.Account
 import android.accounts.AccountManager
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
-import io.moka.authentication.server.api.ApiModule
-import io.moka.authentication.server.req.SignInUpReq
-import io.moka.authentication.util.Contract
-import io.moka.authentication.util.on
+import io.moka.lib.authentication.server.api.ApiModule
+import io.moka.lib.authentication.server.req.SignInUpReq
+import io.moka.lib.authentication.util.Contract
+import io.moka.lib.authentication.util.on
 import io.moka.lib.base.util.log.MLog
 import org.jetbrains.anko.support.v4.toast
 import java.net.SocketTimeoutException

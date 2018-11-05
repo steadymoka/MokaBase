@@ -16,6 +16,10 @@
 		android:theme="@style/MokaTheme"
 		tools:ignore="GoogleAppIndexingWarning">
 
+		<meta-data
+			android:name="com.google.android.gms.ads.APPLICATION_ID"
+			android:value="ca-app-pub-7847386025632674~4395347068"/>
+
 		<activity
 			android:name=".MainActivity">
 			<intent-filter>
@@ -26,11 +30,11 @@
 		</activity>
 
 		<activity
-			android:name="io.moka.authentication.AccountIntroLayout"
+			android:name="io.moka.lib.authentication.AccountIntroLayout"
 			android:theme="@style/MokaTheme.TransStatus"/>
 
 		<service
-			android:name="io.moka.authentication.AuthenticationService">
+			android:name="io.moka.lib.authentication.AuthenticationService">
 
 			<intent-filter>
 				<action android:name="android.accounts.AccountAuthenticator"/>

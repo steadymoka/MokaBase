@@ -1,14 +1,13 @@
-package io.moka.authentication
+package io.moka.lib.authentication
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import io.moka.authentication.util.circle
+import io.moka.lib.authentication.util.circle
 import io.moka.lib.base.adapter.BaseAdapter
 import io.moka.lib.base.adapter.ItemData
 import io.moka.lib.base.adapter.RecyclerItemView
-import io.moka.lib.base.util.log.MLog
 import io.moka.lib.base.util.onClick
 import io.moka.lib.base.util.visibleOrGone
 import kotlinx.android.synthetic.main.view_account_item.view.*

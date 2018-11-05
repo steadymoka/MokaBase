@@ -1,4 +1,4 @@
-package io.moka.authentication
+package io.moka.lib.authentication
 
 import android.app.Service
 import android.content.Intent

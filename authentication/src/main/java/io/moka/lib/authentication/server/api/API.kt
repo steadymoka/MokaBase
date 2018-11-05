@@ -1,10 +1,9 @@
-package io.moka.authentication.server.api
+package io.moka.lib.authentication.server.api
 
-import io.moka.authentication.server.req.FindPasswordReq
-import io.moka.authentication.server.req.SignInReq
-import io.moka.authentication.server.req.SignInUpReq
-import io.moka.authentication.server.res.BaseRes
-import io.moka.authentication.server.res.SignInUpRes
+import io.moka.lib.authentication.server.req.FindPasswordReq
+import io.moka.lib.authentication.server.req.SignInUpReq
+import io.moka.lib.authentication.server.res.BaseRes
+import io.moka.lib.authentication.server.res.SignInUpRes
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST

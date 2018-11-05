@@ -1,4 +1,4 @@
-package io.moka.authentication
+package io.moka.lib.authentication
 
 import android.accounts.AbstractAccountAuthenticator
 import android.accounts.Account
@@ -8,8 +8,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import io.moka.authentication.server.api.ApiModule
-import io.moka.authentication.server.req.SignInUpReq
+import io.moka.lib.authentication.server.api.ApiModule
+import io.moka.lib.authentication.server.req.SignInUpReq
 
 
 class Authenticator(private var context: Context) : AbstractAccountAuthenticator(context) {
