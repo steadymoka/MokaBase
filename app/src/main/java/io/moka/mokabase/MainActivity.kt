@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         /* */
         textView_signUp.onClick {
-            accountManager.addAccount(Contract.ACCOUNT_TYPE, Contract.JOIN_DAYDAY, null, null, this, { future ->
+            accountManager.addAccount(Contract.ACCOUNT_TYPE, Contract.LABEL_ALARM, null, null, this, { future ->
                 try {
                     val bundle = future.result
                     val token = bundle.getString("token")

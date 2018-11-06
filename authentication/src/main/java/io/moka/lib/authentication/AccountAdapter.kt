@@ -35,7 +35,7 @@ class AccountAdapter constructor(private val context: Context) : BaseAdapter<Acc
         override fun refreshView(data: Data) = with(itemView) {
             imageView_check.visibleOrGone(selectedData == data)
             if (data.profileImage.isEmpty())
-                imageView_profile.circle(context, R.drawable.vc_profile)
+                imageView_profile.circle(context, R.drawable.ig_profile)
             else {
                 imageView_profile.circle(context, data.profileImage)
             }
