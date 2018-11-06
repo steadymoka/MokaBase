@@ -3,6 +3,7 @@ package io.moka.lib.authentication
 import android.accounts.Account
 import android.accounts.AccountManager
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -136,9 +137,14 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
             setResult(Activity.RESULT_OK, intent)
             finish()
         }.await()
+
+        if (!isFinishing)
+            dismissLoadingDialog()
     }
 
     private fun onClickToSignIn() {
+        showLoadingDialog()
+
         val accounts = accountManager.getAccountsByType(Contract.ACCOUNT_TYPE)
         val selectedData = adapter.selectedData
 
@@ -170,6 +176,24 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
                 .add(R.id.view_container, AccountLayout().apply { startFrom = AccountLayout.STATE_SIGN_UP }, AccountLayout::class.java.simpleName)
                 .addToBackStack(AccountLayout.toString())
                 .commitAllowingStateLoss()
+    }
+
+    private val loadingDialog by lazy {
+        AlertDialog
+                .Builder(this)
+                .setView(layoutInflater.inflate(R.layout.dialog_loading, null))
+                .setCancelable(false)
+                .create()
+    }
+
+    fun showLoadingDialog() {
+        if (!loadingDialog.isShowing)
+            loadingDialog!!.show()
+    }
+
+    fun dismissLoadingDialog() {
+        if (null != loadingDialog && loadingDialog!!.isShowing)
+            loadingDialog!!.dismiss()
     }
 
 }
