@@ -53,6 +53,9 @@ class AccountLayout : Fragment() {
     }
 
     fun onBackPressed() {
+        if (!isAdded)
+            return
+
         MLog.deb("AccountLayout onBackPressed() is called")
         editText_email.clearFocus()
         editText_name.clearFocus()
