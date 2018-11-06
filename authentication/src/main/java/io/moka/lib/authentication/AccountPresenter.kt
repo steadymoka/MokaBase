@@ -171,6 +171,7 @@ class AccountPresenter(private val view: AccountLayout) {
         /* */
         (view.activity as AccountIntroLayout).run {
             intent.putExtra("token", authToken)
+            intent.putExtra("email", email)
             setAccountAuthenticatorResult(intent.extras)
             setResult(RESULT_OK, intent)
             finish()
