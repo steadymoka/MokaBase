@@ -122,12 +122,14 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
 
             val authToken = bundle.getString(AccountManager.KEY_AUTHTOKEN)
             val email = accountManager.getUserData(account, "email")
+            val nickname = account.name
 
             /* */
             val intent = Intent()
             val data = Bundle()
             data.putString("token", authToken)
             data.putString("email", email)
+            data.putString("name", nickname)
             intent.putExtras(data)
 
             setAccountAuthenticatorResult(data)
