@@ -34,14 +34,14 @@ class AccountAdapter constructor(private val context: Context) : BaseAdapter<Acc
 
         override fun refreshView(data: Data) = with(itemView) {
             imageView_check.visibleOrGone(selectedData == data)
-            if (data.profileImage.isEmpty())
+            if (data.profileImage.isNullOrEmpty())
                 imageView_profile.circle(context, R.drawable.ig_profile)
             else {
                 imageView_profile.circle(context, data.profileImage)
             }
 
-            textView_nickname.text = data.nickname
-            textView_email.text = data.email
+            textView_nickname.text = data.nickname ?: ""
+            textView_email.text = data.email ?: ""
 
             Unit
         }
@@ -49,9 +49,9 @@ class AccountAdapter constructor(private val context: Context) : BaseAdapter<Acc
     }
 
     data class Data(
-            var profileImage: String,
-            var nickname: String,
-            var email: String
+            var profileImage: String?,
+            var nickname: String?,
+            var email: String?
 
     ) : ItemData
 
