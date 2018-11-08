@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import io.moka.lib.adhelper.MokaAdCenter
+import io.moka.lib.adhelper.MokaInterstitialAd
 import io.moka.lib.authentication.util.Contract
 import io.moka.lib.base.MokaBase
 import io.moka.lib.base.util.log.MLog
@@ -27,8 +28,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        MokaAdCenter.initialize(this, "")
 
         MokaBase.context = this
         ImageFileUtil.init(this, "dayday")
