@@ -36,7 +36,7 @@ dependencies {
     implementation rootProject.ext.constraint
 
     /* */
-    implementation "com.google.android.gms:play-services-ads:17.1.0"
+    implementation "com.google.firebase:firebase-ads:17.1.0"
     implementation('com.facebook.android:audience-network-sdk:4.99.1') {
         exclude group: "com.google.android.gms"
     }

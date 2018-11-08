@@ -1,7 +1,7 @@
 package io.moka.lib.authentication.server
 
 
-object ServerInfo {
+internal object ServerInfo {
 
     private const val END_POINT_API = "https://api.haruharu.io/"
 

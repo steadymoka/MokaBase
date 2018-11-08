@@ -1,7 +1,7 @@
 package io.moka.lib.authentication.server.req
 
 
-data class SignInUpReq(
+internal data class SignInUpReq(
 
         var email: String,
         var password: String,

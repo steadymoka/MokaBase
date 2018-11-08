@@ -5,7 +5,7 @@ import android.widget.ImageView
 import com.bumptech.glide.request.RequestOptions
 import io.moka.lib.imagepicker.util.GlideApp
 
-fun ImageView.circle(context: Context, url: String?) {
+internal fun ImageView.circle(context: Context, url: String?) {
     GlideApp.with(context)
             .load(url)
             .centerCrop()
@@ -13,7 +13,7 @@ fun ImageView.circle(context: Context, url: String?) {
             .into(this)
 }
 
-fun ImageView.circle(context: Context, resId: Int?) {
+internal fun ImageView.circle(context: Context, resId: Int?) {
     GlideApp.with(context)
             .load(resId)
             .centerCrop()

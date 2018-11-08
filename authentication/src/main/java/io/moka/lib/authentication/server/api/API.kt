@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface API {
+internal interface API {
 
     @POST("/dev/auth/sign_up")
     fun signUp(@Body signInUpReq: SignInUpReq): Call<SignInUpRes>

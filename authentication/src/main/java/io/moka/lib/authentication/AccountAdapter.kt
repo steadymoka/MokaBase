@@ -12,7 +12,7 @@ import io.moka.lib.base.util.onClick
 import io.moka.lib.base.util.visibleOrGone
 import kotlinx.android.synthetic.main.view_account_item.view.*
 
-class AccountAdapter constructor(private val context: Context) : BaseAdapter<AccountAdapter.Data, AccountAdapter.ItemView>() {
+internal class AccountAdapter constructor(private val context: Context) : BaseAdapter<AccountAdapter.Data, AccountAdapter.ItemView>() {
 
     var selectedData: Data? = null
     var onSelectedListener: ((Data) -> Unit)? = null

@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import io.moka.lib.base.MokaBase
 import io.moka.lib.base.util.*
 import io.moka.lib.base.util.log.MLog
 import io.moka.lib.base.webview.WebViewActivity
@@ -34,6 +35,8 @@ class AccountLayout : Fragment() {
     val accountManager by lazy { AccountManager.get(activity) }
 
     var startFrom: Int = STATE_SIGN_IN
+
+    val deviceHeightPixel: Int by lazy { resources.displayMetrics.heightPixels }
 
     /**
      * LifeCycle functions

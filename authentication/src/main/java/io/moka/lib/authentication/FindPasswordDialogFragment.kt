@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.dialog_find_password.*
 import org.jetbrains.anko.support.v4.toast
 
 
-class FindPasswordDialogFragment : BaseWideDialogFragment() {
+internal class FindPasswordDialogFragment : BaseWideDialogFragment() {
 
     private var callback: (() -> Unit)? = null
 

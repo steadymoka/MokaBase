@@ -7,7 +7,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-fun <T : BaseRes> Call<T>.on(
+internal fun <T : BaseRes> Call<T>.on(
         success: ((response: T) -> Unit)? = null,
         fail: ((error: ErrorRes?, Throwable?) -> Unit)? = null,
         filter: (() -> Boolean)? = null) {
@@ -47,7 +47,7 @@ fun <T : BaseRes> Call<T>.on(
     })
 }
 
-fun String.parseError(): ErrorRes {
+internal fun String.parseError(): ErrorRes {
     return try {
         Gson().fromJson(this, ErrorRes::class.java)
     } catch (err: Exception) {

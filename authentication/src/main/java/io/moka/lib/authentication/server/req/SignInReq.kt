@@ -1,7 +1,7 @@
 package io.moka.lib.authentication.server.req
 
 
-class SignInReq {
+internal class SignInReq {
 
     var email: String? = null
     var password: String? = null

@@ -1,6 +1,6 @@
 package io.moka.lib.authentication.server.res
 
-open class BaseRes {
+internal open class BaseRes {
 
 
 }

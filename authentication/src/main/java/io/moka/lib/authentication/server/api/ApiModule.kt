@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 
-object ApiModule {
+internal object ApiModule {
 
     val api: API by lazy { retrofit.create(API::class.java) }
 
