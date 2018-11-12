@@ -35,17 +35,17 @@ class SpreadTextView @JvmOverloads constructor(context: Context, attrs: Attribut
         textPaint!!.textAlign = Paint.Align.CENTER
         textPaint!!.isAntiAlias = true
 
-        xDatas.add(SpreadData("월"))
-        xDatas.add(SpreadData("화"))
-        xDatas.add(SpreadData("수"))
-        xDatas.add(SpreadData("목"))
-        xDatas.add(SpreadData("금"))
-        xDatas.add(SpreadData("토"))
-        xDatas.add(SpreadData("일"))
+        xDatas.add(SpreadData("-"))
+        xDatas.add(SpreadData("-"))
+        xDatas.add(SpreadData("-"))
+        xDatas.add(SpreadData("-"))
+        xDatas.add(SpreadData("-"))
+        xDatas.add(SpreadData("-"))
+        xDatas.add(SpreadData("-"))
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        val dayWidth = w / 7.0f
+        val dayWidth = w / xDatas.size.toFloat()
         dayY = h / 2.0f
 
         firstX = dayWidth / 2

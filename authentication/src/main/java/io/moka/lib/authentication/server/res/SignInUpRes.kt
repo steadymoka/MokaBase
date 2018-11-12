@@ -2,6 +2,7 @@ package io.moka.lib.authentication.server.res
 
 
 internal class SignInUpRes : BaseRes() {
+
     var token: String? = null
     var user: User? = null
 

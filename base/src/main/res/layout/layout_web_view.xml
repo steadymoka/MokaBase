@@ -15,7 +15,7 @@
 		android:id="@+id/linearLayout_toolbar"
 		android:layout_width="match_parent"
 		android:layout_height="48dp"
-		android:background="@color/white"
+		android:background="#FFFFFFFF"
 		android:orientation="horizontal">
 
 		<ImageView
@@ -31,7 +31,7 @@
 			android:id="@+id/textView_webviewTitle"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:background="@color/transparency"
+			android:background="#00000000"
 			android:gravity="center"
 			android:paddingLeft="48dp"
 			android:paddingRight="48dp"/>
@@ -48,7 +48,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_gravity="center"
-				android:background="@color/transparency"
+				android:background="#00000000"
 				android:padding="14dp"
 				android:visibility="invisible"/>
 
