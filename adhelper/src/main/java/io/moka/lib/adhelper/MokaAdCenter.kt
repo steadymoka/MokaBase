@@ -20,6 +20,9 @@ object MokaAdCenter {
 
     fun initialize(context: Context, admobAppKey: String) {
         MobileAds.initialize(context, admobAppKey)
+    }
+
+    fun initializeTNK(context: Context) {
         TnkSession.initInstance(context)
     }
 

@@ -29,9 +29,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /* */
         MokaBase.context = this
         ImageFileUtil.init(this, "dayday")
 
+        /* */
+        MokaAdCenter.debuggable = MokaBase.debuggable
+        MokaAdCenter.initialize(this, "ca-app-pub-7847386025632674~4395347068")
+
+        MokaAdCenter.AUDIENCE_TEST_CODE = "e0d43ce760c1b27fdddc26600a0c9649"
+        MokaAdCenter.ADMOB_TEST_CODE = "B2E4DBF0638C3608DBC09D5FAE06DE10"
+
+        /* */
         showPicker.setOnClickListener {
             MokaPermission
                     .with(this@MainActivity)
