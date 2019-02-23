@@ -1,4 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<color name="divider">#FFCFCFCF</color>
+	<color name="divider_darkTheme">#FF7E7E7E</color>
+
+	<color name="transparency">#00000000</color>
+	<color name="transparent">#40000000</color>
+
+	<color name="white_01">#FFFFFFFF</color>
+	<color name="white_02">#FFF6F6F6</color>
+	<color name="white_03">#FFEFEFEF</color>
+
+	<color name="black_01">#FF000000</color>
+	<color name="black_02">#FF202020</color>
+	<color name="black_03_text">#FF444444</color>
+	<color name="black_04">#FF515151</color>
+	<color name="black_05">#FF666666</color>
+	<color name="black_06_sub_text">#FF888888</color>
+	<color name="black_07">#FF999999</color>
+	<color name="black_08">#FFAAAAAA</color>
+	<color name="black_09_hint">#FFC1C1C1</color>
+	<color name="black_10_hint">#FFCCCCCC</color>
+	<color name="black_11_shadow">#FFE9E9E9</color>
+	<color name="black_12_edit_hint">#FFEEEEEE</color>
+	<color name="black_13">#FFF1F1F1</color>
+	<color name="black_14">#FFFAFAFA</color>
+
+	<color name="red_01">#FFFF0000</color>
+	<color name="red_02">#FFff1919</color>
+	<color name="red_03">#FFff3232</color>
+	<color name="red_04">#FFff4c4c</color>
+	<color name="red_05">#FFff6666</color>
+	<color name="red_06">#FFff7f7f</color>
+	<color name="red_07">#FFff9999</color>
+	<color name="red_08">#FFffb2b2</color>
+	<color name="red_09">#FFffcccc</color>
+
+	<color name="blue_01">#0000ff</color>
+	<color name="blue_02">#1919ff</color>
+	<color name="blue_03">#3232ff</color>
+	<color name="blue_04">#3232ff</color>
+	<color name="blue_05">#4c4cff</color>
+	<color name="blue_06">#6666ff</color>
+	<color name="blue_07">#7f7fff</color>
+	<color name="blue_08">#9999ff</color>
+	<color name="blue_09">#b2b2ff</color>
+
+	<color name="green_01">#008000</color>
+	<color name="green_02">#198c19</color>
+	<color name="green_03">#329932</color>
+	<color name="green_04">#4ca64c</color>
+	<color name="green_05">#66b266</color>
+	<color name="green_06">#7fbf7f</color>
+	<color name="green_07">#99cc99</color>
+	<color name="green_08">#b2d8b2</color>
+
 </resources>

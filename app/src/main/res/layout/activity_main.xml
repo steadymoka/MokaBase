@@ -29,6 +29,6 @@
 		android:background="@color/black_03_text"
 		android:gravity="center"
 		android:text="계정 등록"
-		android:textColor="@color/white"/>
+		android:textColor="@color/white_01"/>
 
 </LinearLayout>

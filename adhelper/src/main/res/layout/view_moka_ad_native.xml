@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
@@ -10,13 +10,14 @@
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent">
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
 
 		<View
 			android:layout_width="match_parent"
 			android:layout_height="0.87dp"
 			android:layout_below="@+id/ad_native_inner_container"
-			android:background="@color/baseBackground"/>
+			android:background="#FFF8F8F8"/>
 
 		<RelativeLayout
 			android:id="@+id/ad_native_inner_container"
@@ -33,7 +34,7 @@
 				android:layout_marginLeft="22dp"
 				android:layout_marginBottom="4dp"
 				android:text="sponsored by"
-				android:textColor="@color/textGray"
+				android:textColor="@color/black_06_sub_text"
 				android:textSize="10dp"/>
 
 			<FrameLayout
@@ -81,7 +82,7 @@
 					android:layout_height="wrap_content"
 					android:ellipsize="end"
 					android:lines="1"
-					android:textColor="@color/textBlack"
+					android:textColor="@color/black_03_text"
 					android:textSize="13dp"/>
 
 				<TextView
@@ -89,7 +90,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:ellipsize="end"
-					android:textColor="@color/textBlack"
+					android:textColor="@color/black_03_text"
 					android:textSize="10dp"/>
 
 				<TextView
@@ -101,7 +102,7 @@
 					android:layout_marginRight="6dp"
 					android:ellipsize="end"
 					android:lines="1"
-					android:textColor="@color/textBlack"
+					android:textColor="@color/black_03_text"
 					android:textSize="8dp"
 					android:visibility="gone"/>
 
@@ -128,7 +129,7 @@
 				android:paddingLeft="6dp"
 				android:paddingRight="6dp"
 				android:text="설치"
-				android:textColor="@color/textBlack"
+				android:textColor="@color/black_03_text"
 				android:textSize="10dp"/>
 
 		</RelativeLayout>
@@ -161,14 +162,15 @@
 		android:layout_width="0dp"
 		android:layout_height="80dp"
 		android:alpha="0.83"
-		android:background="@color/white"
+		android:background="@color/white_01"
 		android:gravity="center"
 		android:text="광고 로드를 실패 하였습니다"
-		android:textColor="@color/textGray"
+		android:textColor="@color/black_06_sub_text"
 		android:textSize="12dp"
 		android:translationZ="1dp"
 		android:visibility="gone"
 		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"/>
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toTopOf="parent"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

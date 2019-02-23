@@ -255,12 +255,12 @@ class AccountLayout : Fragment() {
 
     fun errorToEmail(errorMessage: String) {
         editText_email.requestFocus()
-        editText_email.error = spannableText(attr(errorMessage, 0.8f, R.color.white))
+        editText_email.error = spannableText(attr(errorMessage, 0.8f, R.color.white_01))
     }
 
     fun errorToPassword(errorMessage: String) {
         editText_password.requestFocus()
-        editText_password.error = spannableText(attr(errorMessage, 0.8f, R.color.white))
+        editText_password.error = spannableText(attr(errorMessage, 0.8f, R.color.white_01))
     }
 
 }

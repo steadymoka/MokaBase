@@ -6,7 +6,7 @@
 	android:id="@+id/constraintLayout_container"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@color/bg_gray_02"
+	android:background="@color/white_02"
 	android:fitsSystemWindows="true">
 
 	<!--
@@ -70,7 +70,7 @@
 		android:foreground="?attr/selectableItemBackground"
 		android:gravity="center"
 		android:text="로그인"
-		android:textColor="@color/white"
+		android:textColor="@color/white_01"
 		android:textSize="12dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
@@ -121,7 +121,7 @@
 		android:layout_marginBottom="12dp"
 		android:alpha="0.6"
 		android:text="Developed by "
-		android:textColor="@color/gray_01"
+		android:textColor="@color/black_08"
 		android:textSize="11dp"
 		android:visibility="gone"
 		app:layout_constraintBottom_toBottomOf="parent"
@@ -136,7 +136,7 @@
 		android:layout_toRightOf="@+id/textView_thanksTo"
 		android:alpha="0.6"
 		android:text="Moka"
-		android:textColor="@color/gray_01"
+		android:textColor="@color/black_08"
 		android:textSize="11dp"
 		android:textStyle="bold"
 		android:visibility="gone"
@@ -154,7 +154,7 @@
 		android:id="@+id/view_container_wall"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="@color/white"
+		android:background="@color/white_01"
 		android:elevation="3dp"
 		android:visibility="gone"/>
 

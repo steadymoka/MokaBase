@@ -3,59 +3,6 @@
 
 	<color name="colorPrimary">#ff9e9da8</color>
 	<color name="colorPrimaryDark">#FFD8D8D8</color>
-	<color name="colorAccent">#66E64B4B</color>
-
-	<!-- Background -->
-
-	<color name="bg_gray_01">#FFF8F8F8</color>
-	<color name="bg_gray_02">#FFF6F6F6</color>
-	<color name="bg_darku_color">#FF424242</color>
-
-	<!-- Colors -->
-
-	<color name="transparency">#00000000</color>
-	<color name="transparent">#40000000</color>
-
-	<color name="white">#FFFFFFFF</color>
-
-	<color name="black_01">#FF000000</color>
-	<color name="black_02">#FF202020</color>
-	<color name="black_03_text">#FF404040</color>
-	<color name="black_04">#FF515151</color>
-	<color name="black_05">#FF666666</color>
-	<color name="black_06_sub_text">#FF888888</color>
-	<color name="black_07">#FF999999</color>
-	<color name="black_08">#FFAAAAAA</color>
-	<color name="black_09_hint">#FFCCCCCC</color>
-	<color name="black_10">#FFF1F1F1</color>
-	<color name="black_11_background">#FFFAFAFA</color>
-
-	<!-- Shadow color __black__ -->
-	<color name="black_09_shadow">#FFE9E9E9</color>
-
-	<color name="gray_01">#FF888888</color>
-	<color name="gray_02">#FFCCCCCC</color>
-	<color name="gray_03">#FFEEEEEE</color>  <!-- edit hint -->
-	<color name="gray_04">#FFC1C1C1</color>  <!-- hint -->
-	<color name="gray_05">#AABBBBBB</color>
-	<color name="gray_06">#FFDDDDDD</color>
-
-	<color name="red_01">#FF9b3131</color>
-	<color name="red_02">#FFE64B4B</color>
-	<color name="red_03">#66E64B4B</color>
-	<color name="red_04">#FF473026</color>
-	<color name="red_05">#E6FF5069</color>
-	<color name="red_06">#FFF95858</color>
-	<color name="red_07">#2FFF5069</color>
-
-	<color name="blue_01">#FF2e3842</color>
-	<color name="blue_02">#FF3e4852</color>
-	<color name="blue_04">#C6CBF1</color>
-
-	<color name="purple_01">#B39DDB</color>
-	<color name="purple_02">#917BB9</color>
-
-	<color name="lime_01">#4db6ac</color>
-	<color name="lime_02">#009688</color>
+	<color name="colorAccent">#ff9e9da8</color>
 
 </resources>

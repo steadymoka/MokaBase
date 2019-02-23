@@ -1,26 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<color name="white">#FFFFFFFF</color>
-	<color name="red">#FF9b3131</color>
-	<color name="transparency">#00000000</color>
-	<!---->
-
-	<color name="baseBackground">#FFF8F8F8</color>
-	<color name="baseLightBlackBack">#FF4B4B4B</color>
-
-	<color name="textBlack">#FF616161</color>
-	<color name="textGray">#FF888888</color>
-	<color name="textLight">#FFCCCCCC</color>
-	<color name="textLight_77616161">#77616161</color>
-	<color name="textSmall">#FFA7AEB5</color>
-	<color name="textWhiteGray">#FFDDDDDD</color>
-
-	<color name="baseToolbarGray">#5E5E5E</color>
-	<color name="baseToolbarWhite">#FFF8F8F8</color>
-
-	<!-- Main Color -->
-	<color name="blackRedColor">#FF9b3131</color>
-	<color name="whiteRedColor">#FFF95858</color>
-
 </resources>

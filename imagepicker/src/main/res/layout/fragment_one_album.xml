@@ -4,4 +4,4 @@
 	android:id="@+id/recyclerView"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:background="@color/base_color_background_gray"/>
+	android:background="#FFF2F2F2"/>
