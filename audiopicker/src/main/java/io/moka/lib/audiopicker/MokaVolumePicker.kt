@@ -6,6 +6,7 @@ import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.media.AudioManager
 import android.media.RingtoneManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,8 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
     private var listener: ((Float) -> Unit)? = null
     private var volume: Float = 0f
     private var title = ""
+    private var steamType: Int = AudioManager.STREAM_MUSIC
+    private var uri: Uri? = null
 
     private val blink by lazy { AnimationUtils.loadAnimation(activity!!, R.anim.blink) }
 
@@ -72,12 +75,12 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
          */
         seekBar_alarm_vol.progressDrawable.colorFilter = PorterDuffColorFilter(color(R.color.black_03_text), PorterDuff.Mode.SRC_IN)
         seekBar_alarm_vol.thumb.setColorFilter(color(R.color.black_03_text), PorterDuff.Mode.SRC_IN)
-        seekBar_alarm_vol.max = AudioUtil.getMaxVol(AudioManager.STREAM_ALARM)
+        seekBar_alarm_vol.max = AudioUtil.getMaxVol(steamType)
         seekBar_alarm_vol.progress = volume.toInt()
         seekBar_alarm_vol.setOnSeekBarChangeListener(this)
 
         /* 현재 볼륨 설정 */
-        AudioUtil.setCurrentVol(volume.toInt(), AudioManager.STREAM_ALARM)
+        AudioUtil.setCurrentVol(volume.toInt(), steamType)
 
         /*
         set Event
@@ -107,8 +110,13 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
             AudioUtil.stopPlayer()
         }
         else {
-            val audioUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-            AudioUtil.playPlayer(audioUri, AudioManager.STREAM_ALARM)
+            if (null == uri) {
+                val audioUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+                AudioUtil.playPlayer(audioUri, steamType)
+            }
+            else {
+                AudioUtil.playPlayer(uri!!, steamType)
+            }
         }
         isPlaying = !isPlaying
     }
@@ -127,7 +135,7 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
 
     override fun onProgressChanged(seekBar: SeekBar?, value: Int, fromUser: Boolean) {
         when (seekBar?.id) {
-            R.id.seekBar_alarm_vol -> AudioUtil.setCurrentVol(value, AudioManager.STREAM_ALARM)
+            R.id.seekBar_alarm_vol -> AudioUtil.setCurrentVol(value, steamType)
         }
     }
 
@@ -147,6 +155,16 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
 
     fun setTitle(title: String): MokaVolumePicker {
         this.title = title
+        return this
+    }
+
+    fun setStreamType(steamType: Int): MokaVolumePicker {
+        this.steamType = steamType
+        return this
+    }
+
+    fun setAudioUri(uri: Uri): MokaVolumePicker {
+        this.uri = uri
         return this
     }
 
