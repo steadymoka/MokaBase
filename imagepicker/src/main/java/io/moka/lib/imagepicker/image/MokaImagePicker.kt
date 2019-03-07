@@ -28,7 +28,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
-class ImagePickerDialogFragment : AppCompatDialogFragment() {
+class MokaImagePicker : AppCompatDialogFragment() {
 
     companion object {
 
@@ -84,8 +84,7 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
         dialog.window!!.setLayout((280 * context!!.resources.displayMetrics.densityDpi / 160.0).toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
-    /**
-     */
+    /**/
 
     private fun initViews() {
         viewModel.existImage = viewModel.existImage
@@ -117,8 +116,7 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
         }
     }
 
-    /**
-     */
+    /**/
 
     private fun pickImageFromAlbum() {
         if (1 == viewModel.maxImageCount && viewModel.otherAppToPickOne)
@@ -279,34 +277,34 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
      * setter method
      */
 
-    fun setAppName(appName: String): ImagePickerDialogFragment {
+    fun setAppName(appName: String): MokaImagePicker {
         APP_NAME = appName
         return this
     }
 
-    fun setTitle(title: String): ImagePickerDialogFragment {
+    fun setTitle(title: String): MokaImagePicker {
         viewModel.title = title
         return this
     }
 
-    fun setExistImage(existImage: Boolean): ImagePickerDialogFragment {
+    fun setExistImage(existImage: Boolean): MokaImagePicker {
         viewModel.existImage = existImage
         return this
     }
 
-    fun setDirectAlbum(flagOfDirectAlbum: Boolean): ImagePickerDialogFragment {
+    fun setDirectAlbum(flagOfDirectAlbum: Boolean): MokaImagePicker {
         viewModel.flagOfDirectAlbum = flagOfDirectAlbum
         return this
     }
 
-    fun setMaxImageCount(maxImageCount: Int): ImagePickerDialogFragment {
+    fun setMaxImageCount(maxImageCount: Int): MokaImagePicker {
         if (0 < maxImageCount)
             viewModel.maxImageCount = maxImageCount
 
         return this
     }
 
-    fun setAspect(aspectX: Float, aspectY: Float): ImagePickerDialogFragment {
+    fun setAspect(aspectX: Float, aspectY: Float): MokaImagePicker {
         if (0f < aspectX && 0f < aspectY) {
             viewModel.aspectX = aspectX
             viewModel.aspectY = aspectY
@@ -314,46 +312,44 @@ class ImagePickerDialogFragment : AppCompatDialogFragment() {
         return this
     }
 
-    fun setOtherAppToPickOne(otherAppToPickOne: Boolean): ImagePickerDialogFragment {
+    fun setOtherAppToPickOne(otherAppToPickOne: Boolean): MokaImagePicker {
         viewModel.otherAppToPickOne = otherAppToPickOne
         return this
     }
 
-    fun setImageLocation(locationType: LocationType): ImagePickerDialogFragment {
+    fun setImageLocation(locationType: LocationType): MokaImagePicker {
         viewModel.saveLocationType = locationType
         return this
     }
 
-    fun setCropable(cropEnable: Boolean): ImagePickerDialogFragment {
+    fun setCropable(cropEnable: Boolean): MokaImagePicker {
         viewModel.cropEnable = cropEnable
         return this
     }
 
-    fun setUseCamera(useCamera: Boolean): ImagePickerDialogFragment {
+    fun setUseCamera(useCamera: Boolean): MokaImagePicker {
         viewModel.useCamera = useCamera
         return this
     }
 
-    /**
-     */
+    /**/
 
-    fun setOnNeedCameraPermission(needPermission: ((callback: () -> Unit) -> Unit)): ImagePickerDialogFragment {
+    fun setOnNeedCameraPermission(needPermission: ((callback: () -> Unit) -> Unit)): MokaImagePicker {
         this.needPermission = needPermission
         return this
     }
 
-    fun setOnDeleted(onDeleted: () -> Unit): ImagePickerDialogFragment {
+    fun setOnDeleted(onDeleted: () -> Unit): MokaImagePicker {
         this.onImageDeleted = onDeleted
         return this
     }
 
     fun showDialog(fragmentManager: FragmentManager, onImageSelected: ((imagePathList: ArrayList<String>) -> Unit)?) {
         this.onImageSelected = onImageSelected
-        show(fragmentManager, "ImagePickerDialogFragment")
+        show(fragmentManager, "MokaImagePicker")
     }
 
-    /**
-     */
+    /**/
 
     inner class ViewModel {
 

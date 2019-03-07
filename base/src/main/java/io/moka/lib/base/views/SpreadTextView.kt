@@ -9,8 +9,7 @@ import android.graphics.Typeface
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-
-import java.util.ArrayList
+import java.util.*
 
 
 class SpreadTextView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {

@@ -7,10 +7,12 @@
 	<color name="transparency">#00000000</color>
 	<color name="transparent">#40000000</color>
 
+	<color name="white">#FFFFFFFF</color>
 	<color name="white_01">#FFFFFFFF</color>
 	<color name="white_02">#FFF6F6F6</color>
 	<color name="white_03">#FFEFEFEF</color>
 
+	<color name="black">#FF000000</color>
 	<color name="black_01">#FF000000</color>
 	<color name="black_02">#FF202020</color>
 	<color name="black_03_text">#FF444444</color>

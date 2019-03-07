@@ -12,13 +12,13 @@
 		<!-- Activity-->
 
 		<activity
-			android:name="io.moka.lib.authentication.AccountIntroLayout"
+			android:name=".AccountIntroLayout"
 			android:exported="true"/>
 
 		<!-- Service -->
 
 		<service
-			android:name="io.moka.lib.authentication.AuthenticationService"
+			android:name=".AuthenticationService"
 			android:exported="true">
 
 			<intent-filter>

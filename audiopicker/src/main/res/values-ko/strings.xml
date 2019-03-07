@@ -1,0 +1,12 @@
+<resources>
+
+	<string name="alarm_basic_built_in">기본내장</string>
+	<string name="dialog_my_music">나의음악</string>
+	<string name="hint_search_alarm">검색..</string>
+	<string name="alarm_pre_listen_volume">미리듣기 음량</string>
+	<string name="alarm_real_volume">실제 알람 음량</string>
+	<string name="alarm_ear_phone_mode_on">이어폰 모드 켜짐</string>
+	<string name="toast_select_alarm_song">알람음을 선택해주세요</string>
+	<string name="basic_audio">기상나팔</string>
+
+</resources>

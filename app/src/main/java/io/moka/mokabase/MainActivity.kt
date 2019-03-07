@@ -4,16 +4,20 @@ import android.accounts.AccountManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import io.moka.lib.adhelper.MokaAdCenter
-import io.moka.lib.adhelper.MokaInterstitialAd
+import io.moka.lib.audiopicker.MokaAudioPicker
+import io.moka.lib.audiopicker.MokaVolumePicker
 import io.moka.lib.authentication.util.Contract
+import io.moka.lib.base.ColorDI
 import io.moka.lib.base.MokaBase
+import io.moka.lib.base.util.color
 import io.moka.lib.base.util.log.MLog
 import io.moka.lib.base.util.onClick
-import io.moka.lib.imagepicker.image.ImagePickerDialogFragment
+import io.moka.lib.imagepicker.image.MokaImagePicker
 import io.moka.lib.imagepicker.image.viewer.ImageViewerActivity
-import io.moka.lib.imagepicker.util.GlideApp
 import io.moka.lib.imagepicker.util.ImageFileUtil
 import io.moka.lib.imagepicker.util.LocationType
 import io.moka.lib.imagepicker.util.SaveImageUtil
@@ -25,12 +29,16 @@ class MainActivity : AppCompatActivity() {
 
     private val accountManager by lazy { AccountManager.get(this) }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         /* */
         MokaBase.context = this
+
+        ColorDI.primaryDarkColor = color(R.color.red_01)
+        ColorDI.primaryColor = color(R.color.red_01)
         ImageFileUtil.init(this, "dayday")
 
         /* */
@@ -47,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                     .check(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) { isGranted ->
                         MLog.deb("READ_EXTERNAL_STORAGE isGranted : ${isGranted}")
 
-                        ImagePickerDialogFragment()
+                        MokaImagePicker()
                                 .setMaxImageCount(10)
                                 .setDirectAlbum(true)
                                 .setExistImage(false)
@@ -55,7 +63,8 @@ class MainActivity : AppCompatActivity() {
                                 .showDialog(supportFragmentManager) {
 
                                     MLog.deb("oh pathaa aa : ${it[0]}")
-                                    GlideApp.with(this)
+
+                                    Glide.with(this)
                                             .load(it[0])
                                             .into(imageView)
 
@@ -72,7 +81,7 @@ class MainActivity : AppCompatActivity() {
                     }
         }
 
-        GlideApp.with(this)
+        Glide.with(this)
                 .load("/storage/emulated/0/dayday/temps/1534411404-bb8636b6-6f8b-474f-9fb4-7f4f64e8656d.jpg")
                 .into(imageView)
 
@@ -107,6 +116,27 @@ class MainActivity : AppCompatActivity() {
                 }
             }, null)
         }
+
+        /* */
+        textView_audioPicker.onClick {
+            MokaAudioPicker()
+                    .setAudioTitle(soundTitle)
+                    .showDialog(supportFragmentManager) { _, soundTitle, soundUri ->
+
+                        this@MainActivity.soundTitle = soundTitle
+                        Toast.makeText(this@MainActivity, "${soundTitle} \n ${soundUri}", Toast.LENGTH_LONG).show()
+                    }
+
+            MokaVolumePicker()
+                    .setVolume(volume)
+                    .setTitle("testetst")
+                    .showDialog(supportFragmentManager) { volume ->
+                        this@MainActivity.volume = volume
+                    }
+        }
     }
+
+    var soundTitle = ""
+    var volume = 0f
 
 }

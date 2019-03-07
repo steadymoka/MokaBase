@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:scrollbars="none">
+
+	<RelativeLayout
+		android:id="@+id/relativeLayout_container"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/white_01">
+
+		<!--
+		 -->
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recyclerView_default"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:layout_below="@+id/textView_default"
+			android:background="@color/white_01"
+			android:clipToPadding="false"
+			android:paddingBottom="56dp"/>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/recyclerView_mine"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:layout_below="@+id/textView_default"
+			android:background="@color/white_01"
+			android:clipToPadding="false"
+			android:paddingTop="42dp"
+			android:paddingBottom="56dp"/>
+
+		<RelativeLayout
+			android:id="@+id/relativeLayout_search"
+			android:layout_width="match_parent"
+			android:layout_height="42dp"
+			android:layout_alignTop="@+id/recyclerView_mine"
+			android:background="@color/white_01"
+			android:visibility="visible">
+
+			<EditText
+				android:id="@+id/editText_search"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_toRightOf="@+id/imageView_search"
+				android:background="@color/transparency"
+				android:hint="@string/hint_search_alarm"
+				android:inputType="textShortMessage"
+				android:maxLines="1"
+				android:paddingLeft="6dp"
+				android:paddingRight="12dp"
+				android:textSize="12dp"/>
+
+			<ImageView
+				android:id="@+id/imageView_search"
+				android:layout_width="32dp"
+				android:layout_height="32dp"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="6dp"
+				android:padding="4dp"
+				app:srcCompat="@drawable/vc_search_black"/>
+
+			<View
+				style="@style/HorizontalDivider"
+				android:layout_alignParentBottom="true"/>
+
+		</RelativeLayout>
+
+		<!--
+		-->
+
+		<!--
+		-->
+
+		<androidx.cardview.widget.CardView
+			android:id="@+id/cardView_preSound"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@id/recyclerView_default"
+			android:layout_marginLeft="16dp"
+			android:layout_marginRight="16dp"
+			android:layout_marginBottom="16dp"
+			android:alpha="0.91"
+			android:clickable="true"
+			app:cardBackgroundColor="#FF555555"
+			app:cardCornerRadius="2dp"
+			app:cardElevation="3dp">
+
+			<LinearLayout
+				android:id="@+id/linearLayout_sound_vibrate"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+
+				<TextView
+					android:id="@+id/label_preListen"
+					android:layout_width="wrap_content"
+					android:layout_height="40dp"
+					android:layout_marginLeft="14dp"
+					android:gravity="center"
+					android:text="@string/alarm_pre_listen_volume"
+					android:textColor="@color/white_01"
+					android:textSize="10dp"/>
+
+				<ImageView
+					android:id="@+id/imageView_sound"
+					android:layout_width="30dp"
+					android:layout_height="40dp"
+					android:layout_gravity="center"
+					android:layout_marginLeft="4dp"
+					android:background="?selectableItemBackgroundBorderless"
+					android:padding="6dp"
+					app:srcCompat="@drawable/vc_sound_white"/>
+
+				<androidx.appcompat.widget.AppCompatSeekBar
+					android:id="@+id/seekBar_preListen_vol"
+					android:layout_width="0dp"
+					android:layout_height="40dp"
+					android:layout_gravity="center_vertical"
+					android:layout_marginLeft="-7dp"
+					android:layout_marginRight="4dp"
+					android:layout_weight="1"
+					android:progress="20"
+					android:progressTint="@color/white_01"
+					android:thumbTint="@color/white_01"/>
+
+			</LinearLayout>
+
+		</androidx.cardview.widget.CardView>
+
+		<LinearLayout
+			android:id="@+id/linearLayout_real_volume"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/recyclerView_default"
+			android:orientation="horizontal"
+			android:visibility="gone">
+
+			<TextView
+				android:id="@+id/label_alarm_volume"
+				android:layout_width="wrap_content"
+				android:layout_height="40dp"
+				android:layout_marginLeft="16dp"
+				android:gravity="center"
+				android:text="@string/alarm_real_volume"
+				android:textSize="10dp"/>
+
+			<androidx.appcompat.widget.AppCompatSeekBar
+				android:id="@+id/seekBar_alarm_vol"
+				android:layout_width="0dp"
+				android:layout_height="40dp"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="25dp"
+				android:layout_marginRight="4dp"
+				android:layout_weight="1"/>
+
+		</LinearLayout>
+
+		<!--
+		-->
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignBottom="@+id/textView_default"
+			android:layout_alignParentTop="true"
+			android:background="@color/white_02"/>
+
+		<TextView
+			android:id="@+id/textView_default"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="42dp"
+			android:layout_marginTop="24dp"
+			android:layout_marginRight="9dp"
+			android:foreground="?attr/selectableItemBackgroundBorderless"
+			android:paddingLeft="9dp"
+			android:paddingTop="18dp"
+			android:paddingRight="9dp"
+			android:paddingBottom="16dp"
+			android:text="@string/alarm_basic_built_in"
+			android:textColor="@color/black_03_text"
+			android:textSize="11dp"/>
+
+		<View
+			android:id="@+id/view_default_line"
+			style="@style/HorizontalDivider"
+			android:layout_height="0.9dp"
+			android:layout_alignLeft="@+id/textView_default"
+			android:layout_alignRight="@+id/textView_default"
+			android:layout_alignBottom="@+id/textView_default"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginBottom="8dp"
+			android:background="@color/black_06_sub_text"/>
+
+		<TextView
+			android:id="@+id/textView_mine"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="9dp"
+			android:layout_marginTop="24dp"
+			android:layout_toRightOf="@+id/textView_default"
+			android:foreground="?attr/selectableItemBackgroundBorderless"
+			android:paddingLeft="9dp"
+			android:paddingTop="18dp"
+			android:paddingRight="9dp"
+			android:paddingBottom="16dp"
+			android:text="@string/dialog_my_music"
+			android:textColor="@color/black_03_text"
+			android:textSize="11dp"/>
+
+		<View
+			android:id="@+id/view_mine_line"
+			style="@style/HorizontalDivider"
+			android:layout_height="0.9dp"
+			android:layout_alignLeft="@+id/textView_mine"
+			android:layout_alignRight="@+id/textView_mine"
+			android:layout_alignBottom="@+id/textView_mine"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginBottom="8dp"
+			android:background="@color/black_06_sub_text"/>
+
+		<!--
+		-->
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/linearLayout_real_volume"
+			android:background="@color/white_01"
+			android:orientation="horizontal">
+
+			<View
+				android:layout_width="0dp"
+				android:layout_height="20dp"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:id="@+id/textView_cancel"
+				style="@style/dialogButtonTextStyle"
+				android:text="@string/general_cancel"/>
+
+			<TextView
+				android:id="@+id/textView_ok"
+				style="@style/dialogButtonTextStyle"
+				android:text="@string/general_ok"/>
+
+		</LinearLayout>
+
+	</RelativeLayout>
+
+</ScrollView>

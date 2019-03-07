@@ -136,13 +136,4 @@ class AlbumsFragment : Fragment(), View.OnTouchListener, AlbumAdapter.OnItemClic
         return false
     }
 
-    /**
-     */
-
-    companion object {
-
-        fun newInstance() = AlbumsFragment()
-
-    }
-
 }

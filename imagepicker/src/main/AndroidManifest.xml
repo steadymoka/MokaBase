@@ -6,13 +6,15 @@
 
 		<activity
 			android:name=".image.gallery.AlbumActivity"
-			android:theme="@style/PickerTheme"/>
+			android:theme="@style/Theme.NoActionBar"/>
+
 		<activity
 			android:name=".image.editor.ImageEditorActivity"
-			android:theme="@style/PickerTheme.TransStatus"/>
+			android:theme="@style/Theme.TransStatus"/>
+
 		<activity
 			android:name=".image.viewer.ImageViewerActivity"
-			android:theme="@style/PickerTheme"/>
+			android:theme="@style/Theme.NoActionBar"/>
 
 	</application>
 

@@ -1,0 +1,12 @@
+<resources>
+
+	<string name="alarm_basic_built_in">内蔵</string>
+	<string name="dialog_my_music">私の音楽</string>
+	<string name="hint_search_alarm">検索..</string>
+	<string name="alarm_pre_listen_volume">プレビュー音量</string>
+	<string name="alarm_real_volume">実際のアラーム音量</string>
+	<string name="alarm_ear_phone_mode_on">イヤホンモードオン</string>
+	<string name="toast_select_alarm_song">アラーム音を選択してください</string>
+	<string name="basic_audio">気象ラッパ</string>
+
+</resources>

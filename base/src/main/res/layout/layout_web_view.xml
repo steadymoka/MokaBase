@@ -25,7 +25,7 @@
 			android:layout_alignParentLeft="true"
 			android:background="?attr/selectableItemBackgroundBorderless"
 			android:padding="16dp"
-			app:srcCompat="@drawable/vc_left_arrow_bl"/>
+			app:srcCompat="@drawable/vc_left_arrow_black"/>
 
 		<TextView
 			android:id="@+id/textView_webviewTitle"

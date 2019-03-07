@@ -1,0 +1,11 @@
+<manifest
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	package="io.moka.lib.audiopicker">
+
+	<uses-permission android:name="android.permission.VIBRATE"/>
+
+	<application>
+
+	</application>
+
+</manifest>

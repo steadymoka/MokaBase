@@ -50,6 +50,6 @@ dependencies {
         exclude group: "com.android.support"
         transitive = true
     }
-    kapt 'androidx.annotation:annotation:1.0.0'
+    kapt 'androidx.annotation:annotation:1.0.2'
     kapt rootProject.ext.glide_kapt
 }

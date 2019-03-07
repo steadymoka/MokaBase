@@ -1,0 +1,12 @@
+<resources>
+
+	<string name="alarm_basic_built_in">built-in</string>
+	<string name="dialog_my_music">my music</string>
+	<string name="hint_search_alarm">Search..</string>
+	<string name="alarm_pre_listen_volume">pre-listening</string>
+	<string name="alarm_real_volume">actual volume</string>
+	<string name="alarm_ear_phone_mode_on">Earphone Mode On</string>
+	<string name="toast_select_alarm_song">Please select an alarm sound</string>
+	<string name="basic_audio">a Default</string>
+
+</resources>

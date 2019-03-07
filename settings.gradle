@@ -1,1 +1,1 @@
-include ':app', ':base', ':permission', ':adhelper', ':imagepicker', ':authentication'
+include ':app', ':base', ':permission', ':adhelper', ':imagepicker', ':authentication', ':audiopicker'

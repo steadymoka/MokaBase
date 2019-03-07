@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<style name="Theme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+	<style name="Theme.TransStatus" parent="Theme.NoActionBar">
+		<item name="android:windowTranslucentStatus">true</item>
+	</style>
+
 	<!-- Shadow -->
 	<style name="Shadow">
 		<item name="android:layout_width">match_parent</item>

@@ -45,8 +45,18 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
 
     implementation project(':base')
-    implementation project(':authentication')
     implementation project(':permission')
     implementation project(':adhelper')
+    implementation project(':authentication')
     implementation project(':imagepicker')
+    implementation project(':audiopicker')
+
+
+    /* glide */
+    implementation(rootProject.ext.glide) {
+        exclude group: "com.android.support"
+        transitive = true
+    }
+    kapt 'androidx.annotation:annotation:1.0.2'
+    kapt rootProject.ext.glide_kapt
 }

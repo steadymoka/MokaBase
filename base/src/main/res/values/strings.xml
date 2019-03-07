@@ -1,2 +1,6 @@
 <resources>
+
+	<string name="general_cancel">CANCEL</string>
+	<string name="general_ok">OK</string>
+
 </resources>

@@ -13,22 +13,35 @@
 	<TextView
 		android:id="@+id/textView"
 		android:layout_width="100dp"
-		android:layout_height="100dp"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="20dp"
 		android:text="alkdjfklajfldjflake"/>
 
 	<TextView
 		android:id="@+id/showPicker"
-		android:layout_width="100dp"
-		android:layout_height="100dp"
-		android:text="피커 보기"/>
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:background="@color/black_09_hint"
+		android:gravity="center"
+		android:text="이미지 피커"
+		android:textColor="@color/white_01"/>
 
 	<TextView
 		android:id="@+id/textView_signUp"
 		android:layout_width="match_parent"
-		android:layout_height="100dp"
+		android:layout_height="60dp"
 		android:background="@color/black_03_text"
 		android:gravity="center"
 		android:text="계정 등록"
+		android:textColor="@color/white_01"/>
+
+	<TextView
+		android:id="@+id/textView_audioPicker"
+		android:layout_width="match_parent"
+		android:layout_height="60dp"
+		android:background="@color/black_06_sub_text"
+		android:gravity="center"
+		android:text="오디오 피커"
 		android:textColor="@color/white_01"/>
 
 </LinearLayout>

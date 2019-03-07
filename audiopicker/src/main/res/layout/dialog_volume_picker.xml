@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/relativeLayout_container"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/white"
+	android:elevation="10dp">
+
+	<TextView
+		android:id="@+id/textView_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="24dp"
+		android:layout_marginTop="16dp"
+		android:text="볼륨 설정"
+		android:textColor="@color/black_03_text"
+		android:textSize="11dp"
+		android:textStyle="bold"/>
+
+	<TextView
+		android:id="@+id/textView_des"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/textView_title"
+		android:layout_marginLeft="24dp"
+		android:layout_marginTop="2dp"
+		android:background="@color/white"
+		android:text="소리가 나지 않으니 마음껏 조절 하세요 !"
+		android:textColor="@color/black_06_sub_text"
+		android:textSize="10dp"/>
+
+	<ImageView
+		android:id="@+id/imageView_playPause"
+		android:layout_width="24dp"
+		android:layout_height="24dp"
+		android:layout_alignTop="@+id/textView_title"
+		android:layout_alignBottom="@+id/textView_des"
+		android:layout_alignParentRight="true"
+		android:layout_marginRight="16dp"
+		android:padding="7dp"
+		app:srcCompat="@drawable/vc_play_black"/>
+
+	<TextView
+		android:id="@+id/textView_preListen"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/textView_title"
+		android:layout_alignBottom="@+id/textView_des"
+		android:layout_alignParentRight="true"
+		android:gravity="center"
+		android:paddingLeft="10dp"
+		android:paddingRight="44dp"
+		android:text="미리듣기"
+		android:textSize="10dp"/>
+
+	<androidx.appcompat.widget.AppCompatSeekBar
+		android:id="@+id/seekBar_alarm_vol"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_below="@+id/textView_des"
+		android:layout_gravity="center_vertical"
+		android:layout_marginLeft="18dp"
+		android:layout_marginRight="18dp"/>
+
+	<!--
+	-->
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/seekBar_alarm_vol"
+		android:orientation="horizontal">
+
+		<View
+			android:layout_width="0dp"
+			android:layout_height="20dp"
+			android:layout_weight="1"/>
+
+		<TextView
+			android:id="@+id/textView_cancel"
+			style="@style/dialogButtonTextStyle"
+			android:text="@string/general_cancel"/>
+
+		<TextView
+			android:id="@+id/textView_ok"
+			style="@style/dialogButtonTextStyle"
+			android:text="@string/general_ok"/>
+
+	</LinearLayout>
+
+</RelativeLayout>

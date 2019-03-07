@@ -26,7 +26,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 kotlin {
@@ -38,6 +37,8 @@ kotlin {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation project(":base")
 
     implementation rootProject.ext.appcompat
     implementation rootProject.ext.constraint
@@ -54,6 +55,11 @@ dependencies {
     implementation rootProject.ext.okhttp3
     implementation rootProject.ext.okhttp3_loggin
 
-    implementation project(":base")
-    implementation project(":imagepicker")
+    /* glide */
+    api(rootProject.ext.glide) {
+        exclude group: "com.android.support"
+        transitive = true
+    }
+    kapt 'androidx.annotation:annotation:1.0.2'
+    kapt rootProject.ext.glide_kapt
 }

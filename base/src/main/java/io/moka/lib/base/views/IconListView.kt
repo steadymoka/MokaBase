@@ -8,9 +8,9 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import io.moka.lib.base.R
 import io.moka.lib.base.util.invisibleFadeOut
+import io.moka.lib.base.util.onClick
 import io.moka.lib.base.util.visibleFadeIn
 import kotlinx.android.synthetic.main.layout_icon_list_view.view.*
-import io.moka.lib.base.util.onClick
 
 /*
  */

@@ -20,7 +20,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 
-class AccountIntroLayout : AccountAuthenticatorActivity() {
+sealed class AccountIntroLayout : AccountAuthenticatorActivity() {
 
     private val accountManager by lazy { AccountManager.get(this) }
     private val adapter by lazy { AccountAdapter(this) }
@@ -106,9 +106,9 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
 
     private fun onSelected(data: AccountAdapter.Data) {
         textView_signIn.text = spannableText(
-                attr("( ", isBold = true, ratio = 0.8f),
+                attr("⌜ ", isBold = true, ratio = 1f),
                 attr("${data.nickname}", isBold = true),
-                attr(" )", isBold = true, ratio = 0.8f),
+                attr(" ⌟", isBold = true, ratio = 1f),
                 attr("으로 로그인 하기"))
     }
 

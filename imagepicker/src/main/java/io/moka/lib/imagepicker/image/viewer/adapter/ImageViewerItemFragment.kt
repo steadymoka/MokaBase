@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
@@ -15,7 +16,6 @@ import com.bumptech.glide.request.target.Target
 import io.moka.lib.base.util.deviceHeightPixel
 import io.moka.lib.base.util.deviceWidthPixel
 import io.moka.lib.imagepicker.R
-import io.moka.lib.imagepicker.util.GlideApp
 import io.moka.lib.imagepicker.util.ObservablePhotoView
 import kotlinx.android.synthetic.main.fragment_image_view_item.*
 
@@ -71,7 +71,7 @@ class ImageViewerItemFragment : Fragment(), ObservablePhotoView.Listener {
 
         if (null != imageUrl) {
 
-            GlideApp.with(activity!!)
+            Glide.with(activity!!)
                     .load(imageUrl)
                     .override(targetWidth, targetHeight)
                     .listener(object : RequestListener<Drawable> {
@@ -152,12 +152,12 @@ class ImageViewerItemFragment : Fragment(), ObservablePhotoView.Listener {
 
     companion object {
 
-        private val KEY_IMAGE_URL = "ImageViewerItemFragment.KEY_IMAGE_URL"
-        private val KEY_POSITION = "ImageViewerItemFragment.KEY_POSITION"
-        private val KEY_MODE = "ImageViewerItemFragment.KEY_MODE"
+        private const val KEY_IMAGE_URL = "ImageViewerItemFragment.KEY_IMAGE_URL"
+        private const val KEY_POSITION = "ImageViewerItemFragment.KEY_POSITION"
+        private const val KEY_MODE = "ImageViewerItemFragment.KEY_MODE"
 
-        val TOUCH_MODE = 2
-        val NO_TOUCH_MODE = 3
+        const val TOUCH_MODE = 2
+        const val NO_TOUCH_MODE = 3
 
         fun newInstance(): ImageViewerItemFragment = ImageViewerItemFragment()
 
