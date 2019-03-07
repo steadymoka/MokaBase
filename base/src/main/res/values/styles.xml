@@ -35,15 +35,15 @@
 
 	<!-- dialog button text style -->
 	<style name="dialogButtonTextStyle">
-		<item name="android:textColor">@color/black_03_text</item>
+		<item name="android:textColor">@color/black_04</item>
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:minWidth">68dp</item>
 		<item name="android:layout_height">38dp</item>
-		<item name="android:paddingLeft">8dp</item>
-		<item name="android:paddingRight">8dp</item>
+		<item name="android:paddingLeft">10dp</item>
+		<item name="android:paddingRight">10dp</item>
 		<item name="android:layout_marginTop">10dp</item>
-		<item name="android:layout_marginBottom">8dp</item>
-		<item name="android:layout_marginRight">8dp</item>
+		<item name="android:layout_marginBottom">12dp</item>
+		<item name="android:layout_marginRight">10dp</item>
 		<item name="android:textSize">12dp</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:background">?attr/selectableItemBackground</item>
