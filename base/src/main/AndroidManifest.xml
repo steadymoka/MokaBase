@@ -4,7 +4,9 @@
 
 	<application>
 
-		<activity android:name=".webview.WebViewActivity"/>
+		<activity
+			android:name=".webview.WebViewActivity"
+			android:theme="@style/Theme.TransStatus"/>
 
 	</application>
 

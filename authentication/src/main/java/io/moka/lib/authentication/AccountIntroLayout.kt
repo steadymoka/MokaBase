@@ -20,7 +20,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 
-sealed class AccountIntroLayout : AccountAuthenticatorActivity() {
+class AccountIntroLayout : AccountAuthenticatorActivity() {
 
     private val accountManager by lazy { AccountManager.get(this) }
     private val adapter by lazy { AccountAdapter(this) }
@@ -109,7 +109,7 @@ sealed class AccountIntroLayout : AccountAuthenticatorActivity() {
                 attr("⌜ ", isBold = true, ratio = 1f),
                 attr("${data.nickname}", isBold = true),
                 attr(" ⌟", isBold = true, ratio = 1f),
-                attr("으로 로그인 하기"))
+                attr(" 으로 로그인 하기"))
     }
 
     private fun getTokensAndFinish(account: Account) = CoroutineScope(Dispatchers.Main).launch {

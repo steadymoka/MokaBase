@@ -57,4 +57,10 @@
 	<color name="green_07">#99cc99</color>
 	<color name="green_08">#b2d8b2</color>
 
+	<color name="brown_01">#492201</color>
+	<color name="brown_02">#562b00</color>
+	<color name="brown_03">#633200</color>
+	<color name="brown_04">#7c3f00</color>
+
+
 </resources>

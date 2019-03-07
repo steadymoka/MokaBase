@@ -30,11 +30,25 @@
 		android:gravity="center"
 		android:text="하나의 계정으로 “하루하루”와 함께해요"
 		android:textColor="@color/black_09_hint"
-		android:textSize="11dp"
+		android:textSize="10dp"
 		android:textStyle="bold"
 		app:layout_constraintRight_toRightOf="@+id/textView_dayday"
 		app:layout_constraintTop_toBottomOf="@+id/textView_dayday"
 		tools:text="하나의 계정으로 “하루하루”와 함께해요"/>
+
+	<TextView
+		android:id="@+id/textView_account_des_01"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="6dp"
+		android:gravity="right"
+		android:text="나만의 기상이 필요할 때\n집중이 필요할 때\n하루를 기록 할 때"
+		android:textColor="@color/black_09_hint"
+		android:textSize="10dp"
+		android:textStyle="bold"
+		app:layout_constraintRight_toRightOf="@+id/textView_dayday"
+		app:layout_constraintTop_toBottomOf="@+id/textView_account_des"
+		tools:text="나만의 기상이 필요할 때\n집중이 필요할 때\n하루를 기록 할 때"/>
 
 	<!--
 
@@ -59,7 +73,7 @@
 		android:layout_marginLeft="32dp"
 		android:layout_marginRight="32dp"
 		android:background="@drawable/rc_bl_bl_ro2"
-		android:elevation="4dp"
+		android:elevation="12dp"
 		android:foreground="?attr/selectableItemBackground"
 		android:gravity="center"
 		android:text="로그인"
@@ -144,7 +158,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:background="@color/white_01"
-		android:elevation="3dp"
+		android:elevation="15dp"
 		android:visibility="gone"/>
 
 
@@ -152,6 +166,6 @@
 		android:id="@+id/view_container"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:elevation="3dp"/>
+		android:elevation="15dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

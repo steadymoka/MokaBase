@@ -37,7 +37,7 @@
 		android:layout_marginLeft="6dp"
 		android:text="aud1220a@gmail.com"
 		android:textColor="@color/black_06_sub_text"
-		android:textSize="13dp"
+		android:textSize="11dp"
 		android:translationY="-2dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintLeft_toRightOf="@+id/imageView_profile"

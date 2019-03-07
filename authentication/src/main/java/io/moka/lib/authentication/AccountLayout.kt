@@ -74,7 +74,7 @@ class AccountLayout : Fragment() {
 
         /* */
         val findPassword = SpannableString("비밀번호 찾기")
-        findPassword.setSpan(ForegroundColorSpan(color(R.color.red_01)), 0, findPassword.length, Spanned.SPAN_COMPOSING)
+        findPassword.setSpan(ForegroundColorSpan(color(R.color.brown_04)), 0, findPassword.length, Spanned.SPAN_COMPOSING)
         findPassword.setSpan(UnderlineSpan(), 0, findPassword.length, Spanned.SPAN_COMPOSING)
 
         textView_findPassword.text = SpannableStringBuilder("비밀번호가 기억안나시나요? ").append(findPassword)
