@@ -35,7 +35,7 @@ class AccountPresenter(private val view: AccountLayout) {
                 signup_from = Contract.auth_fromApp
         )
 
-        ApiModule.api.signUp(signUpReq).on(
+        ApiModule.api.signUp(signUpReq = signUpReq).on(
                 success = { res ->
                     if (!view.isAdded)
                         return@on
@@ -98,7 +98,7 @@ class AccountPresenter(private val view: AccountLayout) {
                 password = viewModel.password
         )
 
-        ApiModule.api.signIn(signInReq).on(
+        ApiModule.api.signIn(signInReq = signInReq).on(
                 success = { res ->
                     if (!view.isAdded)
                         return@on
@@ -135,12 +135,12 @@ class AccountPresenter(private val view: AccountLayout) {
                     view.dismissLoadingDialog()
 
                     if (error?.message == "NoUserIsFound") {
-                        view.toast("없는 이메일 입니다")
+                        view.errorToEmail("없는 이메일 입니다")
                         return@on
                     }
 
                     if (error?.message == "WrongPassword") {
-                        view.errorToEmail("비밀번호가 틀립니다")
+                        view.errorToPassword("비밀번호가 틀립니다")
                         return@on
                     }
 

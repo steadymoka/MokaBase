@@ -70,7 +70,7 @@ class MokaInterstitialAd private constructor() {
             mInterstitialAd.loadAd(
                     AdRequest
                             .Builder()
-                            .apply { if (MokaBase.debuggable) addTestDevice("B2E4DBF0638C3608DBC09D5FAE06DE10") }
+                            .apply { if (MokaBase.DEBUG) addTestDevice("B2E4DBF0638C3608DBC09D5FAE06DE10") }
                             .build())
         }
 

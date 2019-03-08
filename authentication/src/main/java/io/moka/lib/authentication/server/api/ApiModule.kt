@@ -20,11 +20,7 @@ internal object ApiModule {
     private val client by lazy {
         OkHttpClient.Builder()
                 .addInterceptor(initHttpLoggingInterceptor())
-//                .apply {
-//                    if (MokaBase.debuggable)
-//                        addNetworkInterceptor(StethoInterceptor())
-//                }
-                .readTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
                 .build()
     }
 
@@ -53,7 +49,7 @@ internal object ApiModule {
 
     private fun initHttpLoggingInterceptor(): HttpLoggingInterceptor {
         val interceptor = HttpLoggingInterceptor()
-        if (MokaBase.debuggable)
+        if (MokaBase.DEBUG)
             interceptor.level = HttpLoggingInterceptor.Level.BODY
         else
             interceptor.level = HttpLoggingInterceptor.Level.NONE

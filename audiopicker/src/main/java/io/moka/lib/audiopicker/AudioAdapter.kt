@@ -110,7 +110,7 @@ class AudioAdapter constructor(private val context: Context, var mode: Mode = Mo
 
         private fun resizeFontSizeAndExt() {
             with(itemView) {
-                FontSizeUtil.size(13f, textView_string)
+                FontSizeKit.size(13f, textView_string)
             }
         }
 

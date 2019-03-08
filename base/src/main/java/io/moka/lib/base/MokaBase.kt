@@ -8,8 +8,6 @@ object MokaBase {
 
     var context: Context? = null
 
-    var debuggable: Boolean = true
-
-    var fontSizeFlag: Int = 0
+    var DEBUG: Boolean = true
 
 }

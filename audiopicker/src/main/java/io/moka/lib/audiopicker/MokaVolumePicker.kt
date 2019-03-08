@@ -15,7 +15,7 @@ import android.view.animation.AnimationUtils
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.FragmentManager
-import io.moka.lib.base.util.FontSizeUtil
+import io.moka.lib.base.util.FontSizeKit
 import io.moka.lib.base.util.color
 import io.moka.lib.base.util.onClick
 import kotlinx.android.synthetic.main.dialog_volume_picker.*
@@ -59,8 +59,8 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
     }
 
     fun resizeFontSizeAndExt() {
-        FontSizeUtil.size(11f, textView_title, textView_cancel, textView_ok)
-        FontSizeUtil.size(10f, textView_des)
+        FontSizeKit.size(11f, textView_title, textView_cancel, textView_ok)
+        FontSizeKit.size(10f, textView_des)
     }
 
     /**

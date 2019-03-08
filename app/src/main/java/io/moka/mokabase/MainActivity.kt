@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         ImageFileUtil.init(this, "dayday")
 
         /* */
-        MokaAdCenter.debuggable = MokaBase.debuggable
+        MokaAdCenter.debuggable = MokaBase.DEBUG
         MokaAdCenter.initialize(this, "ca-app-pub-7847386025632674~4395347068")
 
         MokaAdCenter.AUDIENCE_TEST_CODE = "e0d43ce760c1b27fdddc26600a0c9649"

@@ -2,12 +2,13 @@ package io.moka.lib.base.util
 
 import android.util.TypedValue
 import android.widget.TextView
-import io.moka.lib.base.MokaBase
 
-object FontSizeUtil {
+object FontSizeKit {
+
+    var sizeOffSet: Int = 0
 
     fun size(size: Float, vararg textViews: TextView) {
-        when (MokaBase.fontSizeFlag) {
+        when (sizeOffSet) {
             0 -> textViews.forEach {
                 it.setTextSize(TypedValue.COMPLEX_UNIT_DIP, size)
             }
@@ -23,7 +24,7 @@ object FontSizeUtil {
     }
 
     fun size(size: Float, isHalf: Boolean, vararg textViews: TextView) {
-        when (MokaBase.fontSizeFlag) {
+        when (sizeOffSet) {
             0 -> textViews.forEach {
                 it.setTextSize(TypedValue.COMPLEX_UNIT_DIP, size)
             }
@@ -45,7 +46,7 @@ object FontSizeUtil {
     }
 
     fun foSize(size: Float): Float {
-        return when (MokaBase.fontSizeFlag) {
+        return when (sizeOffSet) {
             0 -> size
             1 -> size + 2
             else -> size + 3

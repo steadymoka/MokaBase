@@ -1,13 +1,15 @@
 package io.moka.lib.authentication.server
 
+import io.moka.lib.base.MokaBase
+
 
 internal object ServerInfo {
 
     private const val END_POINT_API = "https://api.haruharu.io/"
 
     val endPoint: String
-        get() {
-            return END_POINT_API
-        }
+        get() = END_POINT_API
 
+    val prefix: String
+        get() = if (MokaBase.DEBUG) "dev" else "v1"
 }

@@ -27,9 +27,9 @@ object MokaAdCenter {
     }
 
     var debuggable: Boolean
-        get() = MokaBase.debuggable
+        get() = MokaBase.DEBUG
         set(value) {
-            MokaBase.debuggable = value
+            MokaBase.DEBUG = value
         }
 
     /**

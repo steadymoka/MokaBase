@@ -175,7 +175,7 @@
 		android:layout_marginTop="10dp"
 		android:layout_weight="1"
 		android:background="@drawable/rc_wh_wh_ro2"
-		android:elevation="8dp"
+		android:elevation="4dp"
 		android:foreground="?attr/selectableItemBackground"
 		android:gravity="center"
 		android:text="가입하기"

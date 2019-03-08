@@ -49,7 +49,7 @@ class Authenticator(private var context: Context) : AbstractAccountAuthenticator
                 try {
                     Log.d("DayDay", "> re-authenticating with the existing password")
                     val signInReq = SignInUpReq(email, password)
-                    val res = ApiModule.api.signIn(signInReq).execute()
+                    val res = ApiModule.api.signIn(signInReq = signInReq).execute()
                     if (res.isSuccessful) {
                         authToken = res.body()!!.token
                     }

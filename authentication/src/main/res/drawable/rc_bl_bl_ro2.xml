@@ -4,7 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	tools:ignore="MissingDefaultResource">
 
-	<solid android:color="@color/black_03_text"/>
+	<solid android:color="@color/black_04"/>
 	<corners android:radius="2dp"/>
 
 </shape>

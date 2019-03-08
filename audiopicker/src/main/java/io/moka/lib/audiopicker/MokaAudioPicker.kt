@@ -86,10 +86,10 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
     }
 
     fun resizeFontSizeAndExt() {
-        FontSizeUtil.size(11f, textView_cancel, textView_ok)
-        FontSizeUtil.size(12f, editText_search)
-        FontSizeUtil.size(11f, textView_default, textView_mine)
-        FontSizeUtil.size(10f, label_preListen, label_alarm_volume)
+        FontSizeKit.size(11f, textView_cancel, textView_ok)
+        FontSizeKit.size(12f, editText_search)
+        FontSizeKit.size(11f, textView_default, textView_mine)
+        FontSizeKit.size(10f, label_preListen, label_alarm_volume)
     }
 
     /**
