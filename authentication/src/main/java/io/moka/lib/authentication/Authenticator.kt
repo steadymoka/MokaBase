@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import io.moka.lib.authentication.server.api.ApiModule
 import io.moka.lib.authentication.server.req.SignInUpReq
+import io.moka.lib.base.util.log.MLog
 
 
 class Authenticator(private var context: Context) : AbstractAccountAuthenticator(context) {
@@ -77,6 +78,8 @@ class Authenticator(private var context: Context) : AbstractAccountAuthenticator
      * authTokenType - Alarm | Pomodoro | Diary ... in Contract.ckt
      */
     override fun addAccount(response: AccountAuthenticatorResponse?, accountType: String?, authTokenType: String?, requiredFeatures: Array<out String>?, options: Bundle?): Bundle {
+        MLog.deb("addAccount is called")
+
         val intent = Intent(context, AccountIntroLayout::class.java)
         intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, accountType)
         intent.putExtra(AccountManager.KEY_AUTH_TOKEN_LABEL, authTokenType)
