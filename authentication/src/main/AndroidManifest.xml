@@ -9,10 +9,6 @@
 
 	<application>
 
-		<activity
-			android:name=".AccountIntroLayout"
-			android:exported="false"/>
-
 		<service
 			android:name=".AuthenticationService">
 
