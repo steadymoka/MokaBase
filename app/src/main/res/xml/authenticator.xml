@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <account-authenticator
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:accountType="io.moka.dayday"
+	android:accountType="io.moka.dayday.base"
 	android:customTokens="true"
 	android:icon="@drawable/logo_dayday"
 	android:label="@string/auth_name"

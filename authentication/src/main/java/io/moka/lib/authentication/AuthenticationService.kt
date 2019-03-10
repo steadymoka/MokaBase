@@ -10,7 +10,6 @@ class AuthenticationService : Service() {
     private val authenticator: Authenticator by lazy { Authenticator(this) }
 
     override fun onCreate() {
-        MLog.deb("onCreate is called")
         authenticator
     }
 
