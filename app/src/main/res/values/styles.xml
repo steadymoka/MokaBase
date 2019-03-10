@@ -1,15 +1,13 @@
 <resources>
 
-
 	<style name="MokaTheme" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-		<item name="colorAccent">@color/colorAccent</item>
+		<item name="colorAccent">@color/black_06_sub_text</item>
 	</style>
 
 	<style name="MokaTheme.TransStatus" parent="MokaTheme">
 		<item name="android:windowTranslucentStatus">true</item>
 	</style>
-
 
 </resources>

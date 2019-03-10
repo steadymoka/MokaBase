@@ -11,7 +11,8 @@
 
 	<ProgressBar
 		android:layout_width="23dp"
-		android:layout_height="23dp"/>
+		android:layout_height="23dp"
+		android:indeterminateTint="@color/black_04"/>
 
 	<TextView
 		android:id="@+id/textView_wait"

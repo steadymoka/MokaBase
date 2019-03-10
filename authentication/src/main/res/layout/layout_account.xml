@@ -100,12 +100,13 @@
 		app:layout_constraintRight_toRightOf="@+id/textView_signUp"
 		app:layout_constraintTop_toBottomOf="@+id/textView_signUp"/>
 
-	<EditText
+	<androidx.appcompat.widget.AppCompatEditText
 		android:id="@+id/editText_email"
 		android:layout_width="280dp"
 		android:layout_height="36dp"
 		android:layout_marginTop="30dp"
 		android:background="@drawable/rc_wh_wh_ro2"
+		android:gravity="center|left"
 		android:hint="e-mail"
 		android:inputType="textEmailAddress"
 		android:paddingLeft="13dp"
@@ -121,6 +122,7 @@
 		android:layout_width="280dp"
 		android:layout_height="36dp"
 		android:layout_marginTop="8dp"
+		android:autofillHints=""
 		android:background="@drawable/rc_wh_wh_ro2"
 		android:hint="nickname"
 		android:inputType="text"

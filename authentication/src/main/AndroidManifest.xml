@@ -10,8 +10,20 @@
 	<application>
 
 		<activity
-			android:name=".AccountIntroLayout"
-			android:exported="false"/>
+			android:name=".AccountIntroLayout"/>
+
+		<service
+			android:name="io.moka.lib.authentication.AuthenticationService">
+
+			<intent-filter>
+				<action android:name="android.accounts.AccountAuthenticator"/>
+			</intent-filter>
+
+			<meta-data
+				android:name="android.accounts.AccountAuthenticator"
+				android:resource="@xml/authenticator"/>
+
+		</service>
 
 	</application>
 

@@ -3,6 +3,7 @@ package io.moka.lib.authentication
 
 import android.accounts.AccountManager
 import android.app.AlertDialog
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -14,9 +15,9 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import io.moka.lib.base.util.*
-import io.moka.lib.base.util.log.MLog
 import io.moka.lib.base.webview.WebViewActivity
 import kotlinx.android.synthetic.main.layout_account.*
 import org.jetbrains.anko.support.v4.toast
@@ -72,7 +73,7 @@ class AccountLayout : Fragment() {
 
         /* */
         val findPassword = SpannableString("비밀번호 찾기")
-        findPassword.setSpan(ForegroundColorSpan(color(R.color.brown_04)), 0, findPassword.length, Spanned.SPAN_COMPOSING)
+        findPassword.setSpan(ForegroundColorSpan(color(R.color.brown_03)), 0, findPassword.length, Spanned.SPAN_COMPOSING)
         findPassword.setSpan(UnderlineSpan(), 0, findPassword.length, Spanned.SPAN_COMPOSING)
 
         textView_findPassword.text = SpannableStringBuilder("비밀번호가 기억안나시나요? ").append(findPassword)
