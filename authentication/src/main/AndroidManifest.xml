@@ -10,7 +10,8 @@
 	<application>
 
 		<activity
-			android:name=".AccountIntroLayout"/>
+			android:name=".AccountIntroLayout"
+			android:exported="true"/>
 
 		<service
 			android:name="io.moka.lib.authentication.AuthenticationService">
