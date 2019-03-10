@@ -72,8 +72,9 @@ class Authenticator(private var context: Context) : AbstractAccountAuthenticator
     }
 
     /**
-     * authTokenType -
-     * "JOIN DAYDAY" : 다른 앱들에서 부르는 건지
+     *
+     * accountType - Contract.ACCOUNT_TYPE (io.moka.dayday)
+     * authTokenType - Alarm | Pomodoro | Diary ... in Contract.ckt
      */
     override fun addAccount(response: AccountAuthenticatorResponse?, accountType: String?, authTokenType: String?, requiredFeatures: Array<out String>?, options: Bundle?): Bundle {
         val intent = Intent(context, AccountIntroLayout::class.java)

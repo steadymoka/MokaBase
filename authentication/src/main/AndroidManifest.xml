@@ -9,8 +9,15 @@
 
 	<application>
 
+		<!-- -->
+
+		<activity
+			android:name=".AccountIntroLayout"
+			android:exported="false"/>
+
 		<service
-			android:name=".AuthenticationService">
+			android:name=".AuthenticationService"
+			android:exported="false">
 
 			<intent-filter>
 				<action android:name="android.accounts.AccountAuthenticator"/>
