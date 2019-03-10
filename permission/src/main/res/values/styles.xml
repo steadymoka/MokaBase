@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<style name="MokaTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
-
 	<!-- Activity Transparent -->
-	<style name="Theme.Moka.NoActionBar.Transparent" parent="MokaTheme">
+	<style name="Theme.Moka.NoActionBar.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
 		<item name="android:windowTranslucentStatus">true</item>
 
 		<!-- 투명정도를 나타내는 색-->
@@ -16,10 +14,6 @@
 		true - 반투명 검정 /  false - 완전 투명
 		-->
 		<item name="android:backgroundDimEnabled">false</item>
-	</style>
-
-	<style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-
 	</style>
 
 </resources>

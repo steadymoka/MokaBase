@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
     private val accountManager by lazy { AccountManager.get(this) }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -84,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         Glide.with(this)
                 .load("/storage/emulated/0/dayday/temps/1534411404-bb8636b6-6f8b-474f-9fb4-7f4f64e8656d.jpg")
                 .into(imageView)
-
 
         textView.setOnClickListener {
             val list = arrayListOf(

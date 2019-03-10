@@ -9,25 +9,21 @@
 
 	<application>
 
-		<!-- Activity-->
-
 		<activity
 			android:name=".AccountIntroLayout"
-			android:exported="true"/>
-
-		<!-- Service -->
+			android:exported="false"/>
 
 		<service
-			android:name=".AuthenticationService"
-			android:exported="true">
+			android:name=".AuthenticationService">
 
 			<intent-filter>
 				<action android:name="android.accounts.AccountAuthenticator"/>
-
 			</intent-filter>
+
 			<meta-data
 				android:name="android.accounts.AccountAuthenticator"
 				android:resource="@xml/authenticator"/>
+
 		</service>
 
 	</application>
