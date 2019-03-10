@@ -74,10 +74,11 @@ class Authenticator(private var context: Context) : AbstractAccountAuthenticator
 
     /**
      *
-     * accountType - Contract.ACCOUNT_TYPE (io.moka.dayday)
-     * authTokenType - Alarm | Pomodoro | Diary ... in Contract.ckt
+     * accountType - AuthContract.ACCOUNT_TYPE (io.moka.dayday)
+     * authTokenType - Alarm | Pomodoro | Diary ... in AuthContract.kt
      */
     override fun addAccount(response: AccountAuthenticatorResponse?, accountType: String?, authTokenType: String?, requiredFeatures: Array<out String>?, options: Bundle?): Bundle {
+        MLog.deb("Authenticator > accountType : ${accountType}     authTokenType : ${authTokenType}")
         val intent = Intent(context, AccountIntroLayout::class.java)
         intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, accountType)
         intent.putExtra(AccountManager.KEY_AUTH_TOKEN_LABEL, authTokenType)

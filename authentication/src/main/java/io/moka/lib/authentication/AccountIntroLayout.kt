@@ -8,7 +8,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import io.moka.lib.authentication.util.Contract
+import io.moka.lib.authentication.util.AuthContract
 import io.moka.lib.base.util.attr
 import io.moka.lib.base.util.onClick
 import io.moka.lib.base.util.spannableText
@@ -77,7 +77,7 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
         }
 
         /* */
-        val accounts = accountManager.getAccountsByType(Contract.ACCOUNT_TYPE)
+        val accounts = accountManager.getAccountsByType(AuthContract.ACCOUNT_TYPE)
 
         if (accounts.isEmpty()) {
             view_container_wall.visible()
@@ -114,7 +114,7 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
 
     private fun getTokensAndFinish(account: Account) = CoroutineScope(Dispatchers.Main).launch {
         val deferred = async(Dispatchers.IO) {
-            accountManager.getAuthToken(account, Contract.ACCOUNT_TYPE, null, null, null, null)
+            accountManager.getAuthToken(account, AuthContract.ACCOUNT_TYPE, null, null, null, null)
         }
 
         val future = deferred.await()
@@ -145,7 +145,7 @@ class AccountIntroLayout : AccountAuthenticatorActivity() {
     private fun onClickToSignIn() {
         showLoadingDialog()
 
-        val accounts = accountManager.getAccountsByType(Contract.ACCOUNT_TYPE)
+        val accounts = accountManager.getAccountsByType(AuthContract.ACCOUNT_TYPE)
         val selectedData = adapter.selectedData
 
         val account = accounts.filter { accountManager.getUserData(it, "email") == selectedData?.email }[0]

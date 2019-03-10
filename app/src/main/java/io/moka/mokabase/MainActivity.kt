@@ -10,7 +10,8 @@ import com.bumptech.glide.Glide
 import io.moka.lib.adhelper.MokaAdCenter
 import io.moka.lib.audiopicker.MokaAudioPicker
 import io.moka.lib.audiopicker.MokaVolumePicker
-import io.moka.lib.authentication.util.Contract
+import io.moka.lib.authentication.util.App
+import io.moka.lib.authentication.util.AuthContract
 import io.moka.lib.base.ColorDI
 import io.moka.lib.base.MokaBase
 import io.moka.lib.base.util.color
@@ -100,8 +101,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         /* */
+        AuthContract.setApp(App.Base)
+
         textView_signUp.onClick {
-            accountManager.addAccount(Contract.ACCOUNT_TYPE, Contract.LABEL_ALARM, null, null, this, { future ->
+            accountManager.addAccount(AuthContract.ACCOUNT_TYPE, AuthContract.currentApp.id, null, null, this, { future ->
                 try {
                     val bundle = future.result
                     val token = bundle.getString("token")

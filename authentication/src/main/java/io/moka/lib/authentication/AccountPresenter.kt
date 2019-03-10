@@ -7,7 +7,7 @@ import android.content.Intent
 import android.os.Bundle
 import io.moka.lib.authentication.server.api.ApiModule
 import io.moka.lib.authentication.server.req.SignInUpReq
-import io.moka.lib.authentication.util.Contract
+import io.moka.lib.authentication.util.AuthContract
 import io.moka.lib.authentication.util.on
 import io.moka.lib.base.util.log.MLog
 import org.jetbrains.anko.support.v4.toast
@@ -32,7 +32,7 @@ class AccountPresenter(private val view: AccountLayout) {
                 email = viewModel.email,
                 password = viewModel.password,
                 nickname = viewModel.nickname,
-                signup_from = Contract.auth_fromApp
+                signup_from = AuthContract.currentApp.from
         )
 
         ApiModule.api.signUp(signUpReq = signUpReq).on(
@@ -55,7 +55,7 @@ class AccountPresenter(private val view: AccountLayout) {
                         data.putString(AccountManager.KEY_ACCOUNT_NAME, email)
                         data.putString(AccountManager.KEY_PASSWORD, password)
 
-                        data.putString(AccountManager.KEY_ACCOUNT_TYPE, Contract.ACCOUNT_TYPE)
+                        data.putString(AccountManager.KEY_ACCOUNT_TYPE, AuthContract.ACCOUNT_TYPE)
                         data.putString(AccountManager.KEY_AUTHTOKEN, token)
                     } catch (e: Exception) {
                         data.putString("ERR_MSG", e.message)
@@ -119,7 +119,7 @@ class AccountPresenter(private val view: AccountLayout) {
                         data.putString(AccountManager.KEY_ACCOUNT_NAME, email)
                         data.putString(AccountManager.KEY_PASSWORD, password)
 
-                        data.putString(AccountManager.KEY_ACCOUNT_TYPE, Contract.ACCOUNT_TYPE)
+                        data.putString(AccountManager.KEY_ACCOUNT_TYPE, AuthContract.ACCOUNT_TYPE)
                         data.putString(AccountManager.KEY_AUTHTOKEN, token)
                     } catch (e: Exception) {
                         data.putString("ERR_MSG", e.message)
