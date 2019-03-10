@@ -14,12 +14,14 @@ enum class App(var id: String, var from: Int = 0) {
 
 object AuthContract {
 
+    private const val ACCOUNT_TYPE_BASE = "io.moka.dayday"
+
     var currentApp: App = App.Base
         private set(value) {
             field = value
         }
 
-    var ACCOUNT_TYPE = "io.moka.dayday"
+    var ACCOUNT_TYPE = ACCOUNT_TYPE_BASE
         private set(value) {
             field = value
         }
@@ -28,7 +30,6 @@ object AuthContract {
 
     fun setApp(app: App) {
         currentApp = app
-        ACCOUNT_TYPE = "io.moka.dayday.${currentApp.id}"
     }
 
 }

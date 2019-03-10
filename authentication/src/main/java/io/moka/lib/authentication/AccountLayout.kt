@@ -58,7 +58,6 @@ class AccountLayout : Fragment() {
         if (!isAdded)
             return
 
-        MLog.deb("AccountLayout onBackPressed() is called")
         editText_email.clearFocus()
         editText_name.clearFocus()
         editText_password.clearFocus()
