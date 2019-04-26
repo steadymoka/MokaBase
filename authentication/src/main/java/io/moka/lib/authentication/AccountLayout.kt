@@ -3,7 +3,6 @@ package io.moka.lib.authentication
 
 import android.accounts.AccountManager
 import android.app.AlertDialog
-import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -15,7 +14,6 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import io.moka.lib.base.util.*
 import io.moka.lib.base.webview.WebViewActivity
@@ -30,13 +28,11 @@ class AccountLayout : Fragment() {
         const val STATE_SIGN_UP: Int = 1006
     }
 
-    val viewModel by lazy { ViewModel() }
     private val presenter by lazy { AccountPresenter(this) }
-    val accountManager by lazy { AccountManager.get(activity) }
 
+    val viewModel by lazy { ViewModel() }
+    val accountManager: AccountManager by lazy { AccountManager.get(activity) }
     var startFrom: Int = STATE_SIGN_IN
-
-    val deviceHeightPixel: Int by lazy { resources.displayMetrics.heightPixels }
 
     /**
      * LifeCycle functions
