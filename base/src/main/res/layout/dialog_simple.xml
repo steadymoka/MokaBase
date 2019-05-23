@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:gravity="center"
+	android:orientation="vertical"
+	android:paddingTop="12dp">
+
+	<ImageView
+		android:id="@+id/imageView_icon"
+		android:layout_width="match_parent"
+		android:layout_height="52dp"
+		android:layout_marginBottom="12dp"/>
+
+	<TextView
+		android:id="@+id/textView_message"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="24dp"
+		android:layout_marginTop="7dp"
+		android:layout_marginRight="24dp"
+		android:layout_marginBottom="7dp"
+		android:gravity="center"
+		android:lineSpacingExtra="3dp"
+		android:textColor="@color/black_04"
+		android:textSize="13dp"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="4dp">
+
+		<TextView
+			android:id="@+id/button_left"
+			style="@style/dialogButtonTextStyle"
+			android:layout_marginLeft="12dp"
+			android:text="@string/general_cancel"
+			android:visibility="gone"/>
+
+		<View
+			android:layout_width="0dp"
+			android:layout_height="match_parent"
+			android:layout_weight="3"/>
+
+		<TextView
+			android:id="@+id/button_cancel"
+			style="@style/dialogButtonTextStyle"
+			android:text="@string/general_cancel"/>
+
+		<TextView
+			android:id="@+id/button_ok"
+			style="@style/dialogButtonTextStyle"
+			android:text="@string/general_ok"/>
+
+	</LinearLayout>
+
+</LinearLayout>
