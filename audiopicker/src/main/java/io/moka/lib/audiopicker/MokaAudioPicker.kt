@@ -54,6 +54,7 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
     private var isSound = true
     private var selectedAudioTitle = ""
     private var indexSongList = 0
+    private var selectableColor: Int? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -139,9 +140,11 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
         /*
         recyclerView 초기화
         */
+        defaultSongsAdapter.selectableColor = selectableColor
         recyclerView_default.init(activity!!, defaultSongsAdapter)
         defaultSongsAdapter.items = ArrayList()
 
+        mySongsAdapter.selectableColor = selectableColor
         recyclerView_mine.init(activity!!, mySongsAdapter)
         mySongsAdapter.items = ArrayList()
 
@@ -397,8 +400,7 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
     }
 
     fun setSectableColor(selectableColor: Int): MokaAudioPicker {
-        mySongsAdapter.selectableColor = selectableColor
-        defaultSongsAdapter.selectableColor = selectableColor
+        this.selectableColor = selectableColor
         return this
     }
 

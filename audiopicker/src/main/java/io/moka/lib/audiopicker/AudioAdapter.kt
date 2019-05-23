@@ -69,7 +69,7 @@ class AudioAdapter constructor(private val context: Context, var mode: Mode = Mo
                 textView_string.text = data.title
 
                 if (null != selectableColor)
-                    view_underLine.background.setColorFilter(ContextCompat.getColor(context, selectableColor!!), PorterDuff.Mode.SRC_IN)
+                    view_underLine.background.setColorFilter(selectableColor!!, PorterDuff.Mode.SRC_IN)
 
                 /* 재생중 표시 */
                 if (playingItem != data) {
