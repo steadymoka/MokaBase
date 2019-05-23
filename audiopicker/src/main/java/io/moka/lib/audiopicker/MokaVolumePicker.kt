@@ -39,7 +39,7 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        resizeFontSizeAndExt()
         initView()
     }
 
@@ -59,7 +59,8 @@ class MokaVolumePicker : AppCompatDialogFragment(), SeekBar.OnSeekBarChangeListe
     }
 
     fun resizeFontSizeAndExt() {
-        FontSizeCompat.size(11f, textView_title, textView_cancel, textView_ok)
+        FontSizeCompat.size(12f, textView_title)
+        FontSizeCompat.size(12f, textView_cancel, textView_ok)
         FontSizeCompat.size(10f, textView_des)
     }
 

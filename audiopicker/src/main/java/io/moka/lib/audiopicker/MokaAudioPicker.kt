@@ -63,6 +63,7 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        resizeFontSizeAndExt()
 
         setAlarmList()
 
@@ -87,7 +88,7 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
     }
 
     fun resizeFontSizeAndExt() {
-        FontSizeCompat.size(11f, textView_cancel, textView_ok)
+        FontSizeCompat.size(12f, textView_cancel, textView_ok)
         FontSizeCompat.size(12f, editText_search)
         FontSizeCompat.size(11f, textView_default, textView_mine)
         FontSizeCompat.size(10f, label_preListen, label_alarm_volume)
