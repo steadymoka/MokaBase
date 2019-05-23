@@ -35,6 +35,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         /* */
+        val datas = arrayListOf(
+                TimelineView.Data(0, 100),
+                TimelineView.Data(150, 400),
+                TimelineView.Data(460, 1000),
+                TimelineView.Data(1300, 2000))
+
+        timelineView.setDatas(datas)
+
+        /* */
         MokaBase.context = this
 
         ColorDI.primaryDarkColor = color(R.color.red_01)

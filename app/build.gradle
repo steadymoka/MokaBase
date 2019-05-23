@@ -27,11 +27,6 @@ android {
     }
 }
 
-configurations {
-    // androidx browser 이 1.0.0-rc01 이라서 생기는 에러 >> 나중에 버전 올라가면 없애줘도 될듯 ??
-    compile.exclude group: 'androidx.browser', module: 'browser'
-}
-
 kotlin {
     experimental {
         coroutines "enable"

@@ -44,4 +44,11 @@
 		android:text="오디오 피커"
 		android:textColor="@color/white_01"/>
 
+	<io.moka.mokabase.TimelineView
+		android:id="@+id/timelineView"
+		android:layout_width="match_parent"
+		android:layout_height="56dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"/>
+
 </LinearLayout>

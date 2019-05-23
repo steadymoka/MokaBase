@@ -33,18 +33,18 @@ object MLog {
     @JvmStatic
     fun deb(message: String) {
         if (DEBUG)
-            Log.wtf("DayDay debugging..", message)
+            Log.wtf("debugging..", message)
     }
 
     @JvmStatic
     fun printCurrentThread() {
         if (DEBUG)
-            Log.wtf("DayDay debugging.. ", "Current Thread :: ${Thread.currentThread().name}")
+            Log.wtf("debugging.. ", "Current Thread :: ${Thread.currentThread().name}")
     }
 
     @JvmStatic
     fun foc(message: String) {
-        Log.e("DayDay debugging..", message)
+        Log.e("debugging..", message)
     }
 
 }

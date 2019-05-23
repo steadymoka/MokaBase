@@ -86,10 +86,10 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
     }
 
     fun resizeFontSizeAndExt() {
-        FontSizeKit.size(11f, textView_cancel, textView_ok)
-        FontSizeKit.size(12f, editText_search)
-        FontSizeKit.size(11f, textView_default, textView_mine)
-        FontSizeKit.size(10f, label_preListen, label_alarm_volume)
+        FontSizeCompat.size(11f, textView_cancel, textView_ok)
+        FontSizeCompat.size(12f, editText_search)
+        FontSizeCompat.size(11f, textView_default, textView_mine)
+        FontSizeCompat.size(10f, label_preListen, label_alarm_volume)
     }
 
     /**
@@ -393,6 +393,12 @@ class MokaAudioPicker : AppCompatDialogFragment(), LoaderManager.LoaderCallbacks
 
     fun setAudioTitle(selectedAudioTitle: String = ""): MokaAudioPicker {
         this.selectedAudioTitle = selectedAudioTitle
+        return this
+    }
+
+    fun setSectableColor(selectableColor: Int): MokaAudioPicker {
+        mySongsAdapter.selectableColor = selectableColor
+        defaultSongsAdapter.selectableColor = selectableColor
         return this
     }
 

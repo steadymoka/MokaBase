@@ -15,7 +15,7 @@ import com.tnkfactory.ad.NativeAdItem
 import com.tnkfactory.ad.NativeAdListener
 import com.tnkfactory.ad.TnkSession
 import io.moka.lib.base.MokaBase
-import io.moka.lib.base.util.FontSizeKit
+import io.moka.lib.base.util.FontSizeCompat
 import io.moka.lib.base.util.dp2px
 import io.moka.lib.base.util.log.MLog
 import kotlinx.android.synthetic.main.view_moka_ad_banner.view.*
@@ -72,9 +72,9 @@ class MokaAdView constructor(context: Context, attrs: AttributeSet? = null,
     private var admobBannerAdView: AdView? = null
 
     private fun initView() {
-        FontSizeKit.size(13f, native_ad_title)
-        FontSizeKit.size(12f, textView_native_noFill, textView_banner_noFill)
-        FontSizeKit.size(10f, native_ad_social_context)
+        FontSizeCompat.size(13f, native_ad_title)
+        FontSizeCompat.size(12f, textView_native_noFill, textView_banner_noFill)
+        FontSizeCompat.size(10f, native_ad_social_context)
     }
 
     /**

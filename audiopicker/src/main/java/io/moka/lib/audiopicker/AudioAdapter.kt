@@ -2,9 +2,11 @@ package io.moka.lib.audiopicker
 
 
 import android.content.Context
+import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import io.moka.lib.base.ColorDI
 import io.moka.lib.base.adapter.BaseAdapter
@@ -24,6 +26,7 @@ class AudioAdapter constructor(private val context: Context, var mode: Mode = Mo
 
     var selectedItem: Data? = null
     var playingItem: Data? = null
+    var selectableColor: Int? = 0
 
     override fun onCreateContentItemViewHolder(parent: ViewGroup, contentViewType: Int): RecyclerView.ViewHolder {
         return ItemView(context, parent)
@@ -64,6 +67,9 @@ class AudioAdapter constructor(private val context: Context, var mode: Mode = Mo
             with(itemView) {
                 resizeFontSizeAndExt()
                 textView_string.text = data.title
+
+                if (null != selectableColor)
+                    view_underLine.background.setColorFilter(ContextCompat.getColor(context, selectableColor!!), PorterDuff.Mode.SRC_IN)
 
                 /* 재생중 표시 */
                 if (playingItem != data) {
@@ -110,7 +116,7 @@ class AudioAdapter constructor(private val context: Context, var mode: Mode = Mo
 
         private fun resizeFontSizeAndExt() {
             with(itemView) {
-                FontSizeKit.size(13f, textView_string)
+                FontSizeCompat.size(13f, textView_string)
             }
         }
 

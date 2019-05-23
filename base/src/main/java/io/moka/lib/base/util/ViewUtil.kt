@@ -63,11 +63,11 @@ inline fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
 
-fun View.visibleFadeIn(duaration: Long = 0L, onFinish: (() -> Unit)? = null) {
+fun View.visibleFadeIn(duration: Long = 0L, onFinish: (() -> Unit)? = null) {
     this.visible()
     val fadeInAnimation = AlphaAnimation(0f, 1f)
     fadeInAnimation.interpolator = AccelerateInterpolator()
-    fadeInAnimation.duration = duaration
+    fadeInAnimation.duration = duration
 
     fadeInAnimation.setAnimationListener(object : Animation.AnimationListener {
         override fun onAnimationRepeat(p0: Animation?) {
@@ -84,12 +84,12 @@ fun View.visibleFadeIn(duaration: Long = 0L, onFinish: (() -> Unit)? = null) {
     this.startAnimation(fadeInAnimation)
 }
 
-fun View.invisibleFadeOut(duaration: Long = 0L, onFinish: (() -> Unit)? = null) {
+fun View.invisibleFadeOut(duration: Long = 0L, onFinish: (() -> Unit)? = null) {
     this.invisible()
 
     val fadeOutAnimation = AlphaAnimation(1f, 0f)
     fadeOutAnimation.interpolator = AccelerateInterpolator()
-    fadeOutAnimation.duration = duaration
+    fadeOutAnimation.duration = duration
 
     fadeOutAnimation.setAnimationListener(object : Animation.AnimationListener {
         override fun onAnimationRepeat(p0: Animation?) {
@@ -106,12 +106,12 @@ fun View.invisibleFadeOut(duaration: Long = 0L, onFinish: (() -> Unit)? = null) 
     this.startAnimation(fadeOutAnimation)
 }
 
-fun View.goneFadeOut(duaration: Long = 0L, onFinish: (() -> Unit)? = null) {
+fun View.goneFadeOut(duration: Long = 0L, onFinish: (() -> Unit)? = null) {
     this.gone()
 
     val fadeOutAnimation = AlphaAnimation(1f, 0f)
     fadeOutAnimation.interpolator = AccelerateInterpolator()
-    fadeOutAnimation.duration = duaration
+    fadeOutAnimation.duration = duration
 
     fadeOutAnimation.setAnimationListener(object : Animation.AnimationListener {
         override fun onAnimationRepeat(p0: Animation?) {
