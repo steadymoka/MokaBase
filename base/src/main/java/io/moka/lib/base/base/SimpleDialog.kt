@@ -10,10 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import io.moka.lib.base.R
-import io.moka.lib.base.util.color
-import io.moka.lib.base.util.gone
-import io.moka.lib.base.util.onClick
-import io.moka.lib.base.util.visible
+import io.moka.lib.base.util.*
 import kotlinx.android.synthetic.main.dialog_simple.*
 
 
@@ -50,6 +47,9 @@ class SimpleDialog : DialogFragment() {
         button_cancel.onClick { onClickCancel() }
         button_ok.onClick { onClickOk() }
         button_left.onClick { onClickLeftButton() }
+
+        FontSizeCompat.size(14f, textView_message)
+        FontSizeCompat.size(12f, button_left, button_cancel, button_ok)
     }
 
     /**
