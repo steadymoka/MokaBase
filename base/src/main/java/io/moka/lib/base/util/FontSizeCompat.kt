@@ -5,8 +5,14 @@ import android.widget.TextView
 
 object FontSizeCompat {
 
-    enum class OffSet(var offset: Float = 0f) {
-        NORMAL(0f), SMALL(1.6f), BIG(2.5f)
+    enum class OffSet(var flag: Int = 0) {
+        NORMAL(0), SMALL(1), BIG(2);
+
+        companion object {
+            fun get(flag: Int): OffSet {
+                return OffSet.values().filter { it.flag == flag }[0]
+            }
+        }
     }
 
     var offset: OffSet = FontSizeCompat.OffSet.SMALL
@@ -19,6 +25,10 @@ object FontSizeCompat {
 
     fun set(offset: OffSet) {
         this.offset = offset
+    }
+
+    fun set(flag: Int) {
+        this.offset = OffSet.get(flag)
     }
 
     fun size(size: Float, vararg textViews: TextView) {
