@@ -37,7 +37,7 @@ dependencies {
 
     /* */
     implementation "com.google.firebase:firebase-ads:17.2.1"
-    implementation('com.facebook.android:audience-network-sdk:5.+') {
+    implementation('com.facebook.android:audience-network-sdk:5.3.0') {
         exclude group: "com.google.android.gms"
     }
     implementation files('libs/tnkad-sdk.jar')

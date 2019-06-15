@@ -20,6 +20,7 @@ object MokaAdCenter {
 
     fun initialize(context: Context, admobAppKey: String) {
         MobileAds.initialize(context, admobAppKey)
+        AudienceNetworkAds.initialize(context)
     }
 
     fun initializeTNK(context: Context) {
@@ -57,7 +58,8 @@ object MokaAdCenter {
         if (!audienceNative.isAdLoaded) {
             try {
                 audienceNative.loadAd(NativeAdBase.MediaCacheFlag.ALL)
-            } catch (ignore: IllegalStateException) {
+            }
+            catch (ignore: Exception) {
             }
         }
     }
@@ -66,7 +68,11 @@ object MokaAdCenter {
         val nativeAd = NativeAd(context, adItem.key)
         audienceNativeAdHash[adItem.position] = nativeAd
 
-        nativeAd.loadAd(NativeAdBase.MediaCacheFlag.ALL)
+        try {
+            nativeAd.loadAd(NativeAdBase.MediaCacheFlag.ALL)
+        }
+        catch (ignore: Exception) {
+        }
     }
 
     fun makeFbAudienceBannerAd(context: Context, adItem: AdItem) {
