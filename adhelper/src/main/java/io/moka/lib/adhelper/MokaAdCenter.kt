@@ -18,8 +18,11 @@ object MokaAdCenter {
             AdSettings.addTestDevice(value)
         }
 
-    fun initialize(context: Context, admobAppKey: String) {
-        MobileAds.initialize(context, admobAppKey)
+    fun initialize(context: Context, admobAppKey: String? = "") {
+        if (admobAppKey?.isNotEmpty() == true) {
+            MobileAds.initialize(context, admobAppKey)
+        }
+
         AudienceNetworkAds.initialize(context)
     }
 

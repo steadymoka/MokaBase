@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+
+	<RelativeLayout
+		android:id="@+id/cardView_native"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+		<RelativeLayout
+			android:id="@+id/ad_native_inner_container"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingTop="2dp"
+			android:visibility="invisible">
+
+			<TextView
+				android:id="@+id/textView_sponsor_please"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="28dp"
+				android:layout_marginBottom="2dp"
+				android:text="sponsored by ( !누르지 마시오 )"
+				android:textColor="@color/black_06_sub_text"
+				android:textSize="9dp"/>
+
+			<FrameLayout
+				android:id="@+id/frameLayout_media"
+				android:layout_width="match_parent"
+				android:layout_height="1dp"
+				android:layout_below="@+id/textView_sponsor_please">
+
+				<ImageView
+					android:id="@+id/imageView_image_ad"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:visibility="visible"/>
+
+				<com.facebook.ads.MediaView
+					android:id="@+id/native_ad_media"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:gravity="center"/>
+
+			</FrameLayout>
+
+			<ImageView
+				android:id="@+id/native_ad_icon"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:layout_below="@+id/frameLayout_media"
+				android:layout_marginLeft="14dp"
+				android:layout_marginTop="4dp"
+				android:layout_marginRight="12dp"/>
+
+			<LinearLayout
+				android:id="@+id/linearLayout_content"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignTop="@+id/native_ad_icon"
+				android:layout_marginTop="-4dp"
+				android:layout_marginRight="10dp"
+				android:layout_toRightOf="@+id/native_ad_icon"
+				android:background="@color/white"
+				android:gravity="center_vertical"
+				android:orientation="vertical">
+
+				<TextView
+					android:id="@+id/native_ad_title"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:ellipsize="end"
+					android:lines="1"
+					android:paddingRight="6dp"
+					android:textColor="@color/black_04"
+					android:textSize="13dp"/>
+
+				<TextView
+					android:id="@+id/native_ad_social_context"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="2dp"
+					android:ellipsize="end"
+					android:textColor="@color/black_06_sub_text"
+					android:textSize="10dp"/>
+
+				<TextView
+					android:id="@+id/native_ad_body"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="8dp"
+					android:layout_marginTop="2dp"
+					android:layout_marginRight="6dp"
+					android:ellipsize="end"
+					android:lines="1"
+					android:textColor="@color/black_04"
+					android:textSize="8dp"
+					android:visibility="gone"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/native_ad_call_to_action"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignBottom="@+id/linearLayout_content"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="17dp"
+				android:text="설치"
+				android:textColor="@color/black_04"
+				android:textSize="10dp"/>
+
+		</RelativeLayout>
+
+		<View
+			style="@style/HorizontalDivider"
+			android:layout_height="0.87dp"
+			android:layout_below="@+id/ad_native_inner_container"
+			android:layout_marginLeft="12dp"
+			android:layout_marginTop="14dp"
+			android:layout_marginRight="12dp"
+			android:background="@color/black_04"
+			android:visibility="invisible"/>
+
+	</RelativeLayout>
+
+	<FrameLayout
+		android:id="@+id/frameLayout_loading_native"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/cardView_native"
+		android:layout_alignBottom="@+id/cardView_native"
+		android:translationZ="1dp"
+		android:visibility="visible">
+
+		<ProgressBar
+			android:layout_width="match_parent"
+			android:layout_height="12dp"
+			android:layout_gravity="center"
+			android:alpha="0.5"
+			android:background="@color/white"
+			android:visibility="visible"/>
+
+	</FrameLayout>
+
+	<TextView
+		android:id="@+id/textView_native_noFill"
+		android:layout_width="match_parent"
+		android:layout_height="80dp"
+		android:alpha="0.83"
+		android:background="@color/white"
+		android:gravity="center"
+		android:text="광고 로드를 실패 하였습니다"
+		android:textColor="@color/black_06_sub_text"
+		android:textSize="12dp"
+		android:translationZ="1dp"
+		android:visibility="gone"/>
+
+</RelativeLayout>
