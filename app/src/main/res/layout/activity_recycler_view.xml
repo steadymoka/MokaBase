@@ -16,6 +16,7 @@
 			android:id="@+id/recyclerView"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:background="@color/black_06_sub_text"
 			android:overScrollMode="never"
 			app:layoutManager="LinearLayoutManager"/>
 

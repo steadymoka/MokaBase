@@ -161,12 +161,10 @@ class MaterialDrawable extends RefreshDrawable implements Animatable {
 
         OvalShape oval = new OvalShadow(mShadowRadius, diameter);
         mCircle = new ShapeDrawable(oval);
-//        ViewCompat.setLayerType(this, ViewCompat.LAYER_TYPE_SOFTWARE, circle.getPaint());
-        mCircle.getPaint().setShadowLayer(mShadowRadius, shadowXOffset, shadowYOffset,
-                KEY_SHADOW_COLOR);
-        mPadding = (int) mShadowRadius;
+//        mCircle.getPaint().setShadowLayer(mShadowRadius, shadowXOffset, shadowYOffset, KEY_SHADOW_COLOR);
+        mPadding = mShadowRadius;
 
-        mCircle.getPaint().setColor(Color.WHITE);
+        mCircle.getPaint().setColor(Color.TRANSPARENT);
     }
 
     private class OvalShadow extends OvalShape {
