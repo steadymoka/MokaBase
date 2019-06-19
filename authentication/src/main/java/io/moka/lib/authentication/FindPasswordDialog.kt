@@ -83,24 +83,24 @@ internal class FindPasswordDialog : BaseWideDialogFragment() {
         }
 
         ApiModule.api.findPassword(findPasswordReq = FindPasswordReq(email)).on(
-                success = {
-                    onComplete()
+            success = {
+                onComplete()
 
-                    textView_result.visible()
-                    textView_result.text = "해당 이메일로 변경된 비밀번호를 발송하였습니다\n확인후 비밀번호를 변경해주세요 !"
-                },
-                fail = { error, throwable ->
-                    onComplete()
+                textView_result.visible()
+                textView_result.text = "해당 이메일로 변경된 비밀번호를 발송하였습니다\n확인후 비밀번호를 변경해주세요 !"
+            },
+            fail = { error, throwable ->
+                onComplete()
 
-                    textView_result.visible()
-                    textView_result.text = "무언가 잘못 되었습니다 😂"
-                    textView_title.text = ""
+                textView_result.visible()
+                textView_result.text = "무언가 잘못 되었습니다 😂"
+                textView_title.text = ""
 
-                    if (error?.message == "NoUserIsFound") {
-                        textView_result.text = "해당 이메일이 없습니다 😂  다시 찾아보기!"
-                    }
-                },
-                filter = { isAdded }
+                if (error?.message == "NoUserIsFound") {
+                    textView_result.text = "해당 이메일이 없습니다 😂  다시 찾아보기!"
+                }
+            },
+            filter = { isAdded }
         )
     }
 

@@ -4,6 +4,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 group = 'com.github.moka-a'
 
 android {
@@ -60,6 +62,6 @@ dependencies {
         exclude group: "com.android.support"
         transitive = true
     }
-    kapt 'androidx.annotation:annotation:1.0.2'
+    kapt 'androidx.annotation:annotation:1.1.0'
     kapt rootProject.ext.glide_kapt
 }
